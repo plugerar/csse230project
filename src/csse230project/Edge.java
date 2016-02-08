@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-package csse230project;
-
-public class Edge {
-
-}
-=======
 package csse230project;
 
 public class Edge {
@@ -46,4 +39,3 @@ public class Edge {
 		return s;
 	}
 }
->>>>>>> Allison

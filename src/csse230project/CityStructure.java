@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-package csse230project;
-
-public class CityStructure {
-
-}
-=======
 package csse230project;
 
 import java.util.ArrayList;
@@ -52,4 +45,3 @@ public class CityStructure {
 		this.cityList.get(city2).addNeighbor(edge);
 	}
 }
->>>>>>> Allison

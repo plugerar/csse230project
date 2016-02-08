@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-package csse230project;
-
-public class City {
-	String name;
-	public City(String name){
-		this.name = name;
-	}
-
-}
-=======
 package csse230project;
 
 import java.util.ArrayList;
@@ -19,6 +8,15 @@ public class City {
 	private ArrayList<Attraction> pointsOfInterest;
 	private int xCoord, yCoord;
 	private Integer interestLevel;
+	
+	public City(String name) {
+		this.name = name;
+		this.xCoord = 0;
+		this.yCoord = 0;
+		this.neighbors = new ArrayList<>();
+		this.pointsOfInterest = new ArrayList<>();
+		this.interestLevel = new Integer(0);	
+		}
 	
 	public City(String name, int xCoord, int yCoord) {
 		this.name = name;
@@ -104,4 +102,3 @@ public class City {
 	}
 	
 }
->>>>>>> Allison

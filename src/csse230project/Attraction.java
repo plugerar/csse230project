@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-package csse230project;
-
-public class Attraction {
-
-}
-=======
 package csse230project;
 
 public class Attraction {
@@ -41,4 +34,3 @@ public class Attraction {
 	}
 	
 }
->>>>>>> Allison
