@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 public class MapPanel extends JPanel implements ActionListener{
 	public MapPanel(){
-		this.add(new JLabel("map"));
+		this.add(new JLabel("map!"));
 	}
 
 	@Override
