@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class Test {
 
-	public static void main(String[] args) {
+	public void test() {
 		CityStructure map = new CityStructure();
 		
 		map.addCity("Terre Haute", 50, 50);
