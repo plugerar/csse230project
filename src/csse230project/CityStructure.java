@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Set;
 public class CityStructure {
 
-	private HashMap<String,City> cityStructure;
+	private HashMap<String,City> cityStructure = new HashMap<>();
 	private ArrayList<City> cityArray=new ArrayList<>();
 	private int cityStructureSize;
 	
