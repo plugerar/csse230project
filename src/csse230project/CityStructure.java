@@ -1,18 +1,17 @@
 package csse230project;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
-public class CityStructure<K,V> implements Map<K,V>  {
+public class CityStructure {
 
-	private HashMap cityStructure;
-	private ArrayList cityArray=new ArrayList();
+	private HashMap<String,City> cityStructure;
+	private ArrayList<City> cityArray=new ArrayList<>();
+	private int cityStructureSize;
 	
 	public CityStructure()
 	{
-		
+		this.cityStructureSize=0;
 		
 	}
 
@@ -27,79 +26,66 @@ public class CityStructure<K,V> implements Map<K,V>  {
 		return true;
 	}
 	
-	@Override
 	public void clear() {
-		// TODO Auto-generated method stub.
+		this.cityStructure.clear();
+		this.cityArray.clear();
 		
 	}
 
-	@Override
-	public boolean containsKey(Object arg0) {
-		// TODO Auto-generated method stub.
+	public boolean containsKey(String s) {
+		if (this.cityStructure.containsKey(s))
+			return true;
 		return false;
 	}
 
-	@Override
-	public boolean containsValue(Object arg0) {
-		// TODO Auto-generated method stub.
+	public boolean containsValue(Object o) {
+		if(this.cityStructure.containsValue(o))
+			return true;
 		return false;
 	}
 
-	@Override
-	public Set<java.util.Map.Entry<K, V>> entrySet() {
-		// TODO Auto-generated method stub.
-		return null;
+	public Set<java.util.Map.Entry<String, City>> entrySet() {
+		return this.cityStructure.entrySet();
 	}
 
-	@Override
-	public V get(Object arg0) {
-		// TODO Auto-generated method stub.
-		return null;
+	public City get(Object o) {
+		return this.cityStructure.get(o);
 	}
 
-	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub.
-		return false;
+		return this.cityStructure.isEmpty();
 	}
 
-	@Override
-	public Set<K> keySet() {
-		// TODO Auto-generated method stub.
-		return null;
+	public Set<String> keySet() {
+		return this.cityStructure.keySet();
 	}
 
-	@Override
-	public V put(K arg0, V arg1) {
-		// TODO Auto-generated method stub.
-		return null;
+	public City put(String s, City c) {
+		if(this.cityStructure.containsKey(s))
+		{
+			return this.cityStructure.put(s, c);
+		}
+		this.cityArray.add(c);
+		return this.cityStructure.put(s, c);
 	}
 
-	@Override
-	public void putAll(Map<? extends K, ? extends V> arg0) {
-		// TODO Auto-generated method stub.
+	public boolean remove(String s) {
+		if(this.cityStructure.containsKey(s))
+		{
+			City citytoremove = this.cityStructure.remove(s);
+			this.cityArray.remove(citytoremove);
+			return true;
+		}
+		return this.cityArray.remove(s);
+	}
+
+	public int size() {
+		return this.cityStructureSize;
 		
 	}
 
-	@Override
-	public V remove(Object arg0) {
-		// TODO Auto-generated method stub.
-		return null;
-	}
-
-	@Override
-	public int size() {
-		// TODO Auto-generated method stub.
-		return 0;
-	}
-
-	@Override
-	public Collection<V> values() {
-		// TODO Auto-generated method stub.
-		return null;
-	}
 	
-	private class CityIterator<City> implements Iterator<City>
+	class CityIterator implements Iterator
 	{
 		private int currentElement;
 		
@@ -107,17 +93,21 @@ public class CityStructure<K,V> implements Map<K,V>  {
 		{
 			this.currentElement=0;
 			
+			
 		}
 		@Override
 		public boolean hasNext() {
-			// TODO Auto-generated method stub.
+			if (this.currentElement<size()-1)
+			{
+				return true;
+			}
 			return false;
 		}
 
 		@Override
 		public City next() {
-			// TODO Auto-generated method stub.
-			return null;
+			City c = get(this.currentElement+1);
+			return c;
 		}
 		
 		
