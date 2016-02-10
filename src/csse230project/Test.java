@@ -11,8 +11,8 @@ import java.util.Iterator;
 public class Test {
 
 	public static void main(String[] args) throws Exception{
-//		CityStructure map = new CityStructure();
-//		
+		CityStructure map = new CityStructure();
+		
 //		map.addCity("Terre Haute", 50, 50);
 //		
 //		ArrayList<Attraction> seattlePOIs = new ArrayList<>();
@@ -45,15 +45,16 @@ public class Test {
 //		while (interestList.hasNext()) {
 //			System.out.println(interestList.next());			
 //		}
-//		
+		
 //        write(map, "foo.xml");
         CityStructure test = read("foo.xml");
         
-		System.out.println(test.getCityList().toString());
+		System.out.println(test.getCityMap().toString());
 		Iterator<City> interestList = test.getCityInterestList().iterator();
 		while (interestList.hasNext()) {
 			System.out.println(interestList.next());			
 		}
+		
 	}
     
     public static void write(CityStructure map, String filename) throws Exception{

@@ -255,7 +255,7 @@
     <object idref="City1"/>
    </void>
   </void>
-  <void property="cityList">
+  <void property="cityMap">
    <void method="put">
     <string>Seattle</string>
     <object idref="City3"/>
