@@ -2,11 +2,10 @@ package csse230project;
 
 import java.awt.Dimension;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class Main {
-	public static void main(String[] args) {
+	public static void main2(String[] args) {
 		final JFrame frame = new JFrame();
 		Dimension size = new Dimension(900, 850);
 		frame.setTitle("Map");
