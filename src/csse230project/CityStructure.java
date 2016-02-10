@@ -112,5 +112,34 @@ public class CityStructure {
 		
 		
 	}
+//	public ArrayList calculateRoute(City start,City end)
+//	{
+//		ArrayList openList= new ArrayList();
+//		ArrayList closedList=new ArrayList();
+//		openList.add(start);
+//		while(!goal)
+//		{
+//			currentList=findBestNode(openList)
+//			if(currentNode.compareTo(end)==0)
+//			{
+//				
+//			}
+//			else
+//			{
+//				closedList.add(currentNode);
+//				for(int i=0;i<this.cityArray.size();i++)
+//				{
+//					if()
+//				}
+//			}
+//		}
+//		
+//	}
+
+
+	public int lineDistance(City start, City end)
+	{
+		return (int) Math.sqrt(Math.pow(start.getXCoord(),2)+Math.pow(end.getYCoord(), 2));
+	}
 
 }
