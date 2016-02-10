@@ -1,116 +1,87 @@
 package csse230project;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.PriorityQueue;
+
+/**
+ * Class for all data (hashmap of cities, priority queue of
+ * cities in terms of interest level)
+ */
 public class CityStructure {
-
-	private HashMap<String,City> cityStructure;
-	private ArrayList<City> cityArray=new ArrayList<>();
-	private int cityStructureSize;
+	private HashMap<String, City> cityList;
+	private PriorityQueue<City> cityInterestList;
+	private Comparator<City> comparator;
 	
-	public CityStructure()
-	{
-		this.cityStructureSize=0;
-		
+	/**
+	 * Default constructor for file i/o
+	 */
+	public CityStructure() {
+		this.cityList = new HashMap<>();
+		this.comparator = new CityComparator();
+		this.cityInterestList = new PriorityQueue<>(this.comparator);
 	}
 
-	public boolean add(City c)
-	{
-		if(this.cityArray.contains(c))	//TODO: check for duplicate elements.
-		{
-			return false;
-		}
-		this.cityArray.add(c);
-		this.cityStructure.put(c.getName(), c); //TODO: add a toString method to city
-		return true;
+	/**
+	 * Getter for city list
+	 */
+	public HashMap<String, City> getCityList() {
+		return this.cityList;
+	}
+
+	/**
+	 * Setter for city list
+	 */
+	public void setCityList(HashMap<String, City> cityList) {
+		this.cityList = cityList;
 	}
 	
-	public void clear() {
-		this.cityStructure.clear();
-		this.cityArray.clear();
-		
+	/**
+	 * Getter for city interest list
+	 */
+	public PriorityQueue<City> getCityInterestList() {
+		return this.cityInterestList;
 	}
-
-	public boolean containsKey(String s) {
-		if (this.cityStructure.containsKey(s))
-			return true;
-		return false;
-	}
-
-	public boolean containsValue(Object o) {
-		if(this.cityStructure.containsValue(o))
-			return true;
-		return false;
-	}
-
-	public Set<java.util.Map.Entry<String, City>> entrySet() {
-		return this.cityStructure.entrySet();
-	}
-
-	public City get(Object o) {
-		return this.cityStructure.get(o);
-	}
-
-	public boolean isEmpty() {
-		return this.cityStructure.isEmpty();
-	}
-
-	public Set<String> keySet() {
-		return this.cityStructure.keySet();
-	}
-
-	public City put(String s, City c) {
-		if(this.cityStructure.containsKey(s))
-		{
-			return this.cityStructure.put(s, c);
-		}
-		this.cityArray.add(c);
-		return this.cityStructure.put(s, c);
-	}
-
-	public boolean remove(String s) {
-		if(this.cityStructure.containsKey(s))
-		{
-			City citytoremove = this.cityStructure.remove(s);
-			this.cityArray.remove(citytoremove);
-			return true;
-		}
-		return this.cityArray.remove(s);
-	}
-
-	public int size() {
-		return this.cityStructureSize;
-		
-	}
-
 	
-	class CityIterator implements Iterator
-	{
-		private int currentElement;
+	/**
+	 * Setter for city interest list
+	 */
+	public void setCityInterestList(PriorityQueue<City> cityInterestList) {
+		this.cityInterestList = cityInterestList;
+	}
 		
-		public CityIterator()
-		{
-			this.currentElement=0;
-			
-			
-		}
-		@Override
-		public boolean hasNext() {
-			if (this.currentElement<size()-1)
-			{
-				return true;
-			}
-			return false;
-		}
-
-		@Override
-		public City next() {
-			City c = get(this.currentElement+1);
-			return c;
-		}
-		
-		
+	/**
+	 * Getter for city by name
+	 */	
+	public City getCity(String cityName) {
+		return this.cityList.get(cityName);
 	}
 
+	/**
+	 * Add a city with name, x and y coordinates, and POI list
+	 */		
+	public void addCity(String cityName, int xCoord, int yCoord, ArrayList<Attraction> pointsOfInterest) {
+		this.cityList.put(cityName, new City(cityName,xCoord,yCoord));
+		this.cityList.get(cityName).setPointsOfInterest(pointsOfInterest);
+		this.cityInterestList.add(this.cityList.get(cityName));
+	}
+
+	/**
+	 * Add a city with name, x and y coordinates
+	 */			
+	public void addCity(String cityName, int xCoord, int yCoord) {
+		this.cityList.put(cityName, new City(cityName,xCoord,yCoord));
+		this.cityInterestList.add(this.cityList.get(cityName));
+	}
+
+	/**
+	 * Link two cities together with time and distance
+	 */		
+	public void linkCity(String city1, String city2, int time, int distance) {
+		Edge edge = new Edge(this.cityList.get(city1), this.cityList.get(city2), time, distance);
+		this.cityList.get(city1).addNeighbor(edge);
+		this.cityList.get(city2).addNeighbor(edge);
+	}
 }
+
