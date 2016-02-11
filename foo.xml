@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_66" class="java.beans.XMLDecoder">
+ <object class="csse230project.CityStructure" id="CityStructure0">
+  <void property="cityInterestList">
+   <void method="add">
+    <object class="csse230project.City" id="City0">
+     <void property="YCoord">
+      <int>100</int>
+     </void>
+     <void property="interestLevel">
+      <int>41</int>
+     </void>
+     <void property="name">
+      <string>NYC</string>
+     </void>
+     <void property="neighbors">
+      <void method="add">
+       <object class="csse230project.Edge" id="Edge0">
+        <void property="city1">
+         <object class="csse230project.City" id="City1">
+          <void property="XCoord">
+           <int>50</int>
+          </void>
+          <void property="YCoord">
+           <int>50</int>
+          </void>
+          <void property="interestLevel">
+           <int>0</int>
+          </void>
+          <void property="name">
+           <string>Terre Haute</string>
+          </void>
+          <void property="neighbors">
+           <void method="add">
+            <object class="csse230project.Edge" id="Edge1">
+             <void property="city1">
+              <object idref="City1"/>
+             </void>
+             <void property="city2">
+              <object class="csse230project.City" id="City2">
+               <void property="XCoord">
+                <int>100</int>
+               </void>
+               <void property="interestLevel">
+                <int>20</int>
+               </void>
+               <void property="name">
+                <string>LA</string>
+               </void>
+               <void property="neighbors">
+                <void method="add">
+                 <object idref="Edge1"/>
+                </void>
+                <void method="add">
+                 <object class="csse230project.Edge" id="Edge2">
+                  <void property="city1">
+                   <object idref="City2"/>
+                  </void>
+                  <void property="city2">
+                   <object class="csse230project.City" id="City3">
+                    <void property="interestLevel">
+                     <int>23</int>
+                    </void>
+                    <void property="name">
+                     <string>Seattle</string>
+                    </void>
+                    <void property="neighbors">
+                     <void method="add">
+                      <object idref="Edge2"/>
+                     </void>
+                     <void method="add">
+                      <object class="csse230project.Edge" id="Edge3">
+                       <void property="city1">
+                        <object idref="City1"/>
+                       </void>
+                       <void property="city2">
+                        <object idref="City3"/>
+                       </void>
+                       <void property="distance">
+                        <int>2184</int>
+                       </void>
+                       <void property="time">
+                        <int>32</int>
+                       </void>
+                      </object>
+                     </void>
+                    </void>
+                    <void property="pointsOfInterest">
+                     <void method="add">
+                      <object class="csse230project.Attraction">
+                       <void property="interestLevel">
+                        <int>10</int>
+                       </void>
+                       <void property="name">
+                        <string>Space Needle</string>
+                       </void>
+                      </object>
+                     </void>
+                     <void method="add">
+                      <object class="csse230project.Attraction">
+                       <void property="interestLevel">
+                        <int>8</int>
+                       </void>
+                       <void property="name">
+                        <string>Chihuly Glass</string>
+                       </void>
+                      </object>
+                     </void>
+                     <void method="add">
+                      <object class="csse230project.Attraction">
+                       <void property="interestLevel">
+                        <int>5</int>
+                       </void>
+                       <void property="name">
+                        <string>Pike Place Market</string>
+                       </void>
+                      </object>
+                     </void>
+                    </void>
+                   </object>
+                  </void>
+                  <void property="distance">
+                   <int>1137</int>
+                  </void>
+                  <void property="time">
+                   <int>17</int>
+                  </void>
+                 </object>
+                </void>
+               </void>
+               <void property="pointsOfInterest">
+                <void method="add">
+                 <object class="csse230project.Attraction">
+                  <void property="interestLevel">
+                   <int>10</int>
+                  </void>
+                  <void property="name">
+                   <string>DisneyLand</string>
+                  </void>
+                 </object>
+                </void>
+                <void method="add">
+                 <object class="csse230project.Attraction">
+                  <void property="interestLevel">
+                   <int>5</int>
+                  </void>
+                  <void property="name">
+                   <string>Universal Studios Hollywood</string>
+                  </void>
+                 </object>
+                </void>
+                <void method="add">
+                 <object class="csse230project.Attraction">
+                  <void property="interestLevel">
+                   <int>5</int>
+                  </void>
+                  <void property="name">
+                   <string>Hollywood Wax Museum</string>
+                  </void>
+                 </object>
+                </void>
+               </void>
+              </object>
+             </void>
+             <void property="distance">
+              <int>1993</int>
+             </void>
+             <void property="time">
+              <int>29</int>
+             </void>
+            </object>
+           </void>
+           <void method="add">
+            <object idref="Edge3"/>
+           </void>
+           <void method="add">
+            <object idref="Edge0"/>
+           </void>
+          </void>
+         </object>
+        </void>
+        <void property="city2">
+         <object idref="City0"/>
+        </void>
+        <void property="distance">
+         <int>787</int>
+        </void>
+        <void property="time">
+         <int>12</int>
+        </void>
+       </object>
+      </void>
+     </void>
+     <void property="pointsOfInterest">
+      <void method="add">
+       <object class="csse230project.Attraction">
+        <void property="interestLevel">
+         <int>10</int>
+        </void>
+        <void property="name">
+         <string>Empire State Building</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="csse230project.Attraction">
+        <void property="interestLevel">
+         <int>8</int>
+        </void>
+        <void property="name">
+         <string>Central Park</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="csse230project.Attraction">
+        <void property="interestLevel">
+         <int>10</int>
+        </void>
+        <void property="name">
+         <string>Statue of Liberty</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="csse230project.Attraction">
+        <void property="interestLevel">
+         <int>8</int>
+        </void>
+        <void property="name">
+         <string>Ellis Island</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="csse230project.Attraction">
+        <void property="interestLevel">
+         <int>5</int>
+        </void>
+        <void property="name">
+         <string>Times Square</string>
+        </void>
+       </object>
+      </void>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object idref="City2"/>
+   </void>
+   <void method="add">
+    <object idref="City3"/>
+   </void>
+   <void method="add">
+    <object idref="City1"/>
+   </void>
+  </void>
+  <void property="cityMap">
+   <void method="put">
+    <string>Seattle</string>
+    <object idref="City3"/>
+   </void>
+   <void method="put">
+    <string>LA</string>
+    <object idref="City2"/>
+   </void>
+   <void method="put">
+    <string>Terre Haute</string>
+    <object idref="City1"/>
+   </void>
+   <void method="put">
+    <string>NYC</string>
+    <object idref="City0"/>
+   </void>
+  </void>
+ </object>
+</java>

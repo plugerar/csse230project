@@ -9,8 +9,12 @@ import java.awt.Graphics2D;
 import javax.swing.JFrame;
 
 public class Main {
+<<<<<<< HEAD
 	
 	public static void main(String[] args) {
+=======
+	public static void main2(String[] args) {
+>>>>>>> master
 		final JFrame frame = new JFrame();
 		Dimension size = new Dimension(1000, 1000);
 		frame.setTitle("Map");
