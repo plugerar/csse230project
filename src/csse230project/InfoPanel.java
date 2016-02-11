@@ -1,6 +1,12 @@
 package csse230project;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -9,29 +15,33 @@ import javax.swing.JPanel;
 
 public class InfoPanel extends JPanel{
 	
-	MapPanel map = new MapPanel();
-	
 	public InfoPanel() {
-		this.setBounds(0, 50, 950, 950);
-		this.setSize(950, 950);
-		City[] CityList = { new City("New York"), new City("California"), new City("Terre Haute"), new City("Washington"), new City("Boston") };
-		JComboBox cityStart = new JComboBox(CityList);
-		cityStart.setSelectedIndex(4);
-		cityStart.addActionListener(map);
-		JComboBox cityEnd = new JComboBox(CityList);
-		cityEnd.setSelectedIndex(4);
-		cityEnd.addActionListener(map);
-		JLabel label = new JLabel("Shows shortest path along with the distance and time info");
-		JButton calcRoute = new JButton("calculateRoute");
+		this.setPreferredSize(new Dimension(250, 1000));
+		this.setAlignmentX(LEFT_ALIGNMENT);
+		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		this.calculateRoute();
 		JButton pointsOfInterest = new JButton("pointsOfInterest");
 		JButton cityRating  = new JButton("cityRating");
-		//this.add()
+		this.setLayout(new FlowLayout());
+		
+		this.add(pointsOfInterest);
+		this.add(cityRating);
+	}
+	
+	private void calculateRoute(){
+		String[] CityList = { "New York", "California", "Terre Haute", "Washington", "Boston"};
+		JComboBox cityStart = new JComboBox(CityList);
+		cityStart.setSelectedIndex(4);
+		cityStart.addActionListener((ActionListener) cityStart);
+		JComboBox cityEnd = new JComboBox(CityList);
+		cityEnd.setSelectedIndex(4);
+		cityEnd.addActionListener((ActionListener) cityEnd);
+		JLabel label = new JLabel("Shows shortest path along with the distance and time info");
+		JButton calcRoute = new JButton("calculateRoute");
 		this.add(cityStart);
 		this.add(cityEnd);
 		this.add(label);
 		this.add(calcRoute);
-		this.add(pointsOfInterest);
-		this.add(cityRating);
 	}
 
 }
