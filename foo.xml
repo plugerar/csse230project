@@ -86,7 +86,7 @@
                         <int>2184</int>
                        </void>
                        <void property="time">
-                        <int>32</int>
+                        <double>32.0</double>
                        </void>
                       </object>
                      </void>
@@ -129,7 +129,7 @@
                    <int>1137</int>
                   </void>
                   <void property="time">
-                   <int>17</int>
+                   <double>17.0</double>
                   </void>
                  </object>
                 </void>
@@ -172,7 +172,7 @@
               <int>1993</int>
              </void>
              <void property="time">
-              <int>29</int>
+              <double>29.0</double>
              </void>
             </object>
            </void>
@@ -192,7 +192,7 @@
          <int>787</int>
         </void>
         <void property="time">
-         <int>12</int>
+         <double>12.0</double>
         </void>
        </object>
       </void>

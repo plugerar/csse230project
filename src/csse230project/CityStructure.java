@@ -49,8 +49,23 @@ public class CityStructure {
 	 */
 	public void setCityInterestList(PriorityQueue<City> cityInterestList) {
 		this.cityInterestList = cityInterestList;
+	}	
+	
+	/**
+	 * Form an array list of the interest list
+	 */
+	public ArrayList<City> cityInterestToArrayList() {
+		ArrayList<City> iterableCityInterestList = new ArrayList<>();
+		PriorityQueue<City> temp = new PriorityQueue<>(this.comparator);
+		while (this.cityInterestList.peek() != null) {
+			City nextCity = this.cityInterestList.poll();
+			iterableCityInterestList.add(nextCity);
+			temp.add(nextCity);
+		}
+		this.cityInterestList = temp;
+		return iterableCityInterestList;		
 	}
-		
+	
 	/**
 	 * Getter for city by name
 	 */	
@@ -89,8 +104,8 @@ public class CityStructure {
 	/**
 	 * Link two cities together with time and distance
 	 */		
-	public void linkCity(String city1, String city2, int time, int distance) {
-		Edge edge = new Edge(this.cityMap.get(city1), this.cityMap.get(city2), time, distance);
+	public void linkCity(String city1, String city2, int distance, double time) {
+		Edge edge = new Edge(this.cityMap.get(city1), this.cityMap.get(city2), distance, time);
 		this.cityMap.get(city1).addNeighbor(edge);
 		this.cityMap.get(city2).addNeighbor(edge);
 	}

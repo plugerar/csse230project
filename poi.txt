@@ -1,0 +1,49 @@
+Olympia,Nisqually National Wildlife Refuge,5
+Salem,A.C.Gilbert's Discovery Village,5
+Sacramento,Old Sacramento,7,California State Railroad Museum,5
+Carson City,Nevada State Railroad Museum,5
+Boise,Old Idaho State Penitentiary,7,World Center for Birds of Prey,5
+Salt Lake City,Hogle Zoo,6,Big Cottonwood Canyon,6
+Phoenix,Heard Museum,5,Desert Botanical Garden,5,Arizona Science Center,6
+Santa Fe,Georgia O'Keeffe Museum,5
+Denver,Denver Museum of Nature and Science,7,Downtown Aquarium,7
+Cheyenne,Wyoming Transportation Museum,5
+Helena,Cathedral of St. Helena,3
+Bismarck,Dakota Zoo,4
+Pierre
+Lincoln,Sunken Gardens,3
+Topeka,Brown v. Board of Education National Historic Site,5
+Oklahoma City,Oklahoma History Center,5,Myriad Botanical Gardens,4
+Austin,State Capitol,5,Lady Bird Lake Hike-and-Bike Trail,5,LBJ Presidential Library,6
+Baton Rouge,USS Kidd,6,LSU Rural Life Museum,5
+Jackson,Mississippi Museum of Natural Sciences,6,Mississippi Agriculture and Forestry Museum,4
+Montgomery,Civil Rights Memorial,7,First White House of the Confederacy,6,Rosa Parks Library and Museum,6
+Atlanta,Georgia Aquarium,7,World of Coca-Cola,7
+Tallahassee,Museum of Florida History,5
+Columbia,Sesquicentennial State Park,6
+Little Rock,Little Rock River Market District,5
+Jefferson City,Missouri State Museum,4
+Des Moines,Blank Park Zoo,5,Des Moines Art Center,5
+St. Paul,Science Museum of Minnesota,5,Como Park Zoo and Conservatory,5
+Madison,Wisconsin State Capitol,5,Henry Vilas Zoo,5,Monona Terrace,5
+Springfield,Abraham Lincoln Presidential Library,5,Lincoln Home National Historic Site,7
+Lansing,R.E. Olds Transportation Museum,5
+Indianapolis,White River State Park,6,Indiana State Museum,5
+Frankfort,Old Statehoue,4
+Nashville,Parthenon,7,Country Music Hall of Fame and Museum,6
+Raleigh,North Carolina Museum of Natural Sciences,6
+Richmond,Virginia Museum of Fine Arts,6,Hollywood Cemetery,4
+Charleston,City Market,6,Magnolia Plantation and Gardens,4,Fort Sumter,5
+Columbus,German Village,6,Franklin Park Conservatory,5
+Harrisburg,National Civil War Museum,6,Hersheypark,5
+Albany,Empire State Plaza,6,New York State Museum,5,USS Slater,5
+Augusta,Fort Western,5
+Montpelier,Fairbanks Museum and Planetarium,6,Spider Web Farm,4
+Concord,McAuliffe-Shepard Discovery Center,4
+Boston,Museum of Fine Arts,5,Freedom Trail,6,Boston Tea Party Ships and Museum,5
+Providence,Roger Williams Park,4
+Hartford,Mark Twain House,5,Harriet Beecher Stowe House,5
+Trenton,Old Barracks Museum,4
+Dover,First State Heritage Park,4
+Annapolis,US Naval Academy,5
+Washington D.C.,White House,6,National Mall,7,Lincoln Memorial,6,National Museum of Natural History,7,United States Capitol,6,National Zoological Park,5,Smithsonian National Air and Space Museum,5

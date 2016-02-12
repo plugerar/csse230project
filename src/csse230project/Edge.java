@@ -7,7 +7,7 @@ package csse230project;
 public class Edge {
 	private City city1;
 	private City city2;
-	private int time;
+	private double time;
 	private int distance;
 	
 	/**
@@ -19,11 +19,11 @@ public class Edge {
 	/**
 	 * Constructor with both cities, time, and distance
 	 */		
-	public Edge(City city1, City city2, int time, int distance) {
+	public Edge(City city1, City city2, int distance, double time) {
 		this.city1 = city1;
 		this.city2 = city2;
-		this.time = time;
 		this.distance = distance;
+		this.time = time;
 	}
 
 	/**
@@ -57,14 +57,14 @@ public class Edge {
 	/**
 	 * Getter for time
 	 */	
-	public int getTime() {
+	public double getTime() {
 		return this.time;
 	}
 	
 	/**
 	 * Setter for time
 	 */	
-	public void setTime(int time) {
+	public void setTime(double time) {
 		this.time = time;
 	}
 	

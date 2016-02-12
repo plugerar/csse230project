@@ -7,7 +7,6 @@ import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Test {
 
@@ -36,10 +35,10 @@ public class Test {
 		laPOIs.add(new Attraction("Hollywood Wax Museum", 5));
 		map.addCity("LA", 300, 0, laPOIs);
 
-		map.linkCity("Terre Haute", "LA", 29, 1993);
-		map.linkCity("LA", "Seattle", 17, 1137);
-		map.linkCity("Terre Haute", "Seattle", 32, 2184);
-		map.linkCity("Terre Haute", "NYC", 12, 787);
+		map.linkCity("Terre Haute", "LA", 1993, 29);
+		map.linkCity("LA", "Seattle", 1137, 17);
+		map.linkCity("Terre Haute", "Seattle", 2184, 32);
+		map.linkCity("Terre Haute", "NYC", 787, 12);
 		
 //		System.out.println(map.getCityList().toString());
 //		Iterator<City> interestList = map.getCityInterestList().iterator();
@@ -50,12 +49,11 @@ public class Test {
         write(map, "foo.xml");
         CityStructure test = read("foo.xml");
 		System.out.println(test.getCityMap().toString());        
-		Iterator<City> iterator = test.getCityInterestList().iterator();
+		System.out.println(test.getCityInterestList().toString());
 //        Iterator<Entry<String, City>> iterator = test.getCityMap().entrySet().iterator();
-		while (iterator.hasNext()) {
-			System.out.println(iterator.next());			
-		}
-		
+//		while (iterator.hasNext()) {
+//			System.out.println(iterator.next());			
+//		}
 	}
     
     public static void write(CityStructure map, String filename) throws Exception{
