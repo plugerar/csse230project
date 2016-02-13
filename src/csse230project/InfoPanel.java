@@ -1,5 +1,6 @@
 package csse230project;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
@@ -10,6 +11,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -23,6 +25,10 @@ public class InfoPanel extends JPanel{
 		JButton pointsOfInterest = new JButton("pointsOfInterest");
 		JButton cityRating  = new JButton("cityRating");
 		this.setLayout(new FlowLayout());
+		this.setBorder(BorderFactory.createLineBorder(Color.black));
+		
+		JOptionPane prnt = new JOptionPane();
+		prnt.showMessageDialog(null, "The features of the software");
 		
 		this.add(pointsOfInterest);
 		this.add(cityRating);

@@ -36,10 +36,10 @@ public class MapPanel extends JComponent{
 	}
 	
 	public void map(Graphics2D g2) throws Exception{
-		CityStructure test = Test.read("foo.xml");
+		CityStructure test = WriteDomain.read("usdomain.xml");
 		Iterator<Entry<String, City>> cityPlace = test.getCityMap().entrySet().iterator();
 		while(cityPlace.hasNext()){
-			double citySize = 50;
+			double citySize = 10;
 			g2.setStroke(new BasicStroke(1.0f)); 
 			g2.setColor(Color.BLACK);
 			City city = cityPlace.next().getValue();
