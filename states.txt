@@ -1,0 +1,56 @@
+Olympia,106,57
+Salem,84,129
+Sacramento,63,295
+Carson City,109,311
+Boise,217,198
+Salt Lake City,294,293
+Phoenix,268,513
+Santa Fe,404,470
+Denver,464,349
+Cheyenne,453,307
+Helena,312,126
+Bismarck,557,143
+Pierre,553,217
+Lincoln,624,327
+Topeka,644,378
+Oklahoma City,609,489
+Austin,591,656
+Baton Rouge,770,626
+Jackson,791,575
+Montgomery,898,563
+Atlanta,929,512
+Tallahassee,948,620
+Columbia,1011,492
+Little Rock,738,505
+Jefferson City,723,390
+Des Moines,709,317
+St. Paul,710,200
+Madison,787,249
+Springfield,789,356
+Lansing,898,258
+Indianapolis,868,342
+Frankfort,901,390
+Nashville,852,457
+Raleigh,1067,432
+Richmond,1093,387
+Charleston,980,386
+Columbus,940,332
+Harrisburg,1077,299
+Albany,1132,210
+Augusta,1199,140
+Montpelier,1144,157
+Concord,1169,190
+Boston,1187,209
+Providence,1183,230
+Hartford,1156,239
+Trenton,1125,293
+Dover,1114,328
+Annapolis,1093,334
+Washington D.C.,1083,354
+Seattle,125,40
+Los Angeles,104,465
+San Francisco,42,329
+St. Louis,778,384
+Chicago,829,281
+New York City,1140,265
+Terre Haute,844,353

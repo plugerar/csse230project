@@ -1,0 +1,117 @@
+Olympia,Salem,160,2.5
+Olympia,Helena,629,9.5
+Salem,Sacramento,536,8.25,
+Salem,Carson City,518,8.8
+Salem,Boise,475,7.5
+Sacramento,Carson City,130,2.75
+Boise,Helena,486,7.5
+Boise,Salt Lake City,340,4.8
+Boise,Carson City,450,7
+Salt Lake City,Cheyenne,440,6.4
+Salt Lake City,Carson City,546,7.5
+Salt Lake City,Phoenix,662,10
+Salt Lake City,Denver,521,8
+Salt Lake City,Santa Fe,626,10
+Phoenix,Santa Fe,481,7.25
+Santa Fe,Austin,687,10.7
+Santa Fe,Oklahoma City,534,7.5
+Santa Fe,Denver,390,5.5
+Denver,Cheyenne,101,1.5
+Denver,Lincoln,488,6.75
+Denver,Topeka,540,7.1
+Denver,Oklahoma City,679,9.1
+Cheyenne,Lincoln,445,6.2
+Cheyenne,Pierre,424,6.7
+Cheyenne,Helena,692,9.1
+Bismarck,Pierre,210,3.4
+Bismarck,Helena,652,9.1
+Bismarck,St. Paul,435,6.2
+Pierre,St. Paul,399,6.5
+Pierre,Des Moines,503,6.8
+Pierre,Lincoln,454,6.2
+Lincoln,Topeka,166,2.75
+Lincoln,Des Moines,188,2.75
+Topeka,Jefferson City,220,3.2
+Topeka,Oklahoma City,294,4.1
+Topeka,Des Moines,257,3.6
+Oklahoma City,Austin,389,5.5
+Oklahoma City,Little Rock,340,4.75
+Oklahoma City,Jefferson City,420,6
+Austin,Baton Rouge,435,6.3
+Austin,Little Rock,514,7.2
+Baton Rouge,Jackson,173,2.5
+Baton Rouge,Montgomery,365,5.2
+Baton Rouge,Little Rock,344,5.75
+Jackson,Montgomery,248,3.6
+Jackson,Little Rock,262,4
+Jackson,Nashville,415,5.75
+Montgomery,Tallahassee,210,3.4
+Montgomery,Atlanta,160,2.2
+Montgomery,Nashville,281,3.9
+Atlanta,Tallahassee,273,4.3
+Atlanta,Columbia,214,3
+Atlanta,Nashville,250,3.6
+Columbia,Raleigh,227,3.2
+Columbia,Nashville,442,6.6
+Jefferson City,Springfield,193,3.1
+Des Moines,Springfield,337,4.75
+Des Moines,St. Paul,249,3.5
+Des Moines,Madison,293,4.3
+St. Paul,Madison,259,3.75
+Madison,Springfield,265,3.8
+Lansing,Indianapolis,255,3.6
+Lansing,Columbus,254,3.9
+Indianapolis,Columbus,175,2.5
+Indianapolis,Frankfort,167,2.5
+Frankfort,Columbus,186,2.9
+Frankfort,Nashville,211,3.1
+Nashville,Raleigh,539,7.9
+Raleigh,Richmond,171,2.5
+Raleigh,Charleston,281,3.9
+Richmond,Charleston,425,5.9
+Richmond,Washington D.C.,109,1.75
+Charleston,Washington D.C.,362,5.3
+Charleston,Annapolis,385,5.5
+Charleston,Harrisburg,366,5.2
+Columbus,Charleston,163,2.6
+Columbus,Harrisburg,368,5.4
+Harrisburg,Annapolis,112,1.8
+Harrisburg,Washington D.C.,120,2.1
+Harrisburg,Dover,129,2.5
+Harrisburg,Trenton,127,2
+Harrisburg,Albany,293,4.3
+Albany,Dover,307,4.5
+Albany,Hartford,114,1.75
+Albany,Boston,170,2.5
+Albany,Montpelier,158,2.9
+Albany,Concord,148,2.9
+Augusta,Montpelier,180,3.5
+Augusta,Concord,163,2.4
+Montpelier,Concord,117,1.75
+Concord,Boston,68,1.1
+Concord,Hartford,152,2.3
+Boston,Providence,87,1.5
+Providence,Hartford,51,0.9
+Trenton,Dover,112,1.75
+Dover,Annapolis,65,1.2
+Annapolis,Washington D.C.,32,0.7
+Seattle,Olympia,61,1
+Seattle,Helena,588,8.4
+Los Angeles,San Francisco,382,5.4
+Los Angeles,Phoenix,372,5.2
+San Francisco,Sacramento,88,1.4
+St. Louis,Jefferson City,133,2
+St. Louis,Springfield,97,1.4
+St. Louis,Frankfort,314,4.5
+St. Louis,Nashville,308,4.4
+Chicago,Madison,147,2.3
+Chicago,Indianapolis,185,2.75
+Chicago,Des Moines,340,4.9
+Chicago,Springfield,202,3
+New York City,Hartford,117,2
+New York City,Albany,158,2.5
+New York City,Trenton,67,1.2
+Terre Haute,Indianapolis,77,1.2
+Terre Haute,Springfield,137,2.5
+Terre Haute,Chicago,181,3
+Terre Haute,Nashville,260,4
