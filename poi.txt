@@ -47,3 +47,10 @@ Trenton,Old Barracks Museum,4
 Dover,First State Heritage Park,4
 Annapolis,US Naval Academy,5
 Washington D.C.,White House,6,National Mall,7,Lincoln Memorial,6,National Museum of Natural History,7,United States Capitol,6,National Zoological Park,5,Smithsonian National Air and Space Museum,5
+Seattle,Space Needle,8,Pike Place Market,6,Museum of Flight,5,Chihuly Garden and Glass,6
+Los Angeles,DisneyLand,9,Universal Studios Hollywood,8,California Science Center,7,Griffith Observatory,5
+San Francisco,Golden Gate Bridge,6,Alcatraz Island,7,Chinatown,6,Lombard St.,5,San Francisco Cable Car Museum,4
+St. Louis,Gateway Arch,8,City Museum,7,Saint Louis Zoo,6
+Chicago,Navy Pier,6,Shedd Aquarium,7,Field Museum of Natural History,7,Museum of Science and Industry,7
+New York City,Empire State Building,6,Central Park,6,Statue of Liberty,7,Times Square,6,The Metropolitan Museum of Art,6
+Terre Haute

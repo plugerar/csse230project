@@ -59,7 +59,6 @@ Des Moines,St. Paul,249,3.5
 Des Moines,Madison,293,4.3
 St. Paul,Madison,259,3.75
 Madison,Springfield,265,3.8
-Springfield,Indianapolis,207,3.1
 Lansing,Indianapolis,255,3.6
 Lansing,Columbus,254,3.9
 Indianapolis,Columbus,175,2.5
@@ -93,7 +92,26 @@ Concord,Boston,68,1.1
 Concord,Hartford,152,2.3
 Boston,Providence,87,1.5
 Providence,Hartford,51,0.9
-Hartford,Trenton,181,2.9
 Trenton,Dover,112,1.75
 Dover,Annapolis,65,1.2
 Annapolis,Washington D.C.,32,0.7
+Seattle,Olympia,61,1
+Seattle,Helena,588,8.4
+Los Angeles,San Francisco,382,5.4
+Los Angeles,Phoenix,372,5.2
+San Francisco,Sacramento,88,1.4
+St. Louis,Jefferson City,133,2
+St. Louis,Springfield,97,1.4
+St. Louis,Frankfort,314,4.5
+St. Louis,Nashville,308,4.4
+Chicago,Madison,147,2.3
+Chicago,Indianapolis,185,2.75
+Chicago,Des Moines,340,4.9
+Chicago,Springfield,202,3
+New York City,Hartford,117,2
+New York City,Albany,158,2.5
+New York City,Trenton,67,1.2
+Terre Haute,Indianapolis,77,1.2
+Terre Haute,Springfield,137,2.5
+Terre Haute,Chicago,181,3
+Terre Haute,Nashville,260,4

@@ -47,3 +47,10 @@ Trenton,1125,293
 Dover,1114,328
 Annapolis,1093,334
 Washington D.C.,1083,354
+Seattle,125,40
+Los Angeles,104,465
+San Francisco,42,329
+St. Louis,778,384
+Chicago,829,281
+New York City,1140,265
+Terre Haute,844,353
