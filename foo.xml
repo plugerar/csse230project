@@ -5,7 +5,7 @@
    <void method="add">
     <object class="csse230project.City" id="City0">
      <void property="YCoord">
-      <int>100</int>
+      <int>950</int>
      </void>
      <void property="interestLevel">
       <int>41</int>
@@ -19,10 +19,10 @@
         <void property="city1">
          <object class="csse230project.City" id="City1">
           <void property="XCoord">
-           <int>50</int>
+           <int>700</int>
           </void>
           <void property="YCoord">
-           <int>50</int>
+           <int>500</int>
           </void>
           <void property="interestLevel">
            <int>0</int>
@@ -39,7 +39,7 @@
              <void property="city2">
               <object class="csse230project.City" id="City2">
                <void property="XCoord">
-                <int>100</int>
+                <int>300</int>
                </void>
                <void property="interestLevel">
                 <int>20</int>
@@ -58,6 +58,12 @@
                   </void>
                   <void property="city2">
                    <object class="csse230project.City" id="City3">
+                    <void property="XCoord">
+                     <int>300</int>
+                    </void>
+                    <void property="YCoord">
+                     <int>300</int>
+                    </void>
                     <void property="interestLevel">
                      <int>23</int>
                     </void>
@@ -80,7 +86,7 @@
                         <int>2184</int>
                        </void>
                        <void property="time">
-                        <int>32</int>
+                        <double>32.0</double>
                        </void>
                       </object>
                      </void>
@@ -123,7 +129,7 @@
                    <int>1137</int>
                   </void>
                   <void property="time">
-                   <int>17</int>
+                   <double>17.0</double>
                   </void>
                  </object>
                 </void>
@@ -166,7 +172,7 @@
               <int>1993</int>
              </void>
              <void property="time">
-              <int>29</int>
+              <double>29.0</double>
              </void>
             </object>
            </void>
@@ -186,7 +192,7 @@
          <int>787</int>
         </void>
         <void property="time">
-         <int>12</int>
+         <double>12.0</double>
         </void>
        </object>
       </void>
