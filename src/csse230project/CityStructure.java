@@ -13,6 +13,7 @@ public class CityStructure {
 	private HashMap<String, City> cityMap;
 	private PriorityQueue<City> cityInterestList;
 	private Comparator<City> comparator;
+	ArrayList<String> cityNames;
 	
 	/**
 	 * Default constructor for file i/o
@@ -21,6 +22,7 @@ public class CityStructure {
 		this.cityMap = new HashMap<>();
 		this.comparator = new CityComparator();
 		this.cityInterestList = new PriorityQueue<>(this.comparator);
+		this.cityNames = new ArrayList<String>();
 	}
 
 	/**
@@ -59,11 +61,17 @@ public class CityStructure {
 		PriorityQueue<City> temp = new PriorityQueue<>(this.comparator);
 		while (this.cityInterestList.peek() != null) {
 			City nextCity = this.cityInterestList.poll();
+			String name = nextCity.getName();
+			this.cityNames.add(name);
 			iterableCityInterestList.add(nextCity);
 			temp.add(nextCity);
 		}
 		this.cityInterestList = temp;
 		return iterableCityInterestList;		
+	}
+	
+	public ArrayList<String> getCityNames(){
+		return cityNames;
 	}
 	
 	/**

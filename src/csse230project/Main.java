@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 
 public class Main {
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 		final JFrame frame = new JFrame();
 		Dimension size = new Dimension(1800, 1000);
 		frame.setTitle("Map");
