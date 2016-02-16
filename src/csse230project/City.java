@@ -182,6 +182,7 @@ public class City {
 
 	}
 
+
 	public class EdgeIterator implements Iterator<Edge> {
 		City currentCity;
 
@@ -263,6 +264,18 @@ public class City {
 
 	public int getTotalDistance() {
 		return this.totalDistance;
+	}
+	@SuppressWarnings("null")
+	public void clearPredecessors()
+	{
+		Edge previous=this.predecessor;
+		Edge next=previous;
+		while(next!=null)
+		{
+			next=previous.getCity1().getPredecessor();
+			previous=null;
+			
+		}
 	}
 
 	public void setTotalDistance(int totalDistance) {

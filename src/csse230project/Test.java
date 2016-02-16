@@ -6,8 +6,6 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Test {
 		
@@ -57,8 +55,7 @@ public class Test {
 //		while (interestList.hasNext()) {
 //			System.out.println(interestList.next());			
 //		}
-//		
-//	}
+
     
     public static void write(CityStructure map, String filename) throws Exception{
         XMLEncoder encoder =
