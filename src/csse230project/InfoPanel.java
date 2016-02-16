@@ -4,6 +4,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,6 +31,8 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
     final static String cr = "calculateRoute";
     final static String poi = "pointsOfInterest";
     final static String cRate = "cityRating";
+    
+    String currentCard;
 
     //final static String BUTTONPANEL = "Card with JButtons";
     //final static String TEXTPANEL = "Card with JTextField";
@@ -119,7 +122,7 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 //		tabbedPane.addTab(cr, cardCalulcateRoute);
 //		tabbedPane.addTab(poi, cardPointsOfInterest);
 //		tabbedPane.addTab(cRate, cardCityRating);
-
+		
 		this.add(calculateRoute, BorderLayout.NORTH);
 		this.add(pointsOfInterest, BorderLayout.WEST);
 		this.add(cityRating, BorderLayout.EAST);
@@ -138,7 +141,6 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 			label = new JLabel(index + ". " + i.next() + iCity.next().getInterestLevel());
 			panel.add(label);
 		}
-		
 	}
 	
 //	public void itemStateChanged(ActionListener evt) {
@@ -228,8 +230,19 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		CardLayout cl = (CardLayout) cards.getLayout();
-        cl.show(cards, arg0.getActionCommand());
+		currentCard = arg0.getActionCommand();
+        cl.show(cards, currentCard);
 	}
+	
+	public String getCurrentCard(){
+		return currentCard;
+	}
+
+//	@Override
+//	public void actionPerformed(ActionEvent e) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 }
 //=======
 //package csse230project;
