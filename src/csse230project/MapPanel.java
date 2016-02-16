@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
@@ -16,8 +18,8 @@ import javax.swing.JPanel;
 
 import com.sun.javafx.geom.Arc2D;
 
-public class MapPanel extends JComponent{
-	Test tester = new Test();
+public class MapPanel extends JComponent implements MouseListener{
+	CityStructure map;
 	
 	public MapPanel(){
 		this.setPreferredSize(new Dimension(750, 1000));
@@ -36,8 +38,8 @@ public class MapPanel extends JComponent{
 	}
 	
 	public void map(Graphics2D g2) throws Exception{
-		CityStructure test = WriteDomain.read("usdomain.xml");
-		Iterator<Entry<String, City>> cityPlace = test.getCityMap().entrySet().iterator();
+		map = WriteDomain.read("usdomain.xml");
+		Iterator<Entry<String, City>> cityPlace = map.getCityMap().entrySet().iterator();
 		while(cityPlace.hasNext()){
 			double citySize = 10;
 			g2.setStroke(new BasicStroke(1.0f)); 
@@ -61,5 +63,39 @@ public class MapPanel extends JComponent{
 			g2.draw(cityShape);
 			g2.fill(cityShape);
 		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+        for (City c : this.map.getCityInterestList()) {
+            if (c.contains(e.getX(),e.getY())) {
+                   System.out.println("mouse clicked on " + c.getName());
+            }
+     }
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }

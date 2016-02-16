@@ -147,6 +147,18 @@ public class City {
 	public void addNeighbor(Edge neighbor) {
 		this.neighbors.add(neighbor);
 	}
+	
+	/**
+     * Returns true if point is contained within city bounds
+     */
+     public boolean contains(int x, int y) {
+           if ((x > this.xCoord - 10) && (x < this.xCoord + 10) 
+            && (y > this.yCoord - 10) && (y < this.yCoord + 10)) {
+                  return true;
+           }
+           return false;
+     }
+
 		
 	@Override
 	public String toString(){
