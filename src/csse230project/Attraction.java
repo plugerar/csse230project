@@ -7,7 +7,6 @@ package csse230project;
 public class Attraction {
 	private String name;
 	private Integer interestLevel;
-	
 	/**
 	 * Default constructor for file i/o
 	 */

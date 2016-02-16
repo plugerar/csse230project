@@ -15,7 +15,7 @@ public class CityStructure {
 	private HashMap<String, City> cityMap;
 	private PriorityQueue<City> cityInterestList;
 	private Comparator<City> comparator;
-	
+	private ArrayList<String> cityNames;
 	/**
 	 * Default constructor for file i/o
 	 */
@@ -23,6 +23,7 @@ public class CityStructure {
 		this.cityMap = new HashMap<>();
 		this.comparator = new CityComparator();
 		this.cityInterestList = new PriorityQueue<>(this.comparator);
+		this.cityNames= new ArrayList();
 	}
 
 	/**
@@ -56,17 +57,27 @@ public class CityStructure {
 	/**
 	 * Form an array list of the interest list
 	 */
-	public ArrayList<City> cityInterestToArrayList() {
-		ArrayList<City> iterableCityInterestList = new ArrayList<>();
-		PriorityQueue<City> temp = new PriorityQueue<>(this.comparator);
-		while (this.cityInterestList.peek() != null) {
-			City nextCity = this.cityInterestList.poll();
-			iterableCityInterestList.add(nextCity);
-			temp.add(nextCity);
-		}
-		this.cityInterestList = temp;
-		return iterableCityInterestList;		
-	}
+    /**
+    * Form an array list of the interest list
+    */
+    public ArrayList<City> cityInterestToArrayList() {
+          ArrayList<City> iterableCityInterestList = new ArrayList<>();
+          PriorityQueue<City> temp = new PriorityQueue<>(this.comparator);
+          while (this.cityInterestList.peek() != null) {
+                 City nextCity = this.cityInterestList.poll();
+                 String name = nextCity.getName();
+                 this.cityNames.add(name);
+                 iterableCityInterestList.add(nextCity);
+                 temp.add(nextCity);
+          }
+          this.cityInterestList = temp;
+          return iterableCityInterestList;        
+    }
+    
+    public ArrayList<String> getCityNames(){
+          return cityNames;
+    }
+
 	
 	/**
 	 * Getter for city by name
@@ -102,9 +113,23 @@ public class CityStructure {
 		this.cityMap.put(cityName, citytoadd);		
 		return true;
 	}
-	public ArrayList calculateRoute(City start,City end)
+	public void clearPredecessors();
+	public ArrayList<Edge> calculateRoute(ArrayList<City> cities)
 	{
-		int totalDistance=calculateLineDistance(start,end);
+
+		ArrayList<Edge> tempArray=new ArrayList<>();
+		for(int i=0;i<cities.size()-1;i++)
+		{
+			ArrayList<Edge> temp = calculateRouteHelper(cities.get(i),cities.get(i+1));
+			tempArray.addAll(tempArray.size(), temp);
+			temp.get(temp.size()-1).getCity2().clearPredecessors();
+		}
+		
+		return tempArray;
+	}
+	public ArrayList<Edge> calculateRouteHelper(City start,City end)
+	{
+		//int totalDistance=calculateLineDistance(start,end);
 		PriorityQueue<Edge> openList=new PriorityQueue<>(start.new edgeComparator());
 		
 		ArrayList<City> closedList=new ArrayList<>();
@@ -176,6 +201,7 @@ public class CityStructure {
 		int total= (int) Math.sqrt(Math.pow(xDist,2)+Math.pow(yDist, 2));
 		return (int) (total*2.3);
 	}
+	//62.8
 	public City getLowestCostNeighbor(City c)
 	{
 		int low=c.getNeighbors().get(0).getDistance();
