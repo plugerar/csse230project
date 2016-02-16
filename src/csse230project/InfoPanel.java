@@ -37,7 +37,7 @@ import javax.swing.JTextField;
 
 
 
-public class InfoPanel extends JPanel{// implements ActionListener{
+public class InfoPanel extends JPanel implements ActionListener{// implements ActionListener{
 	MapPanel map;
     JPanel cards; //a panel that uses CardLayout
     JPanel cardPointsOfInterest;
@@ -119,30 +119,30 @@ public class InfoPanel extends JPanel{// implements ActionListener{
 		createPointsOfInterest(cardPointsOfInterest);
 		createCityRatings(cardCityRating);
 		
-//        calculateRoute = new JButton(cr);
-//		pointsOfInterest = new JButton(poi);
-//		cityRating  = new JButton(cRate);
-//		
-//		calculateRoute.addActionListener(this);
-//		pointsOfInterest.addActionListener(this);
-//		cityRating.addActionListener(this);
-//		
-//		calculateRoute.setActionCommand(cr);
-//		pointsOfInterest.setActionCommand(poi);
-//		cityRating.setActionCommand(cRate);
-//				
-//		cards.add(cardCalulcateRoute, cr);
-//		cards.add(cardPointsOfInterest, poi);
-//		cards.add(cardCityRating, cRate); 
-		tabbedPane.addTab(cr, cardCalulcateRoute);
-		tabbedPane.addTab(poi, cardPointsOfInterest);
-		tabbedPane.addTab(cRate, cardCityRating);
+        calculateRoute = new JButton(cr);
+		pointsOfInterest = new JButton(poi);
+		cityRating  = new JButton(cRate);
+		
+		calculateRoute.addActionListener(this);
+		pointsOfInterest.addActionListener(this);
+		cityRating.addActionListener(this);
+		
+		calculateRoute.setActionCommand(cr);
+		pointsOfInterest.setActionCommand(poi);
+		cityRating.setActionCommand(cRate);
+				
+		cards.add(cardCalulcateRoute, cr);
+		cards.add(cardPointsOfInterest, poi);
+		cards.add(cardCityRating, cRate); 
+//		tabbedPane.addTab(cr, cardCalulcateRoute);
+//		tabbedPane.addTab(poi, cardPointsOfInterest);
+//		tabbedPane.addTab(cRate, cardCityRating);
 
-//		this.add(calculateRoute, BorderLayout.NORTH);
-//		this.add(pointsOfInterest, BorderLayout.WEST);
-//		this.add(cityRating, BorderLayout.EAST);
-//		this.add(cards, BorderLayout.SOUTH);
-		this.add(tabbedPane, BorderLayout.CENTER);
+		this.add(calculateRoute, BorderLayout.NORTH);
+		this.add(pointsOfInterest, BorderLayout.WEST);
+		this.add(cityRating, BorderLayout.EAST);
+		this.add(cards, BorderLayout.SOUTH);
+		//this.add(tabbedPane, BorderLayout.CENTER);
 	}
 	
 	public void createCityRatings(JPanel panel) throws Exception{
@@ -170,8 +170,7 @@ public class InfoPanel extends JPanel{// implements ActionListener{
 	}
 	
 	public void createCalculateRoute(JPanel panel){
-		JButton button = new JButton("Calculate Route");
-		panel.add(button);
+		
 	}
 	public void createPointsOfInterest(JPanel panel) throws Exception{// throws Exception{
 		CityStructure struct = WriteDomain.read("usdomain.xml");
@@ -233,14 +232,20 @@ public class InfoPanel extends JPanel{// implements ActionListener{
 	}
 
 //	@Override
-//	public void itemStateChanged(ItemEvent e) {
+//	public void actionPerformed(ActionEvent arg0) {
 //		// TODO Auto-generated method stub
 //		
 //	}
 
 //	@Override
-//	public void actionPerformed(ActionEvent arg0) {
-//		CardLayout cl = (CardLayout) cards.getLayout();
-//        cl.show(cards, arg0.getActionCommand());
+//	public void itemStateChanged(ItemEvent e) {
+//		// TODO Auto-generated method stub
+//		
 //	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		CardLayout cl = (CardLayout) cards.getLayout();
+        cl.show(cards, arg0.getActionCommand());
+	}
 }
