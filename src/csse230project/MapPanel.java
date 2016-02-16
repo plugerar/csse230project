@@ -20,6 +20,8 @@ import com.sun.javafx.geom.Arc2D;
 
 public class MapPanel extends JComponent implements MouseListener{
 	CityStructure map;
+	City currentCity = null;
+	InfoPanel infoPanel;
 	
 	public MapPanel(){
 		this.setPreferredSize(new Dimension(750, 1000));
@@ -65,11 +67,31 @@ public class MapPanel extends JComponent implements MouseListener{
 			g2.fill(cityShape);
 		}
 	}
+	
+	public City getCurrentCity(){
+		return currentCity;
+	}
 
+
+	public CityStructure getMap(){
+		return map;
+	}
+	
+	public void setCurrentCity(City c){
+		this.currentCity = c;
+	}
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-        for (City c : this.map.getCityInterestList()) {
+        for (City c : this.getMap().getCityInterestList()) {
             if (c.contains(e.getX(),e.getY())) {
+            	this.setCurrentCity(c);
+            	try {
+					MainFrame.infoPanel.createPointsOfInterest(MainFrame.infoPanel.getCardPointsOfInterest());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
                    System.out.println("mouse clicked on " + c.getName());
             }
      }
@@ -99,4 +121,5 @@ public class MapPanel extends JComponent implements MouseListener{
 		// TODO Auto-generated method stub
 		
 	}
+
 }

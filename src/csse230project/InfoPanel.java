@@ -38,7 +38,9 @@ import javax.swing.JTextField;
 
 
 public class InfoPanel extends JPanel{// implements ActionListener{
+	MapPanel map;
     JPanel cards; //a panel that uses CardLayout
+    JPanel cardPointsOfInterest;
     private JButton cityRating;
     private JButton pointsOfInterest;
     private JButton calculateRoute;
@@ -50,7 +52,8 @@ public class InfoPanel extends JPanel{// implements ActionListener{
     //final static String BUTTONPANEL = "Card with JButtons";
     //final static String TEXTPANEL = "Card with JTextField";
 	
-	public InfoPanel() throws Exception {
+	public InfoPanel(MapPanel map) throws Exception {
+		this.map = map;
 		this.setPreferredSize(new Dimension(250, 1000));
 		this.setAlignmentX(LEFT_ALIGNMENT);
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -109,11 +112,11 @@ public class InfoPanel extends JPanel{// implements ActionListener{
 //                return size;
 //            }
 //        };
-		JPanel cardPointsOfInterest = new JPanel() ;
+		cardPointsOfInterest = new JPanel() ;
 		JPanel cardCityRating = new JPanel();
 		cardCityRating.setLayout(new BoxLayout(cardCityRating, BoxLayout.Y_AXIS));
 		createCalculateRoute(cardCalulcateRoute);
-		//createPointsOfInterest(cardPointsOfInterest);
+		createPointsOfInterest(cardPointsOfInterest);
 		createCityRatings(cardCityRating);
 		
 //        calculateRoute = new JButton(cr);
@@ -170,19 +173,25 @@ public class InfoPanel extends JPanel{// implements ActionListener{
 		JButton button = new JButton("Calculate Route");
 		panel.add(button);
 	}
-	//public void createPointsOfInterest(JPanel panel){// throws Exception{
-//		CityStructure struct = WriteDomain.read("usdomain.xml");
-//		int numberOfCities = struct.getCityInterestList().size();
-//		Object[] cityNames = new String[numberOfCities];
-//		Iterator iter = struct.getCityInterestList().iterator();
-//		for(int i = 0; i < numberOfCities; i++){
-//			City c = (City) iter.next();
-//			cityNames[i] = c.getName();
-//		}
-//		JComboBox city = new JComboBox(cityNames);
-//		city.setSelectedIndex(numberOfCities - 1);
-//		city.addActionListener((ActionListener) city);
-	//}
+	public void createPointsOfInterest(JPanel panel) throws Exception{// throws Exception{
+		CityStructure struct = WriteDomain.read("usdomain.xml");
+		City now = MainFrame.mapPanel.getCurrentCity();
+		
+		if(now != null){
+			System.out.println(now.getName());
+			
+			City pointer = struct.getCity(now.getName());
+			System.out.println(pointer);
+			JLabel label;
+			System.out.println(pointer.getPointsOfInterest().size());
+		Iterator<Attraction> i = pointer.getPointsOfInterest().iterator();
+		for(int index = 0; index < pointer.getPointsOfInterest().size(); index++){
+			Attraction a = i.next();
+			label = new JLabel(index + ". " + /*a.getName() +*/ a.getInterestLevel());
+			panel.add(label);
+		}
+		}
+	}
 	
 //	private void addButtons(){
 //		JButton calcRoute = new JButton("calculateRoute");
@@ -215,6 +224,10 @@ public class InfoPanel extends JPanel{// implements ActionListener{
 		this.add(cityStart);
 		this.add(cityEnd);
 		this.add(calcRoute);
+	}
+	
+	public JPanel getCardPointsOfInterest(){
+		return this.cardPointsOfInterest;
 	}
 
 //	@Override
