@@ -26,7 +26,7 @@ public class PopoutFrame extends JFrame {
 		JTextArea text = null;
 
 		// the image
-		ImageIcon imageIcon = new ImageIcon(".\\CityImages\\" + "Montgomery" + ".png"); // load the image to a imageIcon
+		ImageIcon imageIcon = new ImageIcon(".\\CityImages\\" + cityID + ".png"); // load the image to a imageIcon
 		Image image = imageIcon.getImage(); // transform it 
 		Image newimg = image.getScaledInstance(900, 600,  java.awt.Image.SCALE_REPLICATE); // scale it the smooth way  
 		
@@ -41,7 +41,7 @@ public class PopoutFrame extends JFrame {
 		// the description
 		try {
 			text = new JTextArea(9, 75);
-			BufferedReader in = new BufferedReader(new FileReader(".\\CityDescriptions\\" + "Topeka" + ".txt"));
+			BufferedReader in = new BufferedReader(new FileReader(".\\CityDescriptions\\" + cityID + ".txt"));
 			String line = in.readLine();
 			while (line != null) {
 				text.append(line + "\n");
