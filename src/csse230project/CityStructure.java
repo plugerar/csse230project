@@ -5,6 +5,8 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
+import csse230project.City.EdgeIterator;
+
 /**
  * Class for all data (hashmap of cities, priority queue of
  * cities in terms of interest level)
@@ -100,14 +102,124 @@ public class CityStructure {
 		this.cityMap.put(cityName, citytoadd);		
 		return true;
 	}
+	public ArrayList calculateRoute(City start,City end)
+	{
+		int totalDistance=calculateLineDistance(start,end);
+		PriorityQueue<Edge> openList=new PriorityQueue<>(start.new edgeComparator());
+		
+		ArrayList<City> closedList=new ArrayList<>();
+		 //creates an iterator
+		City currentCity = start; //this is the starting city
+		EdgeIterator e = currentCity.getEdgeIterator();
+		Edge lowest=null;
+		Edge Previous=null;
+		int pathDistance=0;
+		while(openList!=null && currentCity!=end)
+		{
+			
+			//loop and push other nodes onto open list
+			while(e.hasNext()&&!currentCity.equals(end))
+			{
+				Edge nextChild = e.next();
+				if(!closedList.contains(nextChild.getCity2())) //make sure that it is not already traversed and add.
+				{
+					if(currentCity.getPredecessor()!=null)
+					{
+						nextChild.setPathDistance(currentCity.getPredecessor().getPathDistance()+nextChild.getDistance());
+					}
+					openList.offer(nextChild);
+				}
+			//
+			}
+			//grab the lowest cost edge
+			Previous=lowest;
+			lowest= openList.poll();//we need to check for total distance as well
+			while(lowest!=null && (closedList.contains(lowest.getCity2())))
+			lowest= openList.poll();
 
+			closedList.add(lowest.getCity1());
+			//set total path here
+			
+			//if(currentCity.getPredecessor()!=null)
+			//lowest.setPathDistance(lowest.getDistance()+currentCity.getPredecessor().getPathDistance()); //add the total distance up by accessing the previous citys distance value
+
+			//move on to the lowest cost city
+			currentCity=lowest.getCity2();
+			e=currentCity.getEdgeIterator();
+			//set pre edge
+			currentCity.setPredecessor(lowest); //set predecessor edge we are traveling from
+		}
+		ArrayList<Edge> nodeList= new ArrayList<>();
+		Edge temp=currentCity.getPredecessor();
+		while(temp!=null)
+		{
+			nodeList.add(0,temp);
+			temp=temp.getCity1().getPredecessor();
+		}
+		return nodeList;
+		
+	}
 	/**
 	 * Link two cities together with time and distance
 	 */		
 	public void linkCity(String city1, String city2, int distance, double time) {
-		Edge edge = new Edge(this.cityMap.get(city1), this.cityMap.get(city2), distance, time);
-		this.cityMap.get(city1).addNeighbor(edge);
-		this.cityMap.get(city2).addNeighbor(edge);
+		Edge edge1 = new Edge(this.cityMap.get(city1), this.cityMap.get(city2), distance, time);
+		Edge edge2 = new Edge(this.cityMap.get(city2), this.cityMap.get(city1), distance, time);
+		this.cityMap.get(city1).addNeighbor(edge1);
+		this.cityMap.get(city2).addNeighbor(edge2);
+	}
+	
+	public int calculateLineDistance(City c1,City c2)
+	{
+		int xDist=Math.abs(c1.getXCoord()-c2.getXCoord());
+		int yDist=Math.abs(c1.getYCoord()-c2.getYCoord());
+		int total= (int) Math.sqrt(Math.pow(xDist,2)+Math.pow(yDist, 2));
+		return (int) (total*2.3);
+	}
+	public City getLowestCostNeighbor(City c)
+	{
+		int low=c.getNeighbors().get(0).getDistance();
+		City lowcity=c.getNeighbors().get(0).getCity2();
+		for(int i=0;i<c.getNeighbors().size();i++)
+		{
+			int newdistance=c.getNeighbors().get(i).getDistance();
+			if(newdistance<low)
+			{
+				lowcity=c.getNeighbors().get(i).getCity2();
+				low=newdistance;
+			}
+		}
+		return lowcity;
 	}
 }
 
+//ffitr	
+//while(!goal)
+//{
+//	City currentNode=findBestNode();
+//	if(currentNode.compareTo(goal)==0)
+//	{
+//		return openList;
+//	}
+//	else
+//	{
+//		closedList.add(currentNode);
+//		ArrayList<Edge> edges = currentNode.getNeighbors();
+//		
+//		for(int i=0;i<edges.size();i++)
+//		{
+//			Edge currentEdge=edges.get(i);
+//			int currentEdgeCost=currentEdge.getDistance();
+//           if (closedList.contains(currentEdge) && currentCost<currentEdgeCost) {
+//               update the neighbor with the new, lower, g value 
+//               change the neighbor's parent to our current node
+//           }
+//           else if (openList.contains(currentEdge) && currentCost<currentEdgeCost) {
+//               update the neighbor with the new, lower, g value 
+//               change the neighbor's parent to our current node
+//           }
+//		}
+//	}
+//	
+//}
+//return null;
