@@ -178,16 +178,18 @@ public class InfoPanel extends JPanel{// implements ActionListener{
 		City now = MainFrame.mapPanel.getCurrentCity();
 		
 		if(now != null){
-			System.out.println(now.getName());
+			String name = now.getName();
+			System.out.println(name);
 			
-			City pointer = struct.getCity(now.getName());
-			System.out.println(pointer);
+			City pointer = struct.getCity(name);
+			//System.out.println(pointer);
 			JLabel label;
 			System.out.println(pointer.getPointsOfInterest().size());
-		Iterator<Attraction> i = pointer.getPointsOfInterest().iterator();
-		for(int index = 0; index < pointer.getPointsOfInterest().size(); index++){
-			Attraction a = i.next();
-			label = new JLabel(index + ". " + /*a.getName() +*/ a.getInterestLevel());
+		//Iterator<Attraction> i = pointer.getPointsOfInterest().iterator();
+		for(int index = 0; index < 1;/*pointer.getPointsOfInterest().size();*/ index++){
+			System.out.println("here");
+			//Attraction a = i.next();
+			label = new JLabel(index + ". "/* + a.getName() + a.getInterestLevel()*/);
 			panel.add(label);
 		}
 		}
