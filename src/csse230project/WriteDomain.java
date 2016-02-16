@@ -9,7 +9,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class WriteDomain {
 	private static CityStructure map = new CityStructure();
@@ -56,16 +55,13 @@ public class WriteDomain {
             BufferedReader bufferedReader = new BufferedReader(fileReader);            
             while((line = bufferedReader.readLine()) != null) {
             	String[] ar=line.split(",");
-            	String cityName = ar[0];
-                ArrayList<Attraction> poiList = new ArrayList<>();
+            	String cityName = ar[0];                
             	for (int i = 1; i < ar.length; i = i + 2) {
             		String poi = ar[i];
                 	int interestLevel = Integer.parseInt(ar[i+1]);
                 	Attraction attraction = new Attraction(poi,interestLevel);
-                	poiList.add(attraction);
+                	map.getCity(cityName).setPointOfInterest(attraction);
             	}
-            	map.getCity(cityName).setPointsOfInterest(poiList);
-        		poiList.clear();
             }  
             bufferedReader.close();         
         }
