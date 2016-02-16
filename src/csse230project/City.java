@@ -1,6 +1,8 @@
 package csse230project;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
 
 /**
  * Defines a city object
@@ -13,6 +15,9 @@ public class City {
 	private ArrayList<Attraction> pointsOfInterest;
 	private int xCoord, yCoord;
 	private Integer interestLevel;
+	private Boolean isSorted;
+	private Edge predecessor=null;
+	private int totalDistance;
 	
 	/**
 	 * Default constructor for file i/o
@@ -20,6 +25,7 @@ public class City {
 	public City() {
 		this.neighbors = new ArrayList<>();
 		this.pointsOfInterest = new ArrayList<>();
+		isSorted=true;
 		}
 
 	/**
@@ -31,7 +37,8 @@ public class City {
 		this.yCoord = 0;
 		this.neighbors = new ArrayList<>();
 		this.pointsOfInterest = new ArrayList<>();
-		this.interestLevel = new Integer(0);	
+		this.interestLevel = new Integer(0);
+		isSorted=true;
 		}
 
 	/**
@@ -43,7 +50,8 @@ public class City {
 		this.yCoord = yCoord;
 		this.neighbors = new ArrayList<>();
 		this.pointsOfInterest = new ArrayList<>();
-		this.interestLevel = new Integer(0);	
+		this.interestLevel = new Integer(0);
+		isSorted=true;
 		}
 
 	/**
@@ -64,7 +72,14 @@ public class City {
 	 * Getter for neighbors
 	 */
 	public ArrayList<Edge> getNeighbors() {
+		if(!isSorted)
+			this.SortNeighbors();
 		return this.neighbors;
+	}
+	public void SortNeighbors()
+	{
+		this.neighbors.sort(new edgeComparator());
+		isSorted=true;
 	}
 	
 	/**
@@ -73,6 +88,7 @@ public class City {
 	public void setNeighbors(ArrayList<Edge> neighbors) {
 		this.neighbors = neighbors;
 	}
+	
 	
 	/**
 	 * Getter for x coordinate
@@ -146,6 +162,59 @@ public class City {
 	 */
 	public void addNeighbor(Edge neighbor) {
 		this.neighbors.add(neighbor);
+		this.isSorted=false;
+	}
+	public EdgeIterator getEdgeIterator()
+	{
+		return new EdgeIterator(this);
+	}
+	public class edgeComparator implements Comparator<Edge>
+	{
+
+		@Override
+		public int compare(Edge o1, Edge o2) {
+			if (o1.getPathDistance()>o2.getPathDistance())
+			{
+				return 1;
+			}
+			else if(o1.getPathDistance()<o2.getPathDistance())
+			{
+				return -1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		
+	}
+	public class EdgeIterator implements Iterator<Edge>
+	{
+		City currentCity;
+		public EdgeIterator(City c)
+		{
+			currentCity=c;
+		}
+		int currentIndex=0;
+		@Override
+		public boolean hasNext() {
+			if(currentCity.neighbors.size()>currentIndex)
+			{
+				return true;
+			}
+			return false;
+		}
+
+		@Override
+		public Edge next() {
+			if(!isSorted)
+				currentCity.SortNeighbors();
+			Edge e = currentCity.neighbors.get(currentIndex);
+			currentIndex++;
+			return e;
+		}
+		
+		
 	}
 		
 	@Override
@@ -178,6 +247,24 @@ public class City {
 		s+= "\n";
 		return s;
 	}
+
+	public void setPredecessor(Edge e) {
+		this.predecessor=e;
+		
+	}
+	public Edge getPredecessor()
+	{
+		return this.predecessor;
+	}
+
+	public int getTotalDistance() {
+		return this.totalDistance;
+	}
+
+	public void setTotalDistance(int totalDistance) {
+		this.totalDistance = totalDistance;
+	}
+
 	
 }
 

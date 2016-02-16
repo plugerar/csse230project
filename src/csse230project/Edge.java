@@ -9,11 +9,21 @@ public class Edge {
 	private City city2;
 	private int time;
 	private int distance;
+	public Edge parent;
+	public int pathDistance;
 	
 	/**
 	 * Default constructor for file i/o
 	 */
 	public Edge() {
+	}
+	public Edge getParent()
+	{
+		return this.parent;
+	}
+	public void setParent(Edge e)
+	{
+		this.parent=e;
 	}
 
 	/**
@@ -24,6 +34,7 @@ public class Edge {
 		this.city2 = city2;
 		this.time = time;
 		this.distance = distance;
+		this.pathDistance = distance;
 	}
 
 	/**
@@ -45,6 +56,14 @@ public class Edge {
 	 */	
 	public City getCity2() {
 		return this.city2;
+	}
+	public void setPathDistance(int n)
+	{
+		this.pathDistance=n;
+	}
+	public int getPathDistance()
+	{
+		return this.pathDistance;
 	}
 		
 	/**
@@ -80,6 +99,7 @@ public class Edge {
 	 */	
 	public void setDistance(int distance) {
 		this.distance = distance;
+		this.pathDistance=distance;
 	}
 		
 	@Override
@@ -91,4 +111,5 @@ public class Edge {
 		s += "Distance: " + this.distance + "\n";
 		return s;
 	}
+
 }
