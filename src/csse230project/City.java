@@ -5,8 +5,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 
 /**
- * Defines a city object
- * Has a name, a list of neighbors, a list of attractions,
+ * Defines a city object Has a name, a list of neighbors, a list of attractions,
  * x and y coordinates, and an interest level
  */
 public class City {
@@ -16,17 +15,17 @@ public class City {
 	private int xCoord, yCoord;
 	private Integer interestLevel;
 	private Boolean isSorted;
-	private Edge predecessor=null;
+	private Edge predecessor = null;
 	private int totalDistance;
-	
+
 	/**
 	 * Default constructor for file i/o
 	 */
 	public City() {
 		this.neighbors = new ArrayList<>();
 		this.pointsOfInterest = new ArrayList<>();
-		isSorted=true;
-		}
+		isSorted = true;
+	}
 
 	/**
 	 * Constructor for city with a name at (0,0)
@@ -38,8 +37,8 @@ public class City {
 		this.neighbors = new ArrayList<>();
 		this.pointsOfInterest = new ArrayList<>();
 		this.interestLevel = new Integer(0);
-		isSorted=true;
-		}
+		isSorted = true;
+	}
 
 	/**
 	 * Constructor for a city with a name at (xCoord, yCoord)
@@ -51,8 +50,8 @@ public class City {
 		this.neighbors = new ArrayList<>();
 		this.pointsOfInterest = new ArrayList<>();
 		this.interestLevel = new Integer(0);
-		isSorted=true;
-		}
+		isSorted = true;
+	}
 
 	/**
 	 * Getter for name
@@ -60,71 +59,70 @@ public class City {
 	public String getName() {
 		return this.name;
 	}
-	
+
 	/**
 	 * Setter for name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	/**
 	 * Getter for neighbors
 	 */
 	public ArrayList<Edge> getNeighbors() {
-		if(!isSorted)
+		if (!isSorted)
 			this.SortNeighbors();
 		return this.neighbors;
 	}
-	public void SortNeighbors()
-	{
+
+	public void SortNeighbors() {
 		this.neighbors.sort(new edgeComparator());
-		isSorted=true;
+		isSorted = true;
 	}
-	
+
 	/**
 	 * Setter for neighbors
 	 */
 	public void setNeighbors(ArrayList<Edge> neighbors) {
 		this.neighbors = neighbors;
 	}
-	
-	
+
 	/**
 	 * Getter for x coordinate
-	 */		
+	 */
 	public int getXCoord() {
 		return this.xCoord;
 	}
-	
+
 	/**
 	 * Setter for x coordinate
 	 */
 	public void setXCoord(int xCoord) {
 		this.xCoord = xCoord;
 	}
-	
+
 	/**
 	 * Getter for y coordinate
-	 */	
+	 */
 	public int getYCoord() {
 		return this.yCoord;
 	}
-	
+
 	/**
 	 * Setter for y coordinate
 	 */
 	public void setYCoord(int yCoord) {
 		this.yCoord = yCoord;
 	}
-	
+
 	/**
 	 * Getter for POI
 	 */
 	public ArrayList<Attraction> getPointsOfInterest() {
 		return this.pointsOfInterest;
 	}
-	
+
 	/**
 	 * Setter for POI
 	 */
@@ -134,10 +132,10 @@ public class City {
 			this.interestLevel += pointsOfInterest.get(i).getInterestLevel();
 		}
 	}
-	
+
 	/**
 	 * Setter for only one POI
-	 */	
+	 */
 	public void setPointOfInterest(Attraction pointOfInterest) {
 		this.pointsOfInterest.add(pointOfInterest);
 		this.interestLevel += pointOfInterest.getInterestLevel();
@@ -156,50 +154,46 @@ public class City {
 	public void setInterestLevel(Integer interestLevel) {
 		this.interestLevel = interestLevel;
 	}
-	
+
 	/**
 	 * Add a neighbor (edge) to list of neighbors
 	 */
 	public void addNeighbor(Edge neighbor) {
 		this.neighbors.add(neighbor);
-		this.isSorted=false;
+		this.isSorted = false;
 	}
-	public EdgeIterator getEdgeIterator()
-	{
+
+	public EdgeIterator getEdgeIterator() {
 		return new EdgeIterator(this);
 	}
-	public class edgeComparator implements Comparator<Edge>
-	{
+
+	public class edgeComparator implements Comparator<Edge> {
 
 		@Override
 		public int compare(Edge o1, Edge o2) {
-			if (o1.getPathDistance()>o2.getPathDistance())
-			{
+			if (o1.getPathDistance() > o2.getPathDistance()) {
 				return 1;
-			}
-			else if(o1.getPathDistance()<o2.getPathDistance())
-			{
+			} else if (o1.getPathDistance() < o2.getPathDistance()) {
 				return -1;
-			}
-			else
-			{
+			} else {
 				return 0;
 			}
 		}
-		
+
 	}
-	public class EdgeIterator implements Iterator<Edge>
-	{
+
+	public class EdgeIterator implements Iterator<Edge> {
 		City currentCity;
-		public EdgeIterator(City c)
-		{
-			currentCity=c;
+
+		public EdgeIterator(City c) {
+			currentCity = c;
 		}
-		int currentIndex=0;
+
+		int currentIndex = 0;
+
 		@Override
 		public boolean hasNext() {
-			if(currentCity.neighbors.size()>currentIndex)
-			{
+			if (currentCity.neighbors.size() > currentIndex) {
 				return true;
 			}
 			return false;
@@ -207,18 +201,28 @@ public class City {
 
 		@Override
 		public Edge next() {
-			if(!isSorted)
+			if (!isSorted)
 				currentCity.SortNeighbors();
 			Edge e = currentCity.neighbors.get(currentIndex);
 			currentIndex++;
 			return e;
 		}
-		
-		
+
 	}
-		
+
+	/**
+	 * Returns true if point is contained within city bounds
+	 */
+	public boolean contains(int x, int y) {
+		if ((x > this.xCoord - 10) && (x < this.xCoord + 10)
+				&& (y > this.yCoord - 10) && (y < this.yCoord + 10)) {
+			return true;
+		}
+		return false;
+	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		String s = "";
 		s += "\n";
 		s += "City: " + this.name + "\n";
@@ -230,13 +234,13 @@ public class City {
 			if (this.neighbors.get(i).getCity1().equals(this)) {
 				s += this.neighbors.get(i).getCity2().getName();
 			} else {
-				s += this.neighbors.get(i).getCity1().getName();				
+				s += this.neighbors.get(i).getCity1().getName();
 			}
 			if (i != this.neighbors.size() - 1) {
 				s += ", ";
 			}
 		}
-		s+= "\n";
+		s += "\n";
 		s += "POI: ";
 		for (int i = 0; i < this.pointsOfInterest.size(); i++) {
 			s += this.pointsOfInterest.get(i).getName();
@@ -244,16 +248,16 @@ public class City {
 				s += ", ";
 			}
 		}
-		s+= "\n";
+		s += "\n";
 		return s;
 	}
 
 	public void setPredecessor(Edge e) {
-		this.predecessor=e;
-		
+		this.predecessor = e;
+
 	}
-	public Edge getPredecessor()
-	{
+
+	public Edge getPredecessor() {
 		return this.predecessor;
 	}
 
@@ -265,6 +269,5 @@ public class City {
 		this.totalDistance = totalDistance;
 	}
 
-	
 }
 

@@ -15,6 +15,7 @@ public class CityStructure {
 	private HashMap<String, City> cityMap;
 	private PriorityQueue<City> cityInterestList;
 	private Comparator<City> comparator;
+	ArrayList<String> cityNames;
 	
 	/**
 	 * Default constructor for file i/o
@@ -23,6 +24,7 @@ public class CityStructure {
 		this.cityMap = new HashMap<>();
 		this.comparator = new CityComparator();
 		this.cityInterestList = new PriorityQueue<>(this.comparator);
+		this.cityNames = new ArrayList<>();
 	}
 
 	/**
@@ -61,11 +63,17 @@ public class CityStructure {
 		PriorityQueue<City> temp = new PriorityQueue<>(this.comparator);
 		while (this.cityInterestList.peek() != null) {
 			City nextCity = this.cityInterestList.poll();
+			String name = nextCity.getName();
+			this.cityNames.add(name);
 			iterableCityInterestList.add(nextCity);
 			temp.add(nextCity);
 		}
 		this.cityInterestList = temp;
 		return iterableCityInterestList;		
+	}
+	
+	public ArrayList<String> getCityNames(){
+		return cityNames;
 	}
 	
 	/**
@@ -192,34 +200,3 @@ public class CityStructure {
 		return lowcity;
 	}
 }
-
-//ffitr	
-//while(!goal)
-//{
-//	City currentNode=findBestNode();
-//	if(currentNode.compareTo(goal)==0)
-//	{
-//		return openList;
-//	}
-//	else
-//	{
-//		closedList.add(currentNode);
-//		ArrayList<Edge> edges = currentNode.getNeighbors();
-//		
-//		for(int i=0;i<edges.size();i++)
-//		{
-//			Edge currentEdge=edges.get(i);
-//			int currentEdgeCost=currentEdge.getDistance();
-//           if (closedList.contains(currentEdge) && currentCost<currentEdgeCost) {
-//               update the neighbor with the new, lower, g value 
-//               change the neighbor's parent to our current node
-//           }
-//           else if (openList.contains(currentEdge) && currentCost<currentEdgeCost) {
-//               update the neighbor with the new, lower, g value 
-//               change the neighbor's parent to our current node
-//           }
-//		}
-//	}
-//	
-//}
-//return null;
