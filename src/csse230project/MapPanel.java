@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
@@ -18,6 +19,7 @@ public class MapPanel extends JComponent implements MouseListener{
 	CityStructure map;
 	City currentCity = null;
 	InfoPanel infoPanel;
+	ArrayList<City> clickedCities;
 	
 	public MapPanel(){
 		this.setPreferredSize(new Dimension(750, 1000));
@@ -81,17 +83,29 @@ public class MapPanel extends JComponent implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
         for (City c : this.getMap().getCityInterestList()) {
             if (c.contains(e.getX(),e.getY())) {
+            	clickedCities.add(c);
             	this.setCurrentCity(c);
+            	//if(){
             	try {
 					MainFrame.infoPanel.createPointsOfInterest(MainFrame.infoPanel.getCardPointsOfInterest());
+					clickedCities.clear();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+            	//}
+//            	else{
+//            		CityStructure struct = WriteDomain.read("usdomain.xml");
+//            		//struct.ge
+//            	}
                    System.out.println("mouse clicked on " + c.getName());
             }
      }
 
+	}
+	
+	public ArrayList<City> getClickedCities(){
+		return clickedCities;
 	}
 
 	@Override
