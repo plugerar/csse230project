@@ -23,6 +23,7 @@ public class MapPanel extends JComponent implements MouseListener{
 	
 	public MapPanel(){
 		this.setPreferredSize(new Dimension(750, 1000));
+		this.addMouseListener(this);
 	}
 	
 	@Override

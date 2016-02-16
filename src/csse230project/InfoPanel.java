@@ -32,13 +32,17 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 
 
-public class InfoPanel extends JPanel implements ActionListener{
+public class InfoPanel extends JPanel{// implements ActionListener{
     JPanel cards; //a panel that uses CardLayout
     private JButton cityRating;
+    private JButton pointsOfInterest;
+    private JButton calculateRoute;
+
     final static String cr = "calculateRoute";
     final static String poi = "pointsOfInterest";
     final static String cRate = "cityRating";
@@ -53,6 +57,7 @@ public class InfoPanel extends JPanel implements ActionListener{
 		this.setLayout(new FlowLayout());
 		//this.setLayout(new CardLayout());
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
+		
 		
 		createCards();
 		
@@ -92,43 +97,63 @@ public class InfoPanel extends JPanel implements ActionListener{
 	}
 	
 	public void createHome() throws Exception{
-		JPanel cardCalulcateRoute = new JPanel();
-		JPanel cardPointsOfInterest = new JPanel();
+        JTabbedPane tabbedPane = new JTabbedPane();
+
+		JPanel cardCalulcateRoute =new JPanel() ;//{
+//            //Make the panel wider than it really needs, so
+//            //the window's wide enough for the tabs to stay
+//            //in one row.
+//            public Dimension getPreferredSize() {
+//                Dimension size = super.getPreferredSize();
+//                size.width += 100;
+//                return size;
+//            }
+//        };
+		JPanel cardPointsOfInterest = new JPanel() ;
 		JPanel cardCityRating = new JPanel();
+		cardCityRating.setLayout(new BoxLayout(cardCityRating, BoxLayout.Y_AXIS));
 		createCalculateRoute(cardCalulcateRoute);
 		//createPointsOfInterest(cardPointsOfInterest);
 		createCityRatings(cardCityRating);
 		
-        JButton calcRoute = new JButton(cr);
-		JButton pointsOfInterest = new JButton(poi);
-		JButton cityRating  = new JButton(cRate);
-		
-		calcRoute.addActionListener(this);
-		pointsOfInterest.addActionListener(this);
-		cityRating.addActionListener(this);
-		
-		calcRoute.setActionCommand(cr);
-		pointsOfInterest.setActionCommand(poi);
-		cityRating.setActionCommand(cRate);
-				
-		cards.add(cardCalulcateRoute, cr);
-		cards.add(cardPointsOfInterest, poi);
-		cards.add(cardCityRating, cRate); 
-		
-		this.add(calcRoute);
-		this.add(pointsOfInterest);
-		this.add(cityRating);
-		this.add(cards);
+//        calculateRoute = new JButton(cr);
+//		pointsOfInterest = new JButton(poi);
+//		cityRating  = new JButton(cRate);
+//		
+//		calculateRoute.addActionListener(this);
+//		pointsOfInterest.addActionListener(this);
+//		cityRating.addActionListener(this);
+//		
+//		calculateRoute.setActionCommand(cr);
+//		pointsOfInterest.setActionCommand(poi);
+//		cityRating.setActionCommand(cRate);
+//				
+//		cards.add(cardCalulcateRoute, cr);
+//		cards.add(cardPointsOfInterest, poi);
+//		cards.add(cardCityRating, cRate); 
+		tabbedPane.addTab(cr, cardCalulcateRoute);
+		tabbedPane.addTab(poi, cardPointsOfInterest);
+		tabbedPane.addTab(cRate, cardCityRating);
+
+//		this.add(calculateRoute, BorderLayout.NORTH);
+//		this.add(pointsOfInterest, BorderLayout.WEST);
+//		this.add(cityRating, BorderLayout.EAST);
+//		this.add(cards, BorderLayout.SOUTH);
+		this.add(tabbedPane, BorderLayout.CENTER);
 	}
 	
 	public void createCityRatings(JPanel panel) throws Exception{
 		System.out.println("cRtae");
 		CityStructure struct = WriteDomain.read("usdomain.xml");
 		JLabel label;
-		for(int i = 0; i < struct.getCityNames().size(); i++){
-			label = new JLabel(i + ". " + struct.getCityNames());
+		ArrayList<City> cities = struct.cityInterestToArrayList();
+		Iterator<City> iCity= cities.iterator();
+		Iterator<String> i = struct.getCityNames().iterator();
+		for(int index = 0; index < struct.getCityNames().size(); index++){
+			label = new JLabel(index + ". " + i.next() + iCity.next().getInterestLevel());
 			panel.add(label);
 		}
+		
 	}
 	
 //	public void itemStateChanged(ActionListener evt) {
@@ -142,7 +167,8 @@ public class InfoPanel extends JPanel implements ActionListener{
 	}
 	
 	public void createCalculateRoute(JPanel panel){
-		
+		JButton button = new JButton("Calculate Route");
+		panel.add(button);
 	}
 	//public void createPointsOfInterest(JPanel panel){// throws Exception{
 //		CityStructure struct = WriteDomain.read("usdomain.xml");
@@ -197,9 +223,9 @@ public class InfoPanel extends JPanel implements ActionListener{
 //		
 //	}
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		CardLayout cl = (CardLayout) cards.getLayout();
-        cl.show(cards, arg0.getActionCommand());
-	}
+//	@Override
+//	public void actionPerformed(ActionEvent arg0) {
+//		CardLayout cl = (CardLayout) cards.getLayout();
+//        cl.show(cards, arg0.getActionCommand());
+//	}
 }
