@@ -109,7 +109,7 @@ public class MapPanel extends JComponent implements MouseListener{
 	            	} else if(MainFrame.infoPanel.getCurrentCard().equals("City Descriptions")){
 						try {
 							System.out.println(MainFrame.infoPanel.getCurrentCard());
-							MainFrame.infoPanel.createCityDescriptions(MainFrame.infoPanel.getCardCalulcateRoute());
+							MainFrame.infoPanel.createCityDescriptions(MainFrame.infoPanel.getCardCityDescriptions());
 						} catch (Exception e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -118,7 +118,7 @@ public class MapPanel extends JComponent implements MouseListener{
 	            	} else if(MainFrame.infoPanel.getCurrentCard().equals("Trip Planner")){
 						try {
 							System.out.println(MainFrame.infoPanel.getCurrentCard());
-							MainFrame.infoPanel.createCityDescriptions(MainFrame.infoPanel.getCardCalulcateRoute());
+							MainFrame.infoPanel.createTripPlanner(MainFrame.infoPanel.getCardTripPlanner());
 						} catch (Exception e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
