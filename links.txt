@@ -118,3 +118,4 @@ Terre Haute,Nashville,260,4
 Little Rock,Nashville,349,5
 Little Rock,Jefferson City,345,5.6
 Charleston,Frankfort,567,8.1
+Jefferson City,Des Moines,266,4.3

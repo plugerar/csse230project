@@ -4365,6 +4365,29 @@
                                                                                                                                                 <string>pathDistance</string>
                                                                                                                                                 <void method="set">
                                                                                                                                                  <object idref="Edge142"/>
+                                                                                                                                                 <int>266</int>
+                                                                                                                                                </void>
+                                                                                                                                               </void>
+                                                                                                                                               <void property="city1">
+                                                                                                                                                <object idref="City48"/>
+                                                                                                                                               </void>
+                                                                                                                                               <void property="city2">
+                                                                                                                                                <object idref="City17"/>
+                                                                                                                                               </void>
+                                                                                                                                               <void property="distance">
+                                                                                                                                                <int>266</int>
+                                                                                                                                               </void>
+                                                                                                                                               <void property="time">
+                                                                                                                                                <double>4.3</double>
+                                                                                                                                               </void>
+                                                                                                                                              </object>
+                                                                                                                                             </void>
+                                                                                                                                             <void method="add">
+                                                                                                                                              <object class="csse230project.Edge" id="Edge143">
+                                                                                                                                               <void class="csse230project.Edge" method="getField">
+                                                                                                                                                <string>pathDistance</string>
+                                                                                                                                                <void method="set">
+                                                                                                                                                 <object idref="Edge143"/>
                                                                                                                                                  <int>345</int>
                                                                                                                                                 </void>
                                                                                                                                                </void>
@@ -4383,11 +4406,11 @@
                                                                                                                                               </object>
                                                                                                                                              </void>
                                                                                                                                              <void method="add">
-                                                                                                                                              <object class="csse230project.Edge" id="Edge143">
+                                                                                                                                              <object class="csse230project.Edge" id="Edge144">
                                                                                                                                                <void class="csse230project.Edge" method="getField">
                                                                                                                                                 <string>pathDistance</string>
                                                                                                                                                 <void method="set">
-                                                                                                                                                 <object idref="Edge143"/>
+                                                                                                                                                 <object idref="Edge144"/>
                                                                                                                                                  <int>420</int>
                                                                                                                                                 </void>
                                                                                                                                                </void>
@@ -4429,11 +4452,11 @@
                                                                                                                                          </object>
                                                                                                                                         </void>
                                                                                                                                         <void method="add">
-                                                                                                                                         <object class="csse230project.Edge" id="Edge144">
+                                                                                                                                         <object class="csse230project.Edge" id="Edge145">
                                                                                                                                           <void class="csse230project.Edge" method="getField">
                                                                                                                                            <string>pathDistance</string>
                                                                                                                                            <void method="set">
-                                                                                                                                            <object idref="Edge144"/>
+                                                                                                                                            <object idref="Edge145"/>
                                                                                                                                             <int>349</int>
                                                                                                                                            </void>
                                                                                                                                           </void>
@@ -4452,11 +4475,11 @@
                                                                                                                                          </object>
                                                                                                                                         </void>
                                                                                                                                         <void method="add">
-                                                                                                                                         <object class="csse230project.Edge" id="Edge145">
+                                                                                                                                         <object class="csse230project.Edge" id="Edge146">
                                                                                                                                           <void class="csse230project.Edge" method="getField">
                                                                                                                                            <string>pathDistance</string>
                                                                                                                                            <void method="set">
-                                                                                                                                            <object idref="Edge145"/>
+                                                                                                                                            <object idref="Edge146"/>
                                                                                                                                             <int>514</int>
                                                                                                                                            </void>
                                                                                                                                           </void>
@@ -4479,11 +4502,11 @@
                                                                                                                                             </void>
                                                                                                                                             <void property="neighbors">
                                                                                                                                              <void method="add">
-                                                                                                                                              <object class="csse230project.Edge" id="Edge146">
+                                                                                                                                              <object class="csse230project.Edge" id="Edge147">
                                                                                                                                                <void class="csse230project.Edge" method="getField">
                                                                                                                                                 <string>pathDistance</string>
                                                                                                                                                 <void method="set">
-                                                                                                                                                 <object idref="Edge146"/>
+                                                                                                                                                 <object idref="Edge147"/>
                                                                                                                                                  <int>389</int>
                                                                                                                                                 </void>
                                                                                                                                                </void>
@@ -4502,11 +4525,11 @@
                                                                                                                                               </object>
                                                                                                                                              </void>
                                                                                                                                              <void method="add">
-                                                                                                                                              <object class="csse230project.Edge" id="Edge147">
+                                                                                                                                              <object class="csse230project.Edge" id="Edge148">
                                                                                                                                                <void class="csse230project.Edge" method="getField">
                                                                                                                                                 <string>pathDistance</string>
                                                                                                                                                 <void method="set">
-                                                                                                                                                 <object idref="Edge147"/>
+                                                                                                                                                 <object idref="Edge148"/>
                                                                                                                                                  <int>435</int>
                                                                                                                                                 </void>
                                                                                                                                                </void>
@@ -4525,11 +4548,11 @@
                                                                                                                                               </object>
                                                                                                                                              </void>
                                                                                                                                              <void method="add">
-                                                                                                                                              <object class="csse230project.Edge" id="Edge148">
+                                                                                                                                              <object class="csse230project.Edge" id="Edge149">
                                                                                                                                                <void class="csse230project.Edge" method="getField">
                                                                                                                                                 <string>pathDistance</string>
                                                                                                                                                 <void method="set">
-                                                                                                                                                 <object idref="Edge148"/>
+                                                                                                                                                 <object idref="Edge149"/>
                                                                                                                                                  <int>514</int>
                                                                                                                                                 </void>
                                                                                                                                                </void>
@@ -4548,11 +4571,11 @@
                                                                                                                                               </object>
                                                                                                                                              </void>
                                                                                                                                              <void method="add">
-                                                                                                                                              <object class="csse230project.Edge" id="Edge149">
+                                                                                                                                              <object class="csse230project.Edge" id="Edge150">
                                                                                                                                                <void class="csse230project.Edge" method="getField">
                                                                                                                                                 <string>pathDistance</string>
                                                                                                                                                 <void method="set">
-                                                                                                                                                 <object idref="Edge149"/>
+                                                                                                                                                 <object idref="Edge150"/>
                                                                                                                                                  <int>687</int>
                                                                                                                                                 </void>
                                                                                                                                                </void>
@@ -4637,11 +4660,11 @@
                                                                                                                                     </object>
                                                                                                                                    </void>
                                                                                                                                    <void method="add">
-                                                                                                                                    <object class="csse230project.Edge" id="Edge150">
+                                                                                                                                    <object class="csse230project.Edge" id="Edge151">
                                                                                                                                      <void class="csse230project.Edge" method="getField">
                                                                                                                                       <string>pathDistance</string>
                                                                                                                                       <void method="set">
-                                                                                                                                       <object idref="Edge150"/>
+                                                                                                                                       <object idref="Edge151"/>
                                                                                                                                        <int>365</int>
                                                                                                                                       </void>
                                                                                                                                      </void>
@@ -4660,11 +4683,11 @@
                                                                                                                                     </object>
                                                                                                                                    </void>
                                                                                                                                    <void method="add">
-                                                                                                                                    <object class="csse230project.Edge" id="Edge151">
+                                                                                                                                    <object class="csse230project.Edge" id="Edge152">
                                                                                                                                      <void class="csse230project.Edge" method="getField">
                                                                                                                                       <string>pathDistance</string>
                                                                                                                                       <void method="set">
-                                                                                                                                       <object idref="Edge151"/>
+                                                                                                                                       <object idref="Edge152"/>
                                                                                                                                        <int>435</int>
                                                                                                                                       </void>
                                                                                                                                      </void>
@@ -4716,11 +4739,11 @@
                                                                                                                                </object>
                                                                                                                               </void>
                                                                                                                               <void method="add">
-                                                                                                                               <object class="csse230project.Edge" id="Edge152">
+                                                                                                                               <object class="csse230project.Edge" id="Edge153">
                                                                                                                                 <void class="csse230project.Edge" method="getField">
                                                                                                                                  <string>pathDistance</string>
                                                                                                                                  <void method="set">
-                                                                                                                                  <object idref="Edge152"/>
+                                                                                                                                  <object idref="Edge153"/>
                                                                                                                                   <int>248</int>
                                                                                                                                  </void>
                                                                                                                                 </void>
@@ -4739,11 +4762,11 @@
                                                                                                                                </object>
                                                                                                                               </void>
                                                                                                                               <void method="add">
-                                                                                                                               <object class="csse230project.Edge" id="Edge153">
+                                                                                                                               <object class="csse230project.Edge" id="Edge154">
                                                                                                                                 <void class="csse230project.Edge" method="getField">
                                                                                                                                  <string>pathDistance</string>
                                                                                                                                  <void method="set">
-                                                                                                                                  <object idref="Edge153"/>
+                                                                                                                                  <object idref="Edge154"/>
                                                                                                                                   <int>262</int>
                                                                                                                                  </void>
                                                                                                                                 </void>
@@ -4762,11 +4785,11 @@
                                                                                                                                </object>
                                                                                                                               </void>
                                                                                                                               <void method="add">
-                                                                                                                               <object class="csse230project.Edge" id="Edge154">
+                                                                                                                               <object class="csse230project.Edge" id="Edge155">
                                                                                                                                 <void class="csse230project.Edge" method="getField">
                                                                                                                                  <string>pathDistance</string>
                                                                                                                                  <void method="set">
-                                                                                                                                  <object idref="Edge154"/>
+                                                                                                                                  <object idref="Edge155"/>
                                                                                                                                   <int>415</int>
                                                                                                                                  </void>
                                                                                                                                 </void>
@@ -4818,11 +4841,11 @@
                                                                                                                           </object>
                                                                                                                          </void>
                                                                                                                          <void method="add">
-                                                                                                                          <object class="csse230project.Edge" id="Edge155">
+                                                                                                                          <object class="csse230project.Edge" id="Edge156">
                                                                                                                            <void class="csse230project.Edge" method="getField">
                                                                                                                             <string>pathDistance</string>
                                                                                                                             <void method="set">
-                                                                                                                             <object idref="Edge155"/>
+                                                                                                                             <object idref="Edge156"/>
                                                                                                                              <int>281</int>
                                                                                                                             </void>
                                                                                                                            </void>
@@ -4841,11 +4864,11 @@
                                                                                                                           </object>
                                                                                                                          </void>
                                                                                                                          <void method="add">
-                                                                                                                          <object class="csse230project.Edge" id="Edge156">
+                                                                                                                          <object class="csse230project.Edge" id="Edge157">
                                                                                                                            <void class="csse230project.Edge" method="getField">
                                                                                                                             <string>pathDistance</string>
                                                                                                                             <void method="set">
-                                                                                                                             <object idref="Edge156"/>
+                                                                                                                             <object idref="Edge157"/>
                                                                                                                              <int>365</int>
                                                                                                                             </void>
                                                                                                                            </void>
@@ -4907,11 +4930,11 @@
                                                                                                                      </object>
                                                                                                                     </void>
                                                                                                                     <void method="add">
-                                                                                                                     <object class="csse230project.Edge" id="Edge157">
+                                                                                                                     <object class="csse230project.Edge" id="Edge158">
                                                                                                                       <void class="csse230project.Edge" method="getField">
                                                                                                                        <string>pathDistance</string>
                                                                                                                        <void method="set">
-                                                                                                                        <object idref="Edge157"/>
+                                                                                                                        <object idref="Edge158"/>
                                                                                                                         <int>214</int>
                                                                                                                        </void>
                                                                                                                       </void>
@@ -4930,11 +4953,11 @@
                                                                                                                      </object>
                                                                                                                     </void>
                                                                                                                     <void method="add">
-                                                                                                                     <object class="csse230project.Edge" id="Edge158">
+                                                                                                                     <object class="csse230project.Edge" id="Edge159">
                                                                                                                       <void class="csse230project.Edge" method="getField">
                                                                                                                        <string>pathDistance</string>
                                                                                                                        <void method="set">
-                                                                                                                        <object idref="Edge158"/>
+                                                                                                                        <object idref="Edge159"/>
                                                                                                                         <int>250</int>
                                                                                                                        </void>
                                                                                                                       </void>
@@ -4953,11 +4976,11 @@
                                                                                                                      </object>
                                                                                                                     </void>
                                                                                                                     <void method="add">
-                                                                                                                     <object class="csse230project.Edge" id="Edge159">
+                                                                                                                     <object class="csse230project.Edge" id="Edge160">
                                                                                                                       <void class="csse230project.Edge" method="getField">
                                                                                                                        <string>pathDistance</string>
                                                                                                                        <void method="set">
-                                                                                                                        <object idref="Edge159"/>
+                                                                                                                        <object idref="Edge160"/>
                                                                                                                         <int>273</int>
                                                                                                                        </void>
                                                                                                                       </void>
@@ -5009,11 +5032,11 @@
                                                                                                                 </object>
                                                                                                                </void>
                                                                                                                <void method="add">
-                                                                                                                <object class="csse230project.Edge" id="Edge160">
+                                                                                                                <object class="csse230project.Edge" id="Edge161">
                                                                                                                  <void class="csse230project.Edge" method="getField">
                                                                                                                   <string>pathDistance</string>
                                                                                                                   <void method="set">
-                                                                                                                   <object idref="Edge160"/>
+                                                                                                                   <object idref="Edge161"/>
                                                                                                                    <int>227</int>
                                                                                                                   </void>
                                                                                                                  </void>
@@ -5032,11 +5055,11 @@
                                                                                                                 </object>
                                                                                                                </void>
                                                                                                                <void method="add">
-                                                                                                                <object class="csse230project.Edge" id="Edge161">
+                                                                                                                <object class="csse230project.Edge" id="Edge162">
                                                                                                                  <void class="csse230project.Edge" method="getField">
                                                                                                                   <string>pathDistance</string>
                                                                                                                   <void method="set">
-                                                                                                                   <object idref="Edge161"/>
+                                                                                                                   <object idref="Edge162"/>
                                                                                                                    <int>442</int>
                                                                                                                   </void>
                                                                                                                  </void>
@@ -5078,11 +5101,11 @@
                                                                                                            </object>
                                                                                                           </void>
                                                                                                           <void method="add">
-                                                                                                           <object class="csse230project.Edge" id="Edge162">
+                                                                                                           <object class="csse230project.Edge" id="Edge163">
                                                                                                             <void class="csse230project.Edge" method="getField">
                                                                                                              <string>pathDistance</string>
                                                                                                              <void method="set">
-                                                                                                              <object idref="Edge162"/>
+                                                                                                              <object idref="Edge163"/>
                                                                                                               <int>281</int>
                                                                                                              </void>
                                                                                                             </void>
@@ -5101,11 +5124,11 @@
                                                                                                            </object>
                                                                                                           </void>
                                                                                                           <void method="add">
-                                                                                                           <object class="csse230project.Edge" id="Edge163">
+                                                                                                           <object class="csse230project.Edge" id="Edge164">
                                                                                                             <void class="csse230project.Edge" method="getField">
                                                                                                              <string>pathDistance</string>
                                                                                                              <void method="set">
-                                                                                                              <object idref="Edge163"/>
+                                                                                                              <object idref="Edge164"/>
                                                                                                               <int>539</int>
                                                                                                              </void>
                                                                                                             </void>
@@ -5147,11 +5170,11 @@
                                                                                                       </object>
                                                                                                      </void>
                                                                                                      <void method="add">
-                                                                                                      <object class="csse230project.Edge" id="Edge164">
+                                                                                                      <object class="csse230project.Edge" id="Edge165">
                                                                                                        <void class="csse230project.Edge" method="getField">
                                                                                                         <string>pathDistance</string>
                                                                                                         <void method="set">
-                                                                                                         <object idref="Edge164"/>
+                                                                                                         <object idref="Edge165"/>
                                                                                                          <int>362</int>
                                                                                                         </void>
                                                                                                        </void>
@@ -5170,11 +5193,11 @@
                                                                                                       </object>
                                                                                                      </void>
                                                                                                      <void method="add">
-                                                                                                      <object class="csse230project.Edge" id="Edge165">
+                                                                                                      <object class="csse230project.Edge" id="Edge166">
                                                                                                        <void class="csse230project.Edge" method="getField">
                                                                                                         <string>pathDistance</string>
                                                                                                         <void method="set">
-                                                                                                         <object idref="Edge165"/>
+                                                                                                         <object idref="Edge166"/>
                                                                                                          <int>366</int>
                                                                                                         </void>
                                                                                                        </void>
@@ -5193,11 +5216,11 @@
                                                                                                       </object>
                                                                                                      </void>
                                                                                                      <void method="add">
-                                                                                                      <object class="csse230project.Edge" id="Edge166">
+                                                                                                      <object class="csse230project.Edge" id="Edge167">
                                                                                                        <void class="csse230project.Edge" method="getField">
                                                                                                         <string>pathDistance</string>
                                                                                                         <void method="set">
-                                                                                                         <object idref="Edge166"/>
+                                                                                                         <object idref="Edge167"/>
                                                                                                          <int>385</int>
                                                                                                         </void>
                                                                                                        </void>
@@ -5216,11 +5239,11 @@
                                                                                                       </object>
                                                                                                      </void>
                                                                                                      <void method="add">
-                                                                                                      <object class="csse230project.Edge" id="Edge167">
+                                                                                                      <object class="csse230project.Edge" id="Edge168">
                                                                                                        <void class="csse230project.Edge" method="getField">
                                                                                                         <string>pathDistance</string>
                                                                                                         <void method="set">
-                                                                                                         <object idref="Edge167"/>
+                                                                                                         <object idref="Edge168"/>
                                                                                                          <int>425</int>
                                                                                                         </void>
                                                                                                        </void>
@@ -5239,11 +5262,11 @@
                                                                                                       </object>
                                                                                                      </void>
                                                                                                      <void method="add">
-                                                                                                      <object class="csse230project.Edge" id="Edge168">
+                                                                                                      <object class="csse230project.Edge" id="Edge169">
                                                                                                        <void class="csse230project.Edge" method="getField">
                                                                                                         <string>pathDistance</string>
                                                                                                         <void method="set">
-                                                                                                         <object idref="Edge168"/>
+                                                                                                         <object idref="Edge169"/>
                                                                                                          <int>567</int>
                                                                                                         </void>
                                                                                                        </void>
@@ -5305,11 +5328,11 @@
                                                                                                  </object>
                                                                                                 </void>
                                                                                                 <void method="add">
-                                                                                                 <object class="csse230project.Edge" id="Edge169">
+                                                                                                 <object class="csse230project.Edge" id="Edge170">
                                                                                                   <void class="csse230project.Edge" method="getField">
                                                                                                    <string>pathDistance</string>
                                                                                                    <void method="set">
-                                                                                                    <object idref="Edge169"/>
+                                                                                                    <object idref="Edge170"/>
                                                                                                     <int>175</int>
                                                                                                    </void>
                                                                                                   </void>
@@ -5328,11 +5351,11 @@
                                                                                                  </object>
                                                                                                 </void>
                                                                                                 <void method="add">
-                                                                                                 <object class="csse230project.Edge" id="Edge170">
+                                                                                                 <object class="csse230project.Edge" id="Edge171">
                                                                                                   <void class="csse230project.Edge" method="getField">
                                                                                                    <string>pathDistance</string>
                                                                                                    <void method="set">
-                                                                                                    <object idref="Edge170"/>
+                                                                                                    <object idref="Edge171"/>
                                                                                                     <int>186</int>
                                                                                                    </void>
                                                                                                   </void>
@@ -5351,11 +5374,11 @@
                                                                                                  </object>
                                                                                                 </void>
                                                                                                 <void method="add">
-                                                                                                 <object class="csse230project.Edge" id="Edge171">
+                                                                                                 <object class="csse230project.Edge" id="Edge172">
                                                                                                   <void class="csse230project.Edge" method="getField">
                                                                                                    <string>pathDistance</string>
                                                                                                    <void method="set">
-                                                                                                    <object idref="Edge171"/>
+                                                                                                    <object idref="Edge172"/>
                                                                                                     <int>254</int>
                                                                                                    </void>
                                                                                                   </void>
@@ -5378,11 +5401,11 @@
                                                                                                     </void>
                                                                                                     <void property="neighbors">
                                                                                                      <void method="add">
-                                                                                                      <object class="csse230project.Edge" id="Edge172">
+                                                                                                      <object class="csse230project.Edge" id="Edge173">
                                                                                                        <void class="csse230project.Edge" method="getField">
                                                                                                         <string>pathDistance</string>
                                                                                                         <void method="set">
-                                                                                                         <object idref="Edge172"/>
+                                                                                                         <object idref="Edge173"/>
                                                                                                          <int>254</int>
                                                                                                         </void>
                                                                                                        </void>
@@ -5401,11 +5424,11 @@
                                                                                                       </object>
                                                                                                      </void>
                                                                                                      <void method="add">
-                                                                                                      <object class="csse230project.Edge" id="Edge173">
+                                                                                                      <object class="csse230project.Edge" id="Edge174">
                                                                                                        <void class="csse230project.Edge" method="getField">
                                                                                                         <string>pathDistance</string>
                                                                                                         <void method="set">
-                                                                                                         <object idref="Edge173"/>
+                                                                                                         <object idref="Edge174"/>
                                                                                                          <int>255</int>
                                                                                                         </void>
                                                                                                        </void>
@@ -5447,11 +5470,11 @@
                                                                                                  </object>
                                                                                                 </void>
                                                                                                 <void method="add">
-                                                                                                 <object class="csse230project.Edge" id="Edge174">
+                                                                                                 <object class="csse230project.Edge" id="Edge175">
                                                                                                   <void class="csse230project.Edge" method="getField">
                                                                                                    <string>pathDistance</string>
                                                                                                    <void method="set">
-                                                                                                    <object idref="Edge174"/>
+                                                                                                    <object idref="Edge175"/>
                                                                                                     <int>368</int>
                                                                                                    </void>
                                                                                                   </void>
@@ -5503,11 +5526,11 @@
                                                                                             </object>
                                                                                            </void>
                                                                                            <void method="add">
-                                                                                            <object class="csse230project.Edge" id="Edge175">
+                                                                                            <object class="csse230project.Edge" id="Edge176">
                                                                                              <void class="csse230project.Edge" method="getField">
                                                                                               <string>pathDistance</string>
                                                                                               <void method="set">
-                                                                                               <object idref="Edge175"/>
+                                                                                               <object idref="Edge176"/>
                                                                                                <int>211</int>
                                                                                               </void>
                                                                                              </void>
@@ -5526,11 +5549,11 @@
                                                                                             </object>
                                                                                            </void>
                                                                                            <void method="add">
-                                                                                            <object class="csse230project.Edge" id="Edge176">
+                                                                                            <object class="csse230project.Edge" id="Edge177">
                                                                                              <void class="csse230project.Edge" method="getField">
                                                                                               <string>pathDistance</string>
                                                                                               <void method="set">
-                                                                                               <object idref="Edge176"/>
+                                                                                               <object idref="Edge177"/>
                                                                                                <int>314</int>
                                                                                               </void>
                                                                                              </void>
@@ -5549,11 +5572,11 @@
                                                                                             </object>
                                                                                            </void>
                                                                                            <void method="add">
-                                                                                            <object class="csse230project.Edge" id="Edge177">
+                                                                                            <object class="csse230project.Edge" id="Edge178">
                                                                                              <void class="csse230project.Edge" method="getField">
                                                                                               <string>pathDistance</string>
                                                                                               <void method="set">
-                                                                                               <object idref="Edge177"/>
+                                                                                               <object idref="Edge178"/>
                                                                                                <int>567</int>
                                                                                               </void>
                                                                                              </void>
@@ -5595,11 +5618,11 @@
                                                                                        </object>
                                                                                       </void>
                                                                                       <void method="add">
-                                                                                       <object class="csse230project.Edge" id="Edge178">
+                                                                                       <object class="csse230project.Edge" id="Edge179">
                                                                                         <void class="csse230project.Edge" method="getField">
                                                                                          <string>pathDistance</string>
                                                                                          <void method="set">
-                                                                                          <object idref="Edge178"/>
+                                                                                          <object idref="Edge179"/>
                                                                                           <int>175</int>
                                                                                          </void>
                                                                                         </void>
@@ -5618,11 +5641,11 @@
                                                                                        </object>
                                                                                       </void>
                                                                                       <void method="add">
-                                                                                       <object class="csse230project.Edge" id="Edge179">
+                                                                                       <object class="csse230project.Edge" id="Edge180">
                                                                                         <void class="csse230project.Edge" method="getField">
                                                                                          <string>pathDistance</string>
                                                                                          <void method="set">
-                                                                                          <object idref="Edge179"/>
+                                                                                          <object idref="Edge180"/>
                                                                                           <int>185</int>
                                                                                          </void>
                                                                                         </void>
@@ -5641,11 +5664,11 @@
                                                                                        </object>
                                                                                       </void>
                                                                                       <void method="add">
-                                                                                       <object class="csse230project.Edge" id="Edge180">
+                                                                                       <object class="csse230project.Edge" id="Edge181">
                                                                                         <void class="csse230project.Edge" method="getField">
                                                                                          <string>pathDistance</string>
                                                                                          <void method="set">
-                                                                                          <object idref="Edge180"/>
+                                                                                          <object idref="Edge181"/>
                                                                                           <int>255</int>
                                                                                          </void>
                                                                                         </void>
@@ -5697,11 +5720,11 @@
                                                                                   </object>
                                                                                  </void>
                                                                                  <void method="add">
-                                                                                  <object class="csse230project.Edge" id="Edge181">
+                                                                                  <object class="csse230project.Edge" id="Edge182">
                                                                                    <void class="csse230project.Edge" method="getField">
                                                                                     <string>pathDistance</string>
                                                                                     <void method="set">
-                                                                                     <object idref="Edge181"/>
+                                                                                     <object idref="Edge182"/>
                                                                                      <int>137</int>
                                                                                     </void>
                                                                                    </void>
@@ -5720,11 +5743,11 @@
                                                                                   </object>
                                                                                  </void>
                                                                                  <void method="add">
-                                                                                  <object class="csse230project.Edge" id="Edge182">
+                                                                                  <object class="csse230project.Edge" id="Edge183">
                                                                                    <void class="csse230project.Edge" method="getField">
                                                                                     <string>pathDistance</string>
                                                                                     <void method="set">
-                                                                                     <object idref="Edge182"/>
+                                                                                     <object idref="Edge183"/>
                                                                                      <int>181</int>
                                                                                     </void>
                                                                                    </void>
@@ -5743,11 +5766,11 @@
                                                                                   </object>
                                                                                  </void>
                                                                                  <void method="add">
-                                                                                  <object class="csse230project.Edge" id="Edge183">
+                                                                                  <object class="csse230project.Edge" id="Edge184">
                                                                                    <void class="csse230project.Edge" method="getField">
                                                                                     <string>pathDistance</string>
                                                                                     <void method="set">
-                                                                                     <object idref="Edge183"/>
+                                                                                     <object idref="Edge184"/>
                                                                                      <int>260</int>
                                                                                     </void>
                                                                                    </void>
@@ -5777,11 +5800,11 @@
                                                                              </object>
                                                                             </void>
                                                                             <void method="add">
-                                                                             <object class="csse230project.Edge" id="Edge184">
+                                                                             <object class="csse230project.Edge" id="Edge185">
                                                                               <void class="csse230project.Edge" method="getField">
                                                                                <string>pathDistance</string>
                                                                                <void method="set">
-                                                                                <object idref="Edge184"/>
+                                                                                <object idref="Edge185"/>
                                                                                 <int>185</int>
                                                                                </void>
                                                                               </void>
@@ -5800,11 +5823,11 @@
                                                                              </object>
                                                                             </void>
                                                                             <void method="add">
-                                                                             <object class="csse230project.Edge" id="Edge185">
+                                                                             <object class="csse230project.Edge" id="Edge186">
                                                                               <void class="csse230project.Edge" method="getField">
                                                                                <string>pathDistance</string>
                                                                                <void method="set">
-                                                                                <object idref="Edge185"/>
+                                                                                <object idref="Edge186"/>
                                                                                 <int>202</int>
                                                                                </void>
                                                                               </void>
@@ -5823,11 +5846,11 @@
                                                                              </object>
                                                                             </void>
                                                                             <void method="add">
-                                                                             <object class="csse230project.Edge" id="Edge186">
+                                                                             <object class="csse230project.Edge" id="Edge187">
                                                                               <void class="csse230project.Edge" method="getField">
                                                                                <string>pathDistance</string>
                                                                                <void method="set">
-                                                                                <object idref="Edge186"/>
+                                                                                <object idref="Edge187"/>
                                                                                 <int>340</int>
                                                                                </void>
                                                                               </void>
@@ -5899,11 +5922,11 @@
                                                                         </object>
                                                                        </void>
                                                                        <void method="add">
-                                                                        <object class="csse230project.Edge" id="Edge187">
+                                                                        <object class="csse230project.Edge" id="Edge188">
                                                                          <void class="csse230project.Edge" method="getField">
                                                                           <string>pathDistance</string>
                                                                           <void method="set">
-                                                                           <object idref="Edge187"/>
+                                                                           <object idref="Edge188"/>
                                                                            <int>259</int>
                                                                           </void>
                                                                          </void>
@@ -5922,11 +5945,11 @@
                                                                         </object>
                                                                        </void>
                                                                        <void method="add">
-                                                                        <object class="csse230project.Edge" id="Edge188">
+                                                                        <object class="csse230project.Edge" id="Edge189">
                                                                          <void class="csse230project.Edge" method="getField">
                                                                           <string>pathDistance</string>
                                                                           <void method="set">
-                                                                           <object idref="Edge188"/>
+                                                                           <object idref="Edge189"/>
                                                                            <int>265</int>
                                                                           </void>
                                                                          </void>
@@ -5945,11 +5968,11 @@
                                                                         </object>
                                                                        </void>
                                                                        <void method="add">
-                                                                        <object class="csse230project.Edge" id="Edge189">
+                                                                        <object class="csse230project.Edge" id="Edge190">
                                                                          <void class="csse230project.Edge" method="getField">
                                                                           <string>pathDistance</string>
                                                                           <void method="set">
-                                                                           <object idref="Edge189"/>
+                                                                           <object idref="Edge190"/>
                                                                            <int>293</int>
                                                                           </void>
                                                                          </void>
@@ -6011,11 +6034,11 @@
                                                                    </object>
                                                                   </void>
                                                                   <void method="add">
-                                                                   <object class="csse230project.Edge" id="Edge190">
+                                                                   <object class="csse230project.Edge" id="Edge191">
                                                                     <void class="csse230project.Edge" method="getField">
                                                                      <string>pathDistance</string>
                                                                      <void method="set">
-                                                                      <object idref="Edge190"/>
+                                                                      <object idref="Edge191"/>
                                                                       <int>399</int>
                                                                      </void>
                                                                     </void>
@@ -6038,11 +6061,11 @@
                                                                       </void>
                                                                       <void property="neighbors">
                                                                        <void method="add">
-                                                                        <object class="csse230project.Edge" id="Edge191">
+                                                                        <object class="csse230project.Edge" id="Edge192">
                                                                          <void class="csse230project.Edge" method="getField">
                                                                           <string>pathDistance</string>
                                                                           <void method="set">
-                                                                           <object idref="Edge191"/>
+                                                                           <object idref="Edge192"/>
                                                                            <int>210</int>
                                                                           </void>
                                                                          </void>
@@ -6065,11 +6088,11 @@
                                                                            </void>
                                                                            <void property="neighbors">
                                                                             <void method="add">
-                                                                             <object class="csse230project.Edge" id="Edge192">
+                                                                             <object class="csse230project.Edge" id="Edge193">
                                                                               <void class="csse230project.Edge" method="getField">
                                                                                <string>pathDistance</string>
                                                                                <void method="set">
-                                                                                <object idref="Edge192"/>
+                                                                                <object idref="Edge193"/>
                                                                                 <int>210</int>
                                                                                </void>
                                                                               </void>
@@ -6088,11 +6111,11 @@
                                                                              </object>
                                                                             </void>
                                                                             <void method="add">
-                                                                             <object class="csse230project.Edge" id="Edge193">
+                                                                             <object class="csse230project.Edge" id="Edge194">
                                                                               <void class="csse230project.Edge" method="getField">
                                                                                <string>pathDistance</string>
                                                                                <void method="set">
-                                                                                <object idref="Edge193"/>
+                                                                                <object idref="Edge194"/>
                                                                                 <int>435</int>
                                                                                </void>
                                                                               </void>
@@ -6111,11 +6134,11 @@
                                                                              </object>
                                                                             </void>
                                                                             <void method="add">
-                                                                             <object class="csse230project.Edge" id="Edge194">
+                                                                             <object class="csse230project.Edge" id="Edge195">
                                                                               <void class="csse230project.Edge" method="getField">
                                                                                <string>pathDistance</string>
                                                                                <void method="set">
-                                                                                <object idref="Edge194"/>
+                                                                                <object idref="Edge195"/>
                                                                                 <int>652</int>
                                                                                </void>
                                                                               </void>
@@ -6157,11 +6180,11 @@
                                                                         </object>
                                                                        </void>
                                                                        <void method="add">
-                                                                        <object class="csse230project.Edge" id="Edge195">
+                                                                        <object class="csse230project.Edge" id="Edge196">
                                                                          <void class="csse230project.Edge" method="getField">
                                                                           <string>pathDistance</string>
                                                                           <void method="set">
-                                                                           <object idref="Edge195"/>
+                                                                           <object idref="Edge196"/>
                                                                            <int>399</int>
                                                                           </void>
                                                                          </void>
@@ -6180,11 +6203,11 @@
                                                                         </object>
                                                                        </void>
                                                                        <void method="add">
-                                                                        <object class="csse230project.Edge" id="Edge196">
+                                                                        <object class="csse230project.Edge" id="Edge197">
                                                                          <void class="csse230project.Edge" method="getField">
                                                                           <string>pathDistance</string>
                                                                           <void method="set">
-                                                                           <object idref="Edge196"/>
+                                                                           <object idref="Edge197"/>
                                                                            <int>424</int>
                                                                           </void>
                                                                          </void>
@@ -6203,11 +6226,11 @@
                                                                         </object>
                                                                        </void>
                                                                        <void method="add">
-                                                                        <object class="csse230project.Edge" id="Edge197">
+                                                                        <object class="csse230project.Edge" id="Edge198">
                                                                          <void class="csse230project.Edge" method="getField">
                                                                           <string>pathDistance</string>
                                                                           <void method="set">
-                                                                           <object idref="Edge197"/>
+                                                                           <object idref="Edge198"/>
                                                                            <int>454</int>
                                                                           </void>
                                                                          </void>
@@ -6226,11 +6249,11 @@
                                                                         </object>
                                                                        </void>
                                                                        <void method="add">
-                                                                        <object class="csse230project.Edge" id="Edge198">
+                                                                        <object class="csse230project.Edge" id="Edge199">
                                                                          <void class="csse230project.Edge" method="getField">
                                                                           <string>pathDistance</string>
                                                                           <void method="set">
-                                                                           <object idref="Edge198"/>
+                                                                           <object idref="Edge199"/>
                                                                            <int>503</int>
                                                                           </void>
                                                                          </void>
@@ -6260,11 +6283,11 @@
                                                                    </object>
                                                                   </void>
                                                                   <void method="add">
-                                                                   <object class="csse230project.Edge" id="Edge199">
+                                                                   <object class="csse230project.Edge" id="Edge200">
                                                                     <void class="csse230project.Edge" method="getField">
                                                                      <string>pathDistance</string>
                                                                      <void method="set">
-                                                                      <object idref="Edge199"/>
+                                                                      <object idref="Edge200"/>
                                                                       <int>435</int>
                                                                      </void>
                                                                     </void>
@@ -6316,11 +6339,11 @@
                                                               </object>
                                                              </void>
                                                              <void method="add">
-                                                              <object class="csse230project.Edge" id="Edge200">
+                                                              <object class="csse230project.Edge" id="Edge201">
                                                                <void class="csse230project.Edge" method="getField">
                                                                 <string>pathDistance</string>
                                                                 <void method="set">
-                                                                 <object idref="Edge200"/>
+                                                                 <object idref="Edge201"/>
                                                                  <int>257</int>
                                                                 </void>
                                                                </void>
@@ -6339,11 +6362,34 @@
                                                               </object>
                                                              </void>
                                                              <void method="add">
-                                                              <object class="csse230project.Edge" id="Edge201">
+                                                              <object class="csse230project.Edge" id="Edge202">
                                                                <void class="csse230project.Edge" method="getField">
                                                                 <string>pathDistance</string>
                                                                 <void method="set">
-                                                                 <object idref="Edge201"/>
+                                                                 <object idref="Edge202"/>
+                                                                 <int>266</int>
+                                                                </void>
+                                                               </void>
+                                                               <void property="city1">
+                                                                <object idref="City17"/>
+                                                               </void>
+                                                               <void property="city2">
+                                                                <object idref="City48"/>
+                                                               </void>
+                                                               <void property="distance">
+                                                                <int>266</int>
+                                                               </void>
+                                                               <void property="time">
+                                                                <double>4.3</double>
+                                                               </void>
+                                                              </object>
+                                                             </void>
+                                                             <void method="add">
+                                                              <object class="csse230project.Edge" id="Edge203">
+                                                               <void class="csse230project.Edge" method="getField">
+                                                                <string>pathDistance</string>
+                                                                <void method="set">
+                                                                 <object idref="Edge203"/>
                                                                  <int>293</int>
                                                                 </void>
                                                                </void>
@@ -6362,11 +6408,11 @@
                                                               </object>
                                                              </void>
                                                              <void method="add">
-                                                              <object class="csse230project.Edge" id="Edge202">
+                                                              <object class="csse230project.Edge" id="Edge204">
                                                                <void class="csse230project.Edge" method="getField">
                                                                 <string>pathDistance</string>
                                                                 <void method="set">
-                                                                 <object idref="Edge202"/>
+                                                                 <object idref="Edge204"/>
                                                                  <int>337</int>
                                                                 </void>
                                                                </void>
@@ -6385,11 +6431,11 @@
                                                               </object>
                                                              </void>
                                                              <void method="add">
-                                                              <object class="csse230project.Edge" id="Edge203">
+                                                              <object class="csse230project.Edge" id="Edge205">
                                                                <void class="csse230project.Edge" method="getField">
                                                                 <string>pathDistance</string>
                                                                 <void method="set">
-                                                                 <object idref="Edge203"/>
+                                                                 <object idref="Edge205"/>
                                                                  <int>340</int>
                                                                 </void>
                                                                </void>
@@ -6408,11 +6454,11 @@
                                                               </object>
                                                              </void>
                                                              <void method="add">
-                                                              <object class="csse230project.Edge" id="Edge204">
+                                                              <object class="csse230project.Edge" id="Edge206">
                                                                <void class="csse230project.Edge" method="getField">
                                                                 <string>pathDistance</string>
                                                                 <void method="set">
-                                                                 <object idref="Edge204"/>
+                                                                 <object idref="Edge206"/>
                                                                  <int>503</int>
                                                                 </void>
                                                                </void>
@@ -6464,11 +6510,11 @@
                                                          </object>
                                                         </void>
                                                         <void method="add">
-                                                         <object class="csse230project.Edge" id="Edge205">
+                                                         <object class="csse230project.Edge" id="Edge207">
                                                           <void class="csse230project.Edge" method="getField">
                                                            <string>pathDistance</string>
                                                            <void method="set">
-                                                            <object idref="Edge205"/>
+                                                            <object idref="Edge207"/>
                                                             <int>445</int>
                                                            </void>
                                                           </void>
@@ -6487,11 +6533,11 @@
                                                          </object>
                                                         </void>
                                                         <void method="add">
-                                                         <object class="csse230project.Edge" id="Edge206">
+                                                         <object class="csse230project.Edge" id="Edge208">
                                                           <void class="csse230project.Edge" method="getField">
                                                            <string>pathDistance</string>
                                                            <void method="set">
-                                                            <object idref="Edge206"/>
+                                                            <object idref="Edge208"/>
                                                             <int>454</int>
                                                            </void>
                                                           </void>
@@ -6510,11 +6556,11 @@
                                                          </object>
                                                         </void>
                                                         <void method="add">
-                                                         <object class="csse230project.Edge" id="Edge207">
+                                                         <object class="csse230project.Edge" id="Edge209">
                                                           <void class="csse230project.Edge" method="getField">
                                                            <string>pathDistance</string>
                                                            <void method="set">
-                                                            <object idref="Edge207"/>
+                                                            <object idref="Edge209"/>
                                                             <int>488</int>
                                                            </void>
                                                           </void>
@@ -6556,11 +6602,11 @@
                                                     </object>
                                                    </void>
                                                    <void method="add">
-                                                    <object class="csse230project.Edge" id="Edge208">
+                                                    <object class="csse230project.Edge" id="Edge210">
                                                      <void class="csse230project.Edge" method="getField">
                                                       <string>pathDistance</string>
                                                       <void method="set">
-                                                       <object idref="Edge208"/>
+                                                       <object idref="Edge210"/>
                                                        <int>220</int>
                                                       </void>
                                                      </void>
@@ -6579,11 +6625,11 @@
                                                     </object>
                                                    </void>
                                                    <void method="add">
-                                                    <object class="csse230project.Edge" id="Edge209">
+                                                    <object class="csse230project.Edge" id="Edge211">
                                                      <void class="csse230project.Edge" method="getField">
                                                       <string>pathDistance</string>
                                                       <void method="set">
-                                                       <object idref="Edge209"/>
+                                                       <object idref="Edge211"/>
                                                        <int>257</int>
                                                       </void>
                                                      </void>
@@ -6602,11 +6648,11 @@
                                                     </object>
                                                    </void>
                                                    <void method="add">
-                                                    <object class="csse230project.Edge" id="Edge210">
+                                                    <object class="csse230project.Edge" id="Edge212">
                                                      <void class="csse230project.Edge" method="getField">
                                                       <string>pathDistance</string>
                                                       <void method="set">
-                                                       <object idref="Edge210"/>
+                                                       <object idref="Edge212"/>
                                                        <int>294</int>
                                                       </void>
                                                      </void>
@@ -6625,11 +6671,11 @@
                                                     </object>
                                                    </void>
                                                    <void method="add">
-                                                    <object class="csse230project.Edge" id="Edge211">
+                                                    <object class="csse230project.Edge" id="Edge213">
                                                      <void class="csse230project.Edge" method="getField">
                                                       <string>pathDistance</string>
                                                       <void method="set">
-                                                       <object idref="Edge211"/>
+                                                       <object idref="Edge213"/>
                                                        <int>540</int>
                                                       </void>
                                                      </void>
@@ -6671,11 +6717,11 @@
                                                </object>
                                               </void>
                                               <void method="add">
-                                               <object class="csse230project.Edge" id="Edge212">
+                                               <object class="csse230project.Edge" id="Edge214">
                                                 <void class="csse230project.Edge" method="getField">
                                                  <string>pathDistance</string>
                                                  <void method="set">
-                                                  <object idref="Edge212"/>
+                                                  <object idref="Edge214"/>
                                                   <int>340</int>
                                                  </void>
                                                 </void>
@@ -6694,11 +6740,11 @@
                                                </object>
                                               </void>
                                               <void method="add">
-                                               <object class="csse230project.Edge" id="Edge213">
+                                               <object class="csse230project.Edge" id="Edge215">
                                                 <void class="csse230project.Edge" method="getField">
                                                  <string>pathDistance</string>
                                                  <void method="set">
-                                                  <object idref="Edge213"/>
+                                                  <object idref="Edge215"/>
                                                   <int>389</int>
                                                  </void>
                                                 </void>
@@ -6717,11 +6763,11 @@
                                                </object>
                                               </void>
                                               <void method="add">
-                                               <object class="csse230project.Edge" id="Edge214">
+                                               <object class="csse230project.Edge" id="Edge216">
                                                 <void class="csse230project.Edge" method="getField">
                                                  <string>pathDistance</string>
                                                  <void method="set">
-                                                  <object idref="Edge214"/>
+                                                  <object idref="Edge216"/>
                                                   <int>420</int>
                                                  </void>
                                                 </void>
@@ -6740,11 +6786,11 @@
                                                </object>
                                               </void>
                                               <void method="add">
-                                               <object class="csse230project.Edge" id="Edge215">
+                                               <object class="csse230project.Edge" id="Edge217">
                                                 <void class="csse230project.Edge" method="getField">
                                                  <string>pathDistance</string>
                                                  <void method="set">
-                                                  <object idref="Edge215"/>
+                                                  <object idref="Edge217"/>
                                                   <int>534</int>
                                                  </void>
                                                 </void>
@@ -6763,11 +6809,11 @@
                                                </object>
                                               </void>
                                               <void method="add">
-                                               <object class="csse230project.Edge" id="Edge216">
+                                               <object class="csse230project.Edge" id="Edge218">
                                                 <void class="csse230project.Edge" method="getField">
                                                  <string>pathDistance</string>
                                                  <void method="set">
-                                                  <object idref="Edge216"/>
+                                                  <object idref="Edge218"/>
                                                   <int>679</int>
                                                  </void>
                                                 </void>
@@ -6819,11 +6865,11 @@
                                           </object>
                                          </void>
                                          <void method="add">
-                                          <object class="csse230project.Edge" id="Edge217">
+                                          <object class="csse230project.Edge" id="Edge219">
                                            <void class="csse230project.Edge" method="getField">
                                             <string>pathDistance</string>
                                             <void method="set">
-                                             <object idref="Edge217"/>
+                                             <object idref="Edge219"/>
                                              <int>626</int>
                                             </void>
                                            </void>
@@ -6842,11 +6888,11 @@
                                           </object>
                                          </void>
                                          <void method="add">
-                                          <object class="csse230project.Edge" id="Edge218">
+                                          <object class="csse230project.Edge" id="Edge220">
                                            <void class="csse230project.Edge" method="getField">
                                             <string>pathDistance</string>
                                             <void method="set">
-                                             <object idref="Edge218"/>
+                                             <object idref="Edge220"/>
                                              <int>687</int>
                                             </void>
                                            </void>
@@ -6888,11 +6934,11 @@
                                      </object>
                                     </void>
                                     <void method="add">
-                                     <object class="csse230project.Edge" id="Edge219">
+                                     <object class="csse230project.Edge" id="Edge221">
                                       <void class="csse230project.Edge" method="getField">
                                        <string>pathDistance</string>
                                        <void method="set">
-                                        <object idref="Edge219"/>
+                                        <object idref="Edge221"/>
                                         <int>488</int>
                                        </void>
                                       </void>
@@ -6911,11 +6957,11 @@
                                      </object>
                                     </void>
                                     <void method="add">
-                                     <object class="csse230project.Edge" id="Edge220">
+                                     <object class="csse230project.Edge" id="Edge222">
                                       <void class="csse230project.Edge" method="getField">
                                        <string>pathDistance</string>
                                        <void method="set">
-                                        <object idref="Edge220"/>
+                                        <object idref="Edge222"/>
                                         <int>521</int>
                                        </void>
                                       </void>
@@ -6934,11 +6980,11 @@
                                      </object>
                                     </void>
                                     <void method="add">
-                                     <object class="csse230project.Edge" id="Edge221">
+                                     <object class="csse230project.Edge" id="Edge223">
                                       <void class="csse230project.Edge" method="getField">
                                        <string>pathDistance</string>
                                        <void method="set">
-                                        <object idref="Edge221"/>
+                                        <object idref="Edge223"/>
                                         <int>540</int>
                                        </void>
                                       </void>
@@ -6957,11 +7003,11 @@
                                      </object>
                                     </void>
                                     <void method="add">
-                                     <object class="csse230project.Edge" id="Edge222">
+                                     <object class="csse230project.Edge" id="Edge224">
                                       <void class="csse230project.Edge" method="getField">
                                        <string>pathDistance</string>
                                        <void method="set">
-                                        <object idref="Edge222"/>
+                                        <object idref="Edge224"/>
                                         <int>679</int>
                                        </void>
                                       </void>
@@ -7013,11 +7059,11 @@
                                 </object>
                                </void>
                                <void method="add">
-                                <object class="csse230project.Edge" id="Edge223">
+                                <object class="csse230project.Edge" id="Edge225">
                                  <void class="csse230project.Edge" method="getField">
                                   <string>pathDistance</string>
                                   <void method="set">
-                                   <object idref="Edge223"/>
+                                   <object idref="Edge225"/>
                                    <int>424</int>
                                   </void>
                                  </void>
@@ -7036,11 +7082,11 @@
                                 </object>
                                </void>
                                <void method="add">
-                                <object class="csse230project.Edge" id="Edge224">
+                                <object class="csse230project.Edge" id="Edge226">
                                  <void class="csse230project.Edge" method="getField">
                                   <string>pathDistance</string>
                                   <void method="set">
-                                   <object idref="Edge224"/>
+                                   <object idref="Edge226"/>
                                    <int>440</int>
                                   </void>
                                  </void>
@@ -7059,11 +7105,11 @@
                                 </object>
                                </void>
                                <void method="add">
-                                <object class="csse230project.Edge" id="Edge225">
+                                <object class="csse230project.Edge" id="Edge227">
                                  <void class="csse230project.Edge" method="getField">
                                   <string>pathDistance</string>
                                   <void method="set">
-                                   <object idref="Edge225"/>
+                                   <object idref="Edge227"/>
                                    <int>445</int>
                                   </void>
                                  </void>
@@ -7082,11 +7128,11 @@
                                 </object>
                                </void>
                                <void method="add">
-                                <object class="csse230project.Edge" id="Edge226">
+                                <object class="csse230project.Edge" id="Edge228">
                                  <void class="csse230project.Edge" method="getField">
                                   <string>pathDistance</string>
                                   <void method="set">
-                                   <object idref="Edge226"/>
+                                   <object idref="Edge228"/>
                                    <int>692</int>
                                   </void>
                                  </void>
@@ -7128,11 +7174,11 @@
                            </object>
                           </void>
                           <void method="add">
-                           <object class="csse230project.Edge" id="Edge227">
+                           <object class="csse230project.Edge" id="Edge229">
                             <void class="csse230project.Edge" method="getField">
                              <string>pathDistance</string>
                              <void method="set">
-                              <object idref="Edge227"/>
+                              <object idref="Edge229"/>
                               <int>521</int>
                              </void>
                             </void>
@@ -7151,11 +7197,11 @@
                            </object>
                           </void>
                           <void method="add">
-                           <object class="csse230project.Edge" id="Edge228">
+                           <object class="csse230project.Edge" id="Edge230">
                             <void class="csse230project.Edge" method="getField">
                              <string>pathDistance</string>
                              <void method="set">
-                              <object idref="Edge228"/>
+                              <object idref="Edge230"/>
                               <int>546</int>
                              </void>
                             </void>
@@ -7174,11 +7220,11 @@
                            </object>
                           </void>
                           <void method="add">
-                           <object class="csse230project.Edge" id="Edge229">
+                           <object class="csse230project.Edge" id="Edge231">
                             <void class="csse230project.Edge" method="getField">
                              <string>pathDistance</string>
                              <void method="set">
-                              <object idref="Edge229"/>
+                              <object idref="Edge231"/>
                               <int>626</int>
                              </void>
                             </void>
@@ -7197,11 +7243,11 @@
                            </object>
                           </void>
                           <void method="add">
-                           <object class="csse230project.Edge" id="Edge230">
+                           <object class="csse230project.Edge" id="Edge232">
                             <void class="csse230project.Edge" method="getField">
                              <string>pathDistance</string>
                              <void method="set">
-                              <object idref="Edge230"/>
+                              <object idref="Edge232"/>
                               <int>662</int>
                              </void>
                             </void>
@@ -7253,11 +7299,11 @@
                       </object>
                      </void>
                      <void method="add">
-                      <object class="csse230project.Edge" id="Edge231">
+                      <object class="csse230project.Edge" id="Edge233">
                        <void class="csse230project.Edge" method="getField">
                         <string>pathDistance</string>
                         <void method="set">
-                         <object idref="Edge231"/>
+                         <object idref="Edge233"/>
                          <int>450</int>
                         </void>
                        </void>
@@ -7276,11 +7322,11 @@
                       </object>
                      </void>
                      <void method="add">
-                      <object class="csse230project.Edge" id="Edge232">
+                      <object class="csse230project.Edge" id="Edge234">
                        <void class="csse230project.Edge" method="getField">
                         <string>pathDistance</string>
                         <void method="set">
-                         <object idref="Edge232"/>
+                         <object idref="Edge234"/>
                          <int>475</int>
                         </void>
                        </void>
@@ -7299,11 +7345,11 @@
                       </object>
                      </void>
                      <void method="add">
-                      <object class="csse230project.Edge" id="Edge233">
+                      <object class="csse230project.Edge" id="Edge235">
                        <void class="csse230project.Edge" method="getField">
                         <string>pathDistance</string>
                         <void method="set">
-                         <object idref="Edge233"/>
+                         <object idref="Edge235"/>
                          <int>486</int>
                         </void>
                        </void>
@@ -7355,11 +7401,11 @@
                  </object>
                 </void>
                 <void method="add">
-                 <object class="csse230project.Edge" id="Edge234">
+                 <object class="csse230project.Edge" id="Edge236">
                   <void class="csse230project.Edge" method="getField">
                    <string>pathDistance</string>
                    <void method="set">
-                    <object idref="Edge234"/>
+                    <object idref="Edge236"/>
                     <int>588</int>
                    </void>
                   </void>
@@ -7378,11 +7424,11 @@
                  </object>
                 </void>
                 <void method="add">
-                 <object class="csse230project.Edge" id="Edge235">
+                 <object class="csse230project.Edge" id="Edge237">
                   <void class="csse230project.Edge" method="getField">
                    <string>pathDistance</string>
                    <void method="set">
-                    <object idref="Edge235"/>
+                    <object idref="Edge237"/>
                     <int>629</int>
                    </void>
                   </void>
@@ -7401,11 +7447,11 @@
                  </object>
                 </void>
                 <void method="add">
-                 <object class="csse230project.Edge" id="Edge236">
+                 <object class="csse230project.Edge" id="Edge238">
                   <void class="csse230project.Edge" method="getField">
                    <string>pathDistance</string>
                    <void method="set">
-                    <object idref="Edge236"/>
+                    <object idref="Edge238"/>
                     <int>652</int>
                    </void>
                   </void>
@@ -7424,11 +7470,11 @@
                  </object>
                 </void>
                 <void method="add">
-                 <object class="csse230project.Edge" id="Edge237">
+                 <object class="csse230project.Edge" id="Edge239">
                   <void class="csse230project.Edge" method="getField">
                    <string>pathDistance</string>
                    <void method="set">
-                    <object idref="Edge237"/>
+                    <object idref="Edge239"/>
                     <int>692</int>
                    </void>
                   </void>
@@ -7523,11 +7569,11 @@
        </object>
       </void>
       <void method="add">
-       <object class="csse230project.Edge" id="Edge238">
+       <object class="csse230project.Edge" id="Edge240">
         <void class="csse230project.Edge" method="getField">
          <string>pathDistance</string>
          <void method="set">
-          <object idref="Edge238"/>
+          <object idref="Edge240"/>
           <int>160</int>
          </void>
         </void>
@@ -7546,11 +7592,11 @@
        </object>
       </void>
       <void method="add">
-       <object class="csse230project.Edge" id="Edge239">
+       <object class="csse230project.Edge" id="Edge241">
         <void class="csse230project.Edge" method="getField">
          <string>pathDistance</string>
          <void method="set">
-          <object idref="Edge239"/>
+          <object idref="Edge241"/>
           <int>629</int>
          </void>
         </void>
