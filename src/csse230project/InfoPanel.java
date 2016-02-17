@@ -68,9 +68,7 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
     protected JRadioButton tripDistanceBox;
     protected JRadioButton tripTimeBox;
 
-    private boolean calcStart = false;
     private boolean calcSelect = true;
-    private int calcWeight;
     protected JTextField calcStartTextField;
     protected JTextField calcGoalTextField;
     protected JList calcAdditionalTextField;
@@ -298,7 +296,7 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		
 //		if(this.calcStart) {
 			System.out.println("entered calcstart");
-			ArrayList<Edge> path = struct.calculateRoute(arr);
+			ArrayList<Edge> path = struct.calculateRoute(arr,this.calcSelect);
 			String[] columnNames = { "City Name", "Time", "Distance" };
 			Object[][] data = new Object[path.size() + 4][3];
 			if(!path.isEmpty()){
@@ -479,7 +477,6 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
         if (getCurrentCard().equals(cr)) {
         	if (this.calcDistanceBox.isSelected()) this.calcSelect = true;
         	if (this.calcTimeBox.isSelected()) this.calcSelect = false;
-        	this.calcStart = true;
         }
 	}
 	
