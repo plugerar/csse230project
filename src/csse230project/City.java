@@ -272,8 +272,11 @@ public class City {
 		Edge next=previous;
 		while(next!=null)
 		{
-			next=previous.getCity1().getPredecessor();
-			previous=null;
+			previous=next;
+			next.getCity2().predecessor=null;
+			next=previous.getCity1().predecessor;
+			
+			
 			
 		}
 	}
