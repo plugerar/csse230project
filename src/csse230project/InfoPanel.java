@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -26,32 +28,31 @@ import javax.swing.table.TableColumn;
 
 
 
-public class InfoPanel extends JPanel implements ActionListener{// implements ActionListener{
+public class InfoPanel extends JPanel implements ActionListener, MouseListener{// implements ActionListener{
 	MapPanel map;
 	
-	private JPanel start;
+	private JPanel panelStart;
     private JPanel cards; //a panel that uses CardLayout
     private JPanel cardPointsOfInterest;
     private JPanel cardCalulcateRoute;
     private JPanel cardTripPlanner;
     private JPanel cardCityDescriptions;
 
-    
+    private JButton start;
     private JButton cityRating;
     private JButton pointsOfInterest;
     private JButton calculateRoute;
     private JButton tripPlanner;
     private JButton cityDescriptions;
 
+    private final static String starting = "start";
+    private final static String cr = "Calculate Route";
+    private final static String poi = "Points Of Interest";
+    private final static String cRate = "City Rating";
+    private final static String tp = "Trip Planner";
+    private final static String cd = "City Descriptions";
 
-    final static String cr = "Calculate Route";
-    final static String poi = "Points Of Interest";
-    final static String cRate = "City Rating";
-    final static String tp = "Trip Planner";
-    final static String cd = "City Descriptions";
-
-    
-    String currentCard;
+    private String currentCard;
 
     //final static String BUTTONPANEL = "Card with JButtons";
     //final static String TEXTPANEL = "Card with JTextField";
@@ -59,11 +60,19 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 	public InfoPanel(MapPanel map) throws Exception {
 		this.map = map;
 		this.setPreferredSize(new Dimension(250, 1000));
-		this.setAlignmentX(LEFT_ALIGNMENT);
-		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		this.setLayout(new FlowLayout());
+		//this.setAlignmentX(LEFT ALIGNMENT);
+		//this.setLayout(new BoxLayout(this, BoxLayout.Y AXIS));
+		//this.setLayout(new FlowLayout());
 		//this.setLayout(new CardLayout());
-		this.setBorder(BorderFactory.createLineBorder(Color.black));
+		//this.setBorder(BorderFactory.createLineBorder(Color.black));
+		
+		panelStart = new JPanel();
+		panelStart.setPreferredSize(new Dimension(250, 1000));
+		panelStart.setAlignmentX(LEFT_ALIGNMENT);
+		panelStart.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		panelStart.setLayout(new FlowLayout());
+		//this.setLayout(new CardLayout());
+		panelStart.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		startWindow();
 		createCards();
@@ -90,7 +99,7 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 //        cards.add(card1, BUTTONPANEL);
 //        cards.add(card2, TEXTPANEL);
         
-//        this.add(comboBoxPane, BorderLayout.PAGE_START);
+//        this.add(comboBoxPane, BorderLayout.PAGE START);
 //        this.add(cards, BorderLayout.CENTER);
 		
 //		this.startWindow();
@@ -105,7 +114,6 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 	
 	public void createHome() throws Exception{
         //JTabbedPane tabbedPane = new JTabbedPane();
-
 		this.cardCalulcateRoute = new JPanel() ;//{
 //            //Make the panel wider than it really needs, so
 //            //the window's wide enough for the tabs to stay
@@ -129,14 +137,13 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 		createTripPlanner(this.cardTripPlanner);
 		createCityDescriptions(this.cardCityDescriptions);
 
-		
+		this.start = new JButton(starting);
         this.calculateRoute = new JButton(cr);
 		this.pointsOfInterest = new JButton(poi);
 		this.cityRating  = new JButton(cRate);
 		this.tripPlanner = new JButton(tp);
 		this.cityDescriptions = new JButton(cd);
 
-		
 		this.calculateRoute.addActionListener(this);
 		this.pointsOfInterest.addActionListener(this);
 		this.cityRating.addActionListener(this);
@@ -164,13 +171,14 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 //		tabbedPane.addTab(cr, cardCalulcateRoute);
 //		tabbedPane.addTab(poi, cardPointsOfInterest);
 //		tabbedPane.addTab(cRate, cardCityRating);
-		
-		this.add(this.calculateRoute);//, BorderLayout.NORTH);
-		this.add(this.pointsOfInterest);//, BorderLayout.WEST);
-		this.add(this.cityRating);//, BorderLayout.EAST);
-		this.add(this.tripPlanner);
-		this.add(this.cityDescriptions);
-		this.add(this.cards);//, BorderLayout.SOUTH);
+		start.addMouseListener(this);
+		this.add(start);
+		panelStart.add(calculateRoute);//, BorderLayout.NORTH);
+		panelStart.add(pointsOfInterest);//, BorderLayout.WEST);
+		panelStart.add(cityRating);//, BorderLayout.EAST);
+		panelStart.add(tripPlanner);
+		panelStart.add(cityDescriptions);
+		panelStart.add(cards);//, BorderLayout.SOUTH);
 		//this.add(tabbedPane, BorderLayout.CENTER);
 	}
 	
@@ -363,6 +371,39 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 	
 	public JPanel getCardPointsOfInterest(){
 		return this.cardPointsOfInterest;
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		this.removeAll();
+		this.revalidate();
+		this.add(panelStart);
+		this.repaint();
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
