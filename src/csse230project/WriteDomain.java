@@ -14,11 +14,11 @@ public class WriteDomain {
 	private static CityStructure map = new CityStructure();
 	
     public static void main(String [] args) throws Exception {
-//    	loadCities();
-//    	loadPOI();
-//    	loadLinks();
-//		
-//        write(map, "usdomain.xml");
+    	loadCities();
+    	loadPOI();
+    	loadLinks();
+		
+        write(map, "usdomain.xml");
         CityStructure test = read("usdomain.xml");
 		System.out.println(test.getCityMap().toString());        
         System.out.println(test.cityInterestToArrayList().toString());
