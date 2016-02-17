@@ -15,7 +15,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -176,7 +175,25 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 	}
 	
 	private void createTripPlanner(JPanel panel) {
-		// TODO Auto-generated method stub
+		System.out.println("trip planner!");
+		panel.removeAll();
+		panel.revalidate();
+		JButton selectCity = new JButton("Select City");
+		this.cityDescriptions.addActionListener(this);
+		
+		this.calculateRoute.setActionCommand(cr);
+		
+		ArrayList<City> arr = MainFrame.mapPanel.getClickedCities();
+		if(!arr.isEmpty()){
+			int lastIndex = arr.size() - 1;
+			City now = MainFrame.mapPanel.getClickedCities().get(lastIndex);
+			
+			if(now != null) {
+				String cityName = now.getName();
+				//////////////////////////////////////////
+				
+			}
+		}
 		
 	}
 
@@ -232,8 +249,8 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 	}
 
 	private void startWindow(){
-		JOptionPane prnt = new JOptionPane();
-		prnt.showMessageDialog(null, "The features of the software");
+//		JOptionPane prnt = new JOptionPane();
+//		prnt.showMessageDialog(null, "The features of the software");
 	}
 	
 	public void createCalculateRoute(JPanel panel) throws Exception{
