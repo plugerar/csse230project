@@ -4,13 +4,10 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -34,13 +31,12 @@ import javax.swing.table.TableColumn;
 
 
 
-public class InfoPanel extends JPanel implements ActionListener, MouseListener{// implements ActionListener{
+public class InfoPanel extends JPanel implements ActionListener {// implements ActionListener{
 	MapPanel map;
 	
 	private MyBoolean booValue = new MyBoolean();
 	private ArrayList<Edge> path = new ArrayList<Edge>();
 	
-	private JPanel panelStart;
     private JPanel cards; //a panel that uses CardLayout
     private JPanel cardPointsOfInterest;
     private JPanel cardCalulcateRoute;
@@ -48,14 +44,12 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
     private JPanel cardTripPlanner;
     private JPanel cardCityDescriptions;
 
-    private JButton start;
     private JButton cityRating;
     private JButton pointsOfInterest;
     private JButton calculateRoute;
     private JButton tripPlanner;
     private JButton cityDescriptions;
 
-    private final static String starting = "start";
     private final static String cr = "Calculate Route";
     private final static String poi = "Points Of Interest";
     private final static String cRate = "City Rating";
@@ -80,8 +74,8 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		this.map = map;
 		this.setPreferredSize(new Dimension(250, 1000));
 
-		formatPanelStart();
 		startWindow();
+		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		this.cards = new JPanel(new CardLayout());
 		create();
 	}
@@ -100,7 +94,6 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		this.cards.getComponent(3).setName(tp);
 		this.cards.getComponent(4).setName(cd);
 
-		this.start.addMouseListener(this);
 		addButtonsToPanels();
 	}
 
@@ -402,15 +395,6 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 	}
 
 	//Making the panel-----------------------------------------------------------------
-	
-	private void formatPanelStart(){
-		this.panelStart = new JPanel();
-		this.panelStart.setPreferredSize(new Dimension(250, 1000));
-		this.panelStart.setAlignmentX(LEFT_ALIGNMENT);
-		this.panelStart.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		this.panelStart.setLayout(new FlowLayout());
-		this.panelStart.setBorder(BorderFactory.createLineBorder(Color.black));
-	}
 		private void makeJPanels(){
 		this.cardCalulcateRoute = new JPanel() ;
 		this.cardPointsOfInterest = new JPanel() ;
@@ -426,7 +410,6 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		createCityDescriptions(this.cardCityDescriptions);
 	}
 	private void makeJButtons(){
-		this.start = new JButton(starting);
         this.calculateRoute = new JButton(cr);
 		this.pointsOfInterest = new JButton(poi);
 		this.cityRating  = new JButton(cRate);
@@ -455,13 +438,12 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		this.cards.add(this.cardCityDescriptions, cd);
 	}
 	private void addButtonsToPanels(){
-		this.add(this.start);
-		this.panelStart.add(this.calculateRoute);
-		this.panelStart.add(this.pointsOfInterest);
-		this.panelStart.add(this.cityRating);
-		this.panelStart.add(this.tripPlanner);
-		this.panelStart.add(this.cityDescriptions);
-		this.panelStart.add(this.cards);
+		this.add(this.calculateRoute);
+		this.add(this.pointsOfInterest);
+		this.add(this.cityRating);
+		this.add(this.tripPlanner);
+		this.add(this.cityDescriptions);
+		this.add(this.cards);
 	}
 	
 	//Getters and Setters and Actions and Mouse Listeners---------------------------------------------
@@ -536,34 +518,6 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 	
 	public JPanel getCardCityDescriptions(){
 		return this.cardCityDescriptions;
-	}
-	
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		this.removeAll();
-		this.revalidate();
-		this.add(this.panelStart);
-		this.repaint();
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// unnecessary		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// unnecessary		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// unnecessary		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// unnecessary		
 	}
 
 }
