@@ -320,9 +320,6 @@ public class InfoPanel extends JPanel implements ActionListener {
 				}
 				data[path.size()][0] = edge.getCity2().getName();
 
-				totalDistance += edge.getDistance();
-				totalTime += edge.getTime();
-
 				data[path.size() + 2][0] = "Total";
 				data[path.size() + 2][1] = totalTime;
 				data[path.size() + 2][2] = totalDistance;
