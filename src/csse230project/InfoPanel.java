@@ -169,11 +169,11 @@ public class InfoPanel extends JPanel implements ActionListener {
 					table.setRowHeight(table.getRowHeight() + 5);
 					JScrollPane scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
 							ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-					scroll.setPreferredSize(new Dimension(200, 700));
+					scroll.setPreferredSize(new Dimension(200, 600));
 					scroll.setEnabled(false);
 					tabbedPane.add(scroll, ((Integer) i).toString());
 				}
-				panel.add(tabbedPane, BorderLayout.SOUTH);
+				panel.add(tabbedPane, BorderLayout.CENTER);
 
 			}
 		}
