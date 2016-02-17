@@ -88,11 +88,15 @@ public class MapPanel extends JComponent implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
         for (City c : this.getMap().getCityInterestList()) {
             if (c.contains(e.getX(),e.getY())) {
-            	this.clickedCities.add(c);        		
+        		if (!this.clickedCities.contains(c)) {            	
+        			this.clickedCities.add(c);   
+        		}
             	if(this.prevCard!=null && !this.prevCard.equals(MainFrame.infoPanel.getCurrentCard())){
             		City last = this.clickedCities.get(this.clickedCities.size()-1);
             		this.clickedCities = new ArrayList<City>();
-            		this.clickedCities.add(last);
+            		if (!this.clickedCities.contains(last)) {
+            			this.clickedCities.add(last);
+            		}
             	}
             	if(MainFrame.infoPanel.getCurrentCard() != null) {
 	            	if(MainFrame.infoPanel.getCurrentCard().equals("Points Of Interest")){
