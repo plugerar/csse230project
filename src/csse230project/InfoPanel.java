@@ -35,6 +35,8 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
     final static String cr = "calculateRoute";
     final static String poi = "pointsOfInterest";
     final static String cRate = "cityRating";
+    
+    String currentCard;
 
     //final static String BUTTONPANEL = "Card with JButtons";
     //final static String TEXTPANEL = "Card with JTextField";
@@ -124,11 +126,11 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 //		tabbedPane.addTab(cr, cardCalulcateRoute);
 //		tabbedPane.addTab(poi, cardPointsOfInterest);
 //		tabbedPane.addTab(cRate, cardCityRating);
-
-		this.add(this.calculateRoute, BorderLayout.NORTH);
-		this.add(this.pointsOfInterest, BorderLayout.WEST);
-		this.add(this.cityRating, BorderLayout.EAST);
-		this.add(this.cards, BorderLayout.SOUTH);
+		
+		this.add(calculateRoute, BorderLayout.NORTH);
+		this.add(pointsOfInterest, BorderLayout.WEST);
+		this.add(cityRating, BorderLayout.EAST);
+		this.add(cards, BorderLayout.SOUTH);
 		//this.add(tabbedPane, BorderLayout.CENTER);
 	}
 	
@@ -173,10 +175,15 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 		
 	}
 	public void createPointsOfInterest(JPanel panel) throws Exception{// throws Exception{
+		System.out.println("cresatePonitsofInterest");
+		panel.removeAll();
 		CityStructure struct = WriteDomain.read("usdomain.xml");
-		City now = MainFrame.mapPanel.getCurrentCity();
+		ArrayList<City> arr = MainFrame.mapPanel.getClickedCities();
+		if(!arr.isEmpty()){
+			int lastIndex = arr.size() - 1;
+			City now = MainFrame.mapPanel.getClickedCities().get(lastIndex);
 		
-		if(now != null){
+		//if(now != null){
 			String name = now.getName();
 			System.out.println(name);
 			
@@ -184,13 +191,14 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 			//System.out.println(pointer);
 			JLabel label;
 			System.out.println(pointer.getPointsOfInterest().size());
-		//Iterator<Attraction> i = pointer.getPointsOfInterest().iterator();
-		for(int index = 0; index < 1;/*pointer.getPointsOfInterest().size();*/ index++){
+		Iterator<Attraction> i = pointer.getPointsOfInterest().iterator();
+		for(int index = 0; index < pointer.getPointsOfInterest().size(); index++){
 			System.out.println("here");
-			//Attraction a = i.next();
-			label = new JLabel(index + ". "/* + a.getName() + a.getInterestLevel()*/);
+			Attraction a = i.next();
+			label = new JLabel(index + 1 + ". " + a.getName() + a.getInterestLevel());
 			panel.add(label);
 		}
+		panel.repaint();
 		}
 	}
 	
@@ -245,9 +253,20 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		CardLayout cl = (CardLayout) this.cards.getLayout();
-        cl.show(this.cards, arg0.getActionCommand());
+		CardLayout cl = (CardLayout) cards.getLayout();
+		currentCard = arg0.getActionCommand();
+        cl.show(cards, currentCard);
 	}
+	
+	public String getCurrentCard(){
+		return currentCard;
+	}
+
+//	@Override
+//	public void actionPerformed(ActionEvent e) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 }
 //=======
 //package csse230project;
