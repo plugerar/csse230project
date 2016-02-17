@@ -74,9 +74,6 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
     protected JList calcAdditionalTextField;
     protected JRadioButton calcDistanceBox;
     protected JRadioButton calcTimeBox;
-    
-    //final static String BUTTONPANEL = "Card with JButtons";
-    //final static String TEXTPANEL = "Card with JTextField";
 	
 	public InfoPanel(MapPanel map) throws Exception {
 		this.map = map;
@@ -90,7 +87,7 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 	
 	public void create() throws Exception{
 		makeJPanels();
-		cardCityRating.setLayout(new BoxLayout(cardCityRating, BoxLayout.Y_AXIS));
+		this.cardCityRating.setLayout(new BoxLayout(this.cardCityRating, BoxLayout.Y_AXIS));
 		createCards();
 		makeJButtons();
 		addActionListeners();
@@ -102,10 +99,16 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		this.cards.getComponent(3).setName(tp);
 		this.cards.getComponent(4).setName(cd);
 
-		start.addMouseListener(this);
+		this.start.addMouseListener(this);
 		addButtonsToPanels();
 	}
+
+	private void startWindow(){
+//		JOptionPane prnt = new JOptionPane();
+//		prnt.showMessageDialog(null, "The features of the software");
+	}
 	
+	// Describing the cards-----------------------------------------------------------------
 	
 	public void setupTripPlanner(JPanel panel) {
         this.tripDistanceBox = new JRadioButton("Distance");
@@ -158,15 +161,17 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 					}
 
 					JTable table = new JTable(data, columnNames);
-					((DefaultTableCellRenderer) table.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.LEFT);
+					((DefaultTableCellRenderer) table.getTableHeader().getDefaultRenderer())
+							.setHorizontalAlignment(SwingConstants.LEFT);
 					table.setEnabled(false);
 					TableColumn column = null;
 					column = table.getColumnModel().getColumn(0);
 					column.setPreferredWidth(200);
-					table.getTableHeader().setFont(new Font("Arial", Font.PLAIN, 18));	
-					table.setFont(new Font("Arial", Font.PLAIN, 16));					
-					table.setRowHeight(table.getRowHeight()+5);
-					JScrollPane scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+					table.getTableHeader().setFont(new Font("Arial", Font.PLAIN, 18));
+					table.setFont(new Font("Arial", Font.PLAIN, 16));
+					table.setRowHeight(table.getRowHeight() + 5);
+					JScrollPane scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+							ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 					scroll.setPreferredSize(new Dimension(200, 700));
 					scroll.setEnabled(false);
 					tabbedPane.add(scroll, ((Integer) i).toString());
@@ -231,11 +236,6 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		panel.add(scroll, BorderLayout.CENTER);
 	}
 
-	private void startWindow(){
-//		JOptionPane prnt = new JOptionPane();
-//		prnt.showMessageDialog(null, "The features of the software");
-	}
-	
 	public void setupCalculateRoute(JPanel panel) {
         this.calcDistanceBox = new JRadioButton("Distance");
         this.calcDistanceBox.setActionCommand("Distance");
@@ -246,6 +246,13 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
         group.add(this.calcTimeBox);
         this.calcDistanceBox.addActionListener(this);
         this.calcTimeBox.addActionListener(this);        
+        if (this.calcSelect) {
+        	this.calcDistanceBox.setSelected(true);
+        	this.calcTimeBox.setSelected(false);
+        } else {
+        	this.calcTimeBox.setSelected(true);
+        	this.calcDistanceBox.setSelected(false);
+        }
         JPanel radioPanel = new JPanel(new GridLayout(0, 1));
         radioPanel.add(this.calcDistanceBox);
         radioPanel.add(this.calcTimeBox);
@@ -264,88 +271,86 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
         scrollPane.setViewportView(this.calcAdditionalTextField);
         scrollPane.setPreferredSize(new Dimension(10,50));
         scrollPane.setEnabled(false);
-//        this.calcAdditionalTextField.setEnabled(false);
-//        this.calcAdditionalTextField.addActionListener(this);
         JPanel tempPanel = new JPanel(new GridLayout(3,1));
     	tempPanel.add(this.calcStartTextField);
-    	tempPanel.add(this.calcGoalTextField);
-//        JPanel additionalPanel = new JPanel(new GridLayout(1,1));    	
+    	tempPanel.add(this.calcGoalTextField);  	
     	tempPanel.add(scrollPane);
     	panel.add(radioPanel,BorderLayout.NORTH);
         panel.add(tempPanel,BorderLayout.NORTH);
-//        panel.add(additionalPanel,BorderLayout.NORTH);
 	}
 	
-	public void createCalculateRoute(JPanel panel) throws Exception{
+	public void createCalculateRoute(JPanel panel) throws Exception {
 		panel.removeAll();
 		panel.revalidate();
 		setupCalculateRoute(panel);
-		System.out.println("enterd calcRoute");
 		CityStructure struct = WriteDomain.read("usdomain.xml");
 		DefaultListModel listModel = new DefaultListModel();
-		ArrayList<City> arr = MainFrame.mapPanel.getClickedCities();		
+		ArrayList<City> arr = MainFrame.mapPanel.getClickedCities();
 		if (!arr.isEmpty()) {
-		int lastIndex = arr.size() - 1;
-		this.calcStartTextField.setText("Start: " + arr.get(0).getName());
-		if (!arr.get(0).equals(arr.get(lastIndex))) this.calcGoalTextField.setText("Goal: " + arr.get(lastIndex).getName());
-		for (int i = 1; i < lastIndex; i++) {
-			listModel.addElement(arr.get(i).getName());
-//			this.calcAdditionalTextField.setText(this.calcAdditionalTextField.getText().concat(arr.get(i).getName() + "\n"));
-		}
-		this.calcAdditionalTextField.setModel(listModel);
-		
-//		if(this.calcStart) {
-			System.out.println("entered calcstart");
-			ArrayList<Edge> path = struct.calculateRoute(arr,this.calcSelect);
+			int lastIndex = arr.size() - 1;
+			this.calcStartTextField.setText("Start: " + arr.get(0).getName());
+			if (!arr.get(0).equals(arr.get(lastIndex)))
+				this.calcGoalTextField.setText("Goal: " + arr.get(lastIndex).getName());
+			for (int i = 1; i < lastIndex; i++) {
+				listModel.addElement(arr.get(i).getName());
+			}
+			this.calcAdditionalTextField.setModel(listModel);
+
+			ArrayList<Edge> path = struct.calculateRoute(arr, this.calcSelect);
 			String[] columnNames = { "City Name", "Time", "Distance" };
 			Object[][] data = new Object[path.size() + 4][3];
-			if(!path.isEmpty()){
+			if (!path.isEmpty()) {
 				Iterator<Edge> i = path.iterator();
-				Edge edge = new Edge();
+				Edge edge = i.next();
 				int totalDistance = 0;
 				double totalTime = 0;
-				for(int index = 0; index < path.size(); index++){
+				data[0][0] = edge.getCity1().getName();
+				data[0][1] = 0;
+				data[0][2] = 0;
+				data[1][1] = edge.getTime();
+				data[1][2] = edge.getDistance();
+				totalDistance += edge.getDistance();
+				totalTime += edge.getTime();
+				for (int index = 1; index < path.size(); index++) {
 					edge = i.next();
 					data[index][0] = edge.getCity1().getName();
-					data[index][1] = edge.getTime();
-					data[index][2] = edge.getDistance();
+					data[index + 1][1] = edge.getTime();
+					data[index + 1][2] = edge.getDistance();
 					totalDistance += edge.getDistance();
 					totalTime += edge.getTime();
-					
+
 				}
 				data[path.size()][0] = edge.getCity2().getName();
-				data[path.size()][1] = edge.getTime();
-				data[path.size()][2] = edge.getDistance();
-				
+
+				totalDistance += edge.getDistance();
+				totalTime += edge.getTime();
+
 				data[path.size() + 2][0] = "Total";
 				data[path.size() + 2][1] = totalTime;
 				data[path.size() + 2][2] = totalDistance;
-				
+
 				JTable table = new JTable(data, columnNames);
 				table.setEnabled(false);
-//				panel.setLayout(new BorderLayout());
 				TableColumn column = null;
 				column = table.getColumnModel().getColumn(0);
 				column.setPreferredWidth(100);
 				column = table.getColumnModel().getColumn(1);
 				column.setPreferredWidth(50);
-				table.getTableHeader().setFont(new Font("Arial", Font.PLAIN, 16));	
-				table.setFont(new Font("Arial", Font.PLAIN, 16));					
-				table.setRowHeight(table.getRowHeight()+5);
-				JScrollPane scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-				scroll.setPreferredSize(new Dimension(240,700));
+				table.getTableHeader().setFont(new Font("Arial", Font.PLAIN, 16));
+				table.setFont(new Font("Arial", Font.PLAIN, 16));
+				table.setRowHeight(table.getRowHeight() + 5);
+				JScrollPane scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+						ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+				scroll.setPreferredSize(new Dimension(240, 700));
 				scroll.setEnabled(false);
-//				panel.add(table.getTableHeader(), BorderLayout.PAGE_START);
-				panel.setPreferredSize(new Dimension(240,1000));
+				panel.setPreferredSize(new Dimension(240, 1000));
 				panel.add(scroll, BorderLayout.SOUTH);
-				
-			}			
-//		}
-		panel.repaint();
+
+			}
 		}
 		panel.repaint();
 	}
-	
+
 	
 	public void createPointsOfInterest(JPanel panel) throws Exception{// throws Exception{
 		System.out.println("cresatePonitsofInterest");
@@ -392,17 +397,18 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		}
 		panel.repaint();
 	}
+
+	//Making the panel-----------------------------------------------------------------
 	
 	private void formatPanelStart(){
-		panelStart = new JPanel();
-		panelStart.setPreferredSize(new Dimension(250, 1000));
-		panelStart.setAlignmentX(LEFT_ALIGNMENT);
-		panelStart.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		panelStart.setLayout(new FlowLayout());
-		panelStart.setBorder(BorderFactory.createLineBorder(Color.black));
+		this.panelStart = new JPanel();
+		this.panelStart.setPreferredSize(new Dimension(250, 1000));
+		this.panelStart.setAlignmentX(LEFT_ALIGNMENT);
+		this.panelStart.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		this.panelStart.setLayout(new FlowLayout());
+		this.panelStart.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
-	
-	private void makeJPanels(){
+		private void makeJPanels(){
 		this.cardCalulcateRoute = new JPanel() ;
 		this.cardPointsOfInterest = new JPanel() ;
 		this.cardCityRating = new JPanel();
@@ -412,7 +418,7 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 	private void createCards() throws Exception{		
 		createCalculateRoute(this.cardCalulcateRoute);
 		createPointsOfInterest(this.cardPointsOfInterest);
-		createCityRatings(cardCityRating);
+		createCityRatings(this.cardCityRating);
 		createTripPlanner(this.cardTripPlanner);
 		createCityDescriptions(this.cardCityDescriptions);
 	}
@@ -446,23 +452,33 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		this.cards.add(this.cardCityDescriptions, cd);
 	}
 	private void addButtonsToPanels(){
-		this.add(start);
-		panelStart.add(calculateRoute);
-		panelStart.add(pointsOfInterest);
-		panelStart.add(cityRating);
-		panelStart.add(tripPlanner);
-		panelStart.add(cityDescriptions);
-		panelStart.add(cards);
+		this.add(this.start);
+		this.panelStart.add(this.calculateRoute);
+		this.panelStart.add(this.pointsOfInterest);
+		this.panelStart.add(this.cityRating);
+		this.panelStart.add(this.tripPlanner);
+		this.panelStart.add(this.cityDescriptions);
+		this.panelStart.add(this.cards);
 	}
 	
 	//Getters and Setters and Actions and Mouse Listeners---------------------------------------------
 	
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		booValue.setBoo(true);
+	public void actionPerformed(ActionEvent ae) {
+		this.booValue.setBoo(true);
 		CardLayout cl = (CardLayout) this.cards.getLayout();
-		this.currentCard = arg0.getActionCommand();
+		this.currentCard = ae.getActionCommand();
         cl.show(this.cards, this.currentCard);
+    	System.out.println("there");
+        
+        if (ae.getSource().equals(this.calculateRoute)) {
+        	MainFrame.mapPanel.getClickedCities().clear();
+        	try {
+				createCalculateRoute(this.cardCalulcateRoute);
+			} catch (Exception exception) { 
+				// will never have a problem
+			}
+        }
         
         if (getCurrentCard().equals(tp)) {
         	if (this.tripDistanceBox.isSelected()) this.tripSelect = true;
@@ -470,7 +486,7 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
         	try {
         		this.tripWeight = Integer.parseInt(this.tripTextField.getText());
         	} catch (NumberFormatException e) {
-        		System.out.println("you suck at strings");
+				// we don't care about the problems
         	}
         }
 
@@ -481,11 +497,11 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 	}
 	
 	public MyBoolean getBooValue(){
-		return booValue;
+		return this.booValue;
 	}
 	
 	public void setBooValue(boolean bo){
-		booValue.setBoo(bo);
+		this.booValue.setBoo(bo);
 	}
 	
 	public String getCurrentCard(){
@@ -525,26 +541,22 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		// unnecessary		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		// unnecessary		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		// unnecessary		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		// unnecessary		
 	}
 
 }
