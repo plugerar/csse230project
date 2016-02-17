@@ -13,13 +13,14 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 
 
@@ -177,29 +178,45 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 	public void createPointsOfInterest(JPanel panel) throws Exception{// throws Exception{
 		System.out.println("cresatePonitsofInterest");
 		panel.removeAll();
+		panel.revalidate();
 		CityStructure struct = WriteDomain.read("usdomain.xml");
 		ArrayList<City> arr = MainFrame.mapPanel.getClickedCities();
 		if(!arr.isEmpty()){
 			int lastIndex = arr.size() - 1;
 			City now = MainFrame.mapPanel.getClickedCities().get(lastIndex);
 		
-		//if(now != null){
+		if(now != null){
 			String name = now.getName();
 			System.out.println(name);
 			
 			City pointer = struct.getCity(name);
-			//System.out.println(pointer);
-			JLabel label;
-			System.out.println(pointer.getPointsOfInterest().size());
-		Iterator<Attraction> i = pointer.getPointsOfInterest().iterator();
-		for(int index = 0; index < pointer.getPointsOfInterest().size(); index++){
-			System.out.println("here");
-			Attraction a = i.next();
-			label = new JLabel(index + 1 + ". " + a.getName() + a.getInterestLevel());
-			panel.add(label);
+			String[] columnNames = {"Rating","POI"};
+			Object[][] data = new Object[pointer.getPointsOfInterest().size()][2];
+			Iterator<Attraction> i = pointer.getPointsOfInterest().iterator();
+
+			for (int index = 0; index < pointer.getPointsOfInterest().size(); index++) {
+				Attraction a = i.next();
+				data[index][0] = a.getInterestLevel();
+				data[index][1] = a.getName();
+			}
+			JTable table = new JTable(data, columnNames);
+			((DefaultTableCellRenderer)table.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.LEFT);
+			table.setEnabled(false);
+			panel.setLayout(new BorderLayout());
+			TableColumn column = null;
+			column = table.getColumnModel().getColumn(0);
+			column.setPreferredWidth(60);
+			column = table.getColumnModel().getColumn(1);
+			column.setPreferredWidth(250);
+			JScrollPane scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+			scroll.setPreferredSize(new Dimension(200,200));
+			scroll.setEnabled(false);
+			table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+			panel.add(table.getTableHeader(), BorderLayout.PAGE_START);
+			panel.add(scroll, BorderLayout.CENTER);
+		}
 		}
 		panel.repaint();
-		}
 	}
 	
 //	private void addButtons(){
