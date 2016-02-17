@@ -30,6 +30,7 @@ import javax.swing.table.TableColumn;
 public class InfoPanel extends JPanel implements ActionListener{// implements ActionListener{
 	MapPanel map;
 	
+	private JPanel start;
     private JPanel cards; //a panel that uses CardLayout
     private JPanel cardPointsOfInterest;
     private JPanel cardCalulcateRoute;
