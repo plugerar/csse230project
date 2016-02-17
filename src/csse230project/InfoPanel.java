@@ -131,7 +131,6 @@ public class InfoPanel extends JPanel implements ActionListener {
 	}
 	
 	public void createTripPlanner(JPanel panel) {
-		System.out.println("create trip planner");
 		panel.removeAll();
 		panel.revalidate();
 		panel.setLayout(new BorderLayout());
@@ -182,7 +181,6 @@ public class InfoPanel extends JPanel implements ActionListener {
 	}
 
 	public void createCityDescriptions(JPanel panel) {
-		System.out.println("create city descriptions");
 		panel.removeAll();
 		panel.revalidate();
 		ArrayList<City> arr = MainFrame.mapPanel.getClickedCities();
@@ -349,8 +347,7 @@ public class InfoPanel extends JPanel implements ActionListener {
 	}
 
 	
-	public void createPointsOfInterest(JPanel panel) throws Exception{// throws Exception{
-		System.out.println("cresatePonitsofInterest");
+	public void createPointsOfInterest(JPanel panel) throws Exception{
 		panel.removeAll();
 		panel.revalidate();
 		ArrayList<City> arr = MainFrame.mapPanel.getClickedCities();
@@ -360,7 +357,6 @@ public class InfoPanel extends JPanel implements ActionListener {
 		
 		if(now != null){
 			String name = now.getName();
-			System.out.println(name);
 			
 			City pointer = MainFrame.struct.getCity(name);
 			String[] columnNames = {"Rating","POI"};
@@ -459,7 +455,6 @@ public class InfoPanel extends JPanel implements ActionListener {
 		CardLayout cl = (CardLayout) this.cards.getLayout();
 		this.currentCard = ae.getActionCommand();
         cl.show(this.cards, this.currentCard);
-    	System.out.println("there");
         
         if (ae.getSource().equals(this.calculateRoute)) {
         	MainFrame.mapPanel.getClickedCities().clear();

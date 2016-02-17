@@ -123,16 +123,13 @@ public class MapPanel extends JComponent implements MouseListener{
 	            	} else if(MainFrame.infoPanel.getCurrentCard().equals("City Descriptions")){
 	            		this.prevCard = "City Descriptions";
 						try {
-							System.out.println(MainFrame.infoPanel.getCurrentCard());
 							MainFrame.infoPanel.createCityDescriptions(MainFrame.infoPanel.getCardCityDescriptions());
 						} catch (Exception e1) {
 							// we don't care if it breaks	
 						}
 
-	                   System.out.println("mouse clicked on " + c.getName());
 	            	} else if(MainFrame.infoPanel.getCurrentCard().equals("Trip Planner")){
 						try {
-							System.out.println(MainFrame.infoPanel.getCurrentCard());
 							MainFrame.infoPanel.createTripPlanner(MainFrame.infoPanel.getCardTripPlanner());
 						} catch (Exception e1) {
 							// we don't care if it breaks	
