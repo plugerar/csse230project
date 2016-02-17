@@ -80,6 +80,10 @@ public class MapPanel extends JComponent implements MouseListener{
 		this.currentCity = c;
 	}
 	
+	public void setClickedCities(ArrayList<City> cities){
+		clickedCities = cities;
+	}
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
         for (City c : this.getMap().getCityInterestList()) {
@@ -97,13 +101,11 @@ public class MapPanel extends JComponent implements MouseListener{
             	//else if(MainFrame.infoPanel.getCurrentCard().equals("calculateRoute")){
             		CityStructure struct;
 					try {
-						struct = WriteDomain.read("usdomain.xml");
-	            		struct.calculateRoute(clickedCities);
+						MainFrame.infoPanel.createCalculateRoute(MainFrame.infoPanel.getCardCalulcateRoute());
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-            		clickedCities.clear();
             	//}
                    System.out.println("mouse clicked on " + c.getName());
             }

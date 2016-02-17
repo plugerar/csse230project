@@ -13,6 +13,7 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -29,6 +30,7 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 	MapPanel map;
     JPanel cards; //a panel that uses CardLayout
     JPanel cardPointsOfInterest;
+    JPanel cardCalulcateRoute;
     private JButton cityRating;
     private JButton pointsOfInterest;
     private JButton calculateRoute;
@@ -92,7 +94,7 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 	public void createHome() throws Exception{
         JTabbedPane tabbedPane = new JTabbedPane();
 
-		JPanel cardCalulcateRoute =new JPanel() ;//{
+		cardCalulcateRoute =new JPanel() ;//{
 //            //Make the panel wider than it really needs, so
 //            //the window's wide enough for the tabs to stay
 //            //in one row.
@@ -172,8 +174,27 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 		prnt.showMessageDialog(null, "The features of the software");
 	}
 	
-	public void createCalculateRoute(JPanel panel){
-		
+	public void createCalculateRoute(JPanel panel) throws Exception{
+		panel.removeAll();
+		panel.revalidate();
+		System.out.println("enterd calcRoute");
+		CityStructure struct = WriteDomain.read("usdomain.xml");
+		ArrayList<Edge> path = struct.calculateRoute(MainFrame.mapPanel.getClickedCities());
+		if(!path.isEmpty()){
+			Iterator<Edge> i = path.iterator();
+			for(int index = 0; index < path.size(); index++){
+				System.out.println("enterd calcRoute for loop");
+				Edge edge = i.next();
+				JLabel cityName = new JLabel(edge.getCity1().getName());
+				JLabel distance = new JLabel(((Integer)edge.getDistance()).toString());
+				JLabel time = new JLabel(((Double)edge.getTime()).toString());
+				panel.add(cityName);
+				panel.add(distance);
+				panel.add(time);
+			}
+			panel.repaint();
+			MainFrame.mapPanel.setClickedCities(new ArrayList<City>());
+		}
 	}
 	public void createPointsOfInterest(JPanel panel) throws Exception{// throws Exception{
 		System.out.println("cresatePonitsofInterest");
@@ -217,6 +238,8 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 		}
 		}
 		panel.repaint();
+		//MainFrame.mapPanel.setClickedCities(new ArrayList<City>());
+
 	}
 	
 //	private void addButtons(){
@@ -277,6 +300,10 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 	
 	public String getCurrentCard(){
 		return currentCard;
+	}
+	
+	public JPanel getCardCalulcateRoute(){
+		return cardCalulcateRoute;
 	}
 
 //	@Override
