@@ -20,6 +20,7 @@ public class MapPanel extends JComponent implements MouseListener{
 	City currentCity = null;
 	InfoPanel infoPanel;
 	ArrayList<City> clickedCities;
+	String prevCard;
 	
 	public MapPanel(){
 		this.setPreferredSize(new Dimension(750, 1000));
@@ -49,27 +50,25 @@ public class MapPanel extends JComponent implements MouseListener{
 			City city = cityPlace.next().getValue();
 			Ellipse2D.Double cityShape = new Ellipse2D.Double(city.getXCoord(), city.getYCoord(), citySize, citySize);
 			Iterator<Edge> cityNeighbours = city.getNeighbors().iterator();
-			drawEdges();
-			while(cityNeighbours.hasNext()){
-				Edge edge = cityNeighbours.next();
-//				double xsquare = Math.abs((Math.pow((edge.getCity1().getXCoord())- edge.getCity2().getXCoord(), 2)));
-//				double ysquare = Math.abs((Math.pow((edge.getCity1().getYCoord())- edge.getCity2().getYCoord(), 2)));
-//				double distance = Math.sqrt(xsquare + ysquare);
-				Point2D.Double city1point = new Point2D.Double(edge.getCity1().getXCoord() + citySize/2, 
-						edge.getCity1().getYCoord() + citySize/2);
-				Point2D.Double city2point = new Point2D.Double(edge.getCity2().getXCoord() + citySize/2, 
-						edge.getCity2().getYCoord() + citySize/2);
-				Line2D.Double connecter = new Line2D.Double(city1point, city2point);
-				g2.draw(connecter);
-			}
-			
+			drawEdges(g2, cityNeighbours, citySize);
 			g2.draw(cityShape);
 			g2.fill(cityShape);
 		}
 	}
 	
-	public void drawEdges(){
-		
+	public void drawEdges(Graphics2D g2, Iterator<Edge> cityNeighbours, double citySize){
+		while(cityNeighbours.hasNext()){
+			Edge edge = cityNeighbours.next();
+//			double xsquare = Math.abs((Math.pow((edge.getCity1().getXCoord())- edge.getCity2().getXCoord(), 2)));
+//			double ysquare = Math.abs((Math.pow((edge.getCity1().getYCoord())- edge.getCity2().getYCoord(), 2)));
+//			double distance = Math.sqrt(xsquare + ysquare);
+			Point2D.Double city1point = new Point2D.Double(edge.getCity1().getXCoord() + citySize/2, 
+					edge.getCity1().getYCoord() + citySize/2);
+			Point2D.Double city2point = new Point2D.Double(edge.getCity2().getXCoord() + citySize/2, 
+					edge.getCity2().getYCoord() + citySize/2);
+			Line2D.Double connecter = new Line2D.Double(city1point, city2point);
+			g2.draw(connecter);
+		}
 	}
 	
 	public City getCurrentCity(){
@@ -93,41 +92,39 @@ public class MapPanel extends JComponent implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
         for (City c : this.getMap().getCityInterestList()) {
             if (c.contains(e.getX(),e.getY())) {
-            	this.clickedCities.add(c);
-            	//this.setCurrentCity(c);
-            	if(MainFrame.infoPanel.getBooValue().isBoo()){
+            	this.clickedCities.add(c);        		
+            	if(prevCard!=null && !prevCard.equals(MainFrame.infoPanel.getCurrentCard())){
+            		City last = clickedCities.get(clickedCities.size()-1);
             		clickedCities = new ArrayList<City>();
-            		MainFrame.infoPanel.setBooValue(false);
+            		clickedCities.add(last);
             	}
             	if(MainFrame.infoPanel.getCurrentCard() != null) {
             		System.out.println("here");
 	            	if(MainFrame.infoPanel.getCurrentCard().equals("Points Of Interest")){
+	            		prevCard = "Points Of Interest";
 		            	try {
 							MainFrame.infoPanel.createPointsOfInterest(MainFrame.infoPanel.getCardPointsOfInterest());
 						} catch (Exception e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 	            	} else if(MainFrame.infoPanel.getCurrentCard().equals("Calculate Route")){
-	            		CityStructure struct;
+	            		prevCard = "Calculate Route";
 						try {
 							MainFrame.infoPanel.createCalculateRoute(MainFrame.infoPanel.getCardCalulcateRoute());
 						} catch (Exception e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 	            	} else if(MainFrame.infoPanel.getCurrentCard().equals("City Descriptions")){
+	            		prevCard = "City Descriptions";
 						try {
 							System.out.println(MainFrame.infoPanel.getCurrentCard());
 							MainFrame.infoPanel.createCityDescriptions(MainFrame.infoPanel.getCardCalulcateRoute());
 						} catch (Exception e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 
 	                   System.out.println("mouse clicked on " + c.getName());
-	            	}
-	            	
+	            	}	            	
             	}
             }
      }
