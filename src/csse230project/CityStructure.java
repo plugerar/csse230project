@@ -127,7 +127,6 @@ public class CityStructure {
 			tempArray.addAll(tempArray.size(), temp);
 			temp.get(temp.size()-1).getCity2().clearPredecessors();
 		}
-		
 		return tempArray;
 	}
 	public ArrayList<Edge> calculateRouteHelper(City start,City end,boolean distanceFlag)
