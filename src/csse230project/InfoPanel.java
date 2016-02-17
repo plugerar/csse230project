@@ -17,8 +17,10 @@ import java.util.Iterator;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -70,7 +72,7 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
     private int calcWeight;
     protected JTextField calcStartTextField;
     protected JTextField calcGoalTextField;
-    protected JTextField calcAdditionalTextField;
+    protected JList calcAdditionalTextField;
     protected JRadioButton calcDistanceBox;
     protected JRadioButton calcTimeBox;
     
@@ -344,23 +346,31 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
         JPanel radioPanel = new JPanel(new GridLayout(0, 1));
         radioPanel.add(this.calcDistanceBox);
         radioPanel.add(this.calcTimeBox);
-        
+
+		Font field = new Font("Arial", Font.BOLD, 12);	
         this.calcStartTextField = new JTextField(10);
-        this.calcStartTextField.setEnabled(false);
-        this.calcStartTextField.addActionListener(this);        
+        this.calcStartTextField.setFont(field);
+        this.calcStartTextField.setEditable(false);       
+        this.calcStartTextField.setBackground(Color.WHITE);
         this.calcGoalTextField = new JTextField(10);
-        this.calcGoalTextField.setEnabled(false);
-        this.calcGoalTextField.addActionListener(this);  
-        this.calcAdditionalTextField = new JTextField(10);
-        this.calcAdditionalTextField.setEnabled(false);
-        this.calcAdditionalTextField.addActionListener(this);
+        this.calcGoalTextField.setFont(field);
+        this.calcGoalTextField.setEditable(false);
+        this.calcGoalTextField.setBackground(Color.WHITE);
+        this.calcAdditionalTextField = new JList();
+        JScrollPane scrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setViewportView(this.calcAdditionalTextField);
+        scrollPane.setPreferredSize(new Dimension(10,50));
+        scrollPane.setEnabled(false);
+//        this.calcAdditionalTextField.setEnabled(false);
+//        this.calcAdditionalTextField.addActionListener(this);
         JPanel tempPanel = new JPanel(new GridLayout(3,1));
     	tempPanel.add(this.calcStartTextField);
     	tempPanel.add(this.calcGoalTextField);
-    	tempPanel.add(this.calcAdditionalTextField);
-    	
+//        JPanel additionalPanel = new JPanel(new GridLayout(1,1));    	
+    	tempPanel.add(scrollPane);
     	panel.add(radioPanel,BorderLayout.NORTH);
         panel.add(tempPanel,BorderLayout.NORTH);
+//        panel.add(additionalPanel,BorderLayout.NORTH);
 	}
 	
 	public void createCalculateRoute(JPanel panel) throws Exception{
@@ -369,29 +379,45 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		setupCalculateRoute(panel);
 		System.out.println("enterd calcRoute");
 		CityStructure struct = WriteDomain.read("usdomain.xml");
+		DefaultListModel listModel = new DefaultListModel();
 		ArrayList<City> arr = MainFrame.mapPanel.getClickedCities();		
 		if (!arr.isEmpty()) {
 		int lastIndex = arr.size() - 1;
-		this.calcStartTextField.setText(arr.get(0).getName());
-		if (!arr.get(0).equals(arr.get(lastIndex))) this.calcGoalTextField.setText(arr.get(lastIndex).getName());
+		this.calcStartTextField.setText("Start: " + arr.get(0).getName());
+		if (!arr.get(0).equals(arr.get(lastIndex))) this.calcGoalTextField.setText("Goal: " + arr.get(lastIndex).getName());
 		for (int i = 1; i < lastIndex; i++) {
-			this.calcAdditionalTextField.setText(this.calcAdditionalTextField.getText().concat(arr.get(i).getName() + "\n"));
+			listModel.addElement(arr.get(i).getName());
+//			this.calcAdditionalTextField.setText(this.calcAdditionalTextField.getText().concat(arr.get(i).getName() + "\n"));
 		}
+		this.calcAdditionalTextField.setModel(listModel);
 		
 //		if(this.calcStart) {
 			System.out.println("entered calcstart");
 			ArrayList<Edge> path = struct.calculateRoute(arr);
 			String[] columnNames = { "City Name", "Time", "Distance" };
-			Object[][] data = new Object[20][3];
+			Object[][] data = new Object[path.size() + 4][3];
 			if(!path.isEmpty()){
 				Iterator<Edge> i = path.iterator();
+				Edge edge = new Edge();
+				int totalDistance = 0;
+				double totalTime = 0;
 				for(int index = 0; index < path.size(); index++){
-					System.out.println("enterd calcRoute for loop " + index);
-					Edge edge = i.next();
+					edge = i.next();
 					data[index][0] = edge.getCity1().getName();
 					data[index][1] = edge.getTime();
 					data[index][2] = edge.getDistance();
+					totalDistance += edge.getDistance();
+					totalTime += edge.getTime();
+					
 				}
+				data[path.size()][0] = edge.getCity2().getName();
+				data[path.size()][1] = edge.getTime();
+				data[path.size()][2] = edge.getDistance();
+				
+				data[path.size() + 2][0] = "Total";
+				data[path.size() + 2][1] = totalTime;
+				data[path.size() + 2][2] = totalDistance;
+				
 				JTable table = new JTable(data, columnNames);
 				table.setEnabled(false);
 //				panel.setLayout(new BorderLayout());
@@ -404,7 +430,7 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 				table.setFont(new Font("Arial", Font.PLAIN, 16));					
 				table.setRowHeight(table.getRowHeight()+5);
 				JScrollPane scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-				scroll.setPreferredSize(new Dimension(200,500));
+				scroll.setPreferredSize(new Dimension(240,700));
 				scroll.setEnabled(false);
 //				panel.add(table.getTableHeader(), BorderLayout.PAGE_START);
 				panel.setPreferredSize(new Dimension(240,1000));
