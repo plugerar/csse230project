@@ -59,14 +59,16 @@ public class MapPanel extends JComponent implements MouseListener{
 	public void drawEdges(Graphics2D g2, Iterator<Edge> cityNeighbours, double citySize){
 		while(cityNeighbours.hasNext()){
 			Edge edge = cityNeighbours.next();
-//			double xsquare = Math.abs((Math.pow((edge.getCity1().getXCoord())- edge.getCity2().getXCoord(), 2)));
-//			double ysquare = Math.abs((Math.pow((edge.getCity1().getYCoord())- edge.getCity2().getYCoord(), 2)));
-//			double distance = Math.sqrt(xsquare + ysquare);
 			Point2D.Double city1point = new Point2D.Double(edge.getCity1().getXCoord() + citySize/2, 
 					edge.getCity1().getYCoord() + citySize/2);
 			Point2D.Double city2point = new Point2D.Double(edge.getCity2().getXCoord() + citySize/2, 
 					edge.getCity2().getYCoord() + citySize/2);
 			Line2D.Double connecter = new Line2D.Double(city1point, city2point);
+				if(clickedCities.contains(edge.getCity1())){
+					if(clickedCities.contains(edge.getCity2())){
+						g2.setColor(Color.RED);
+					}
+				}
 			g2.draw(connecter);
 		}
 	}
@@ -99,7 +101,6 @@ public class MapPanel extends JComponent implements MouseListener{
             		clickedCities.add(last);
             	}
             	if(MainFrame.infoPanel.getCurrentCard() != null) {
-            		System.out.println("here");
 	            	if(MainFrame.infoPanel.getCurrentCard().equals("Points Of Interest")){
 	            		prevCard = "Points Of Interest";
 		            	try {

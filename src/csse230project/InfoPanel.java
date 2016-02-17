@@ -33,6 +33,7 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 	MapPanel map;
 	
 	private MyBoolean booValue = new MyBoolean();
+	private ArrayList<Edge> path = new ArrayList<Edge>();
 	
 	private JPanel panelStart;
     private JPanel cards; //a panel that uses CardLayout
@@ -148,7 +149,7 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		panel.removeAll();
 		panel.revalidate();
 		System.out.println("enterd calcRoute");
-		ArrayList<Edge> path = MainFrame.struct.calculateRoute(MainFrame.mapPanel.getClickedCities());
+		path = MainFrame.struct.calculateRoute(MainFrame.mapPanel.getClickedCities());
 		if(!path.isEmpty()){
 			Iterator<Edge> i = path.iterator();
 			for(int index = 0; index < path.size(); index++){
@@ -162,7 +163,9 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 				panel.add(time);
 			}
 		}
+		booValue.setBoo(true);
 		panel.repaint();
+		MainFrame.mapPanel.repaint();
 	}
 	
 	
@@ -273,9 +276,12 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 	
 	//Getters and Setters and Actions and Mouse Listeners---------------------------------------------
 	
+	public ArrayList getPath(){
+		return path;
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		booValue.setBoo(true);
 		CardLayout cl = (CardLayout) this.cards.getLayout();
 		this.currentCard = arg0.getActionCommand();
         cl.show(this.cards, this.currentCard);
@@ -313,7 +319,6 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		this.revalidate();
 		this.add(panelStart);
 		this.repaint();
-		
 	}
 
 	@Override
