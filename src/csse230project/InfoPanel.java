@@ -30,12 +30,15 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 
 
-
-public class InfoPanel extends JPanel implements ActionListener {// implements ActionListener{
+/** 
+ * Describes the info panel to the right of the main screen that allows
+ * the user to interact with the map
+ */
+public class InfoPanel extends JPanel implements ActionListener {
 	MapPanel map;
 	
 	private MyBoolean booValue = new MyBoolean();
-	private ArrayList<Edge> path = new ArrayList<Edge>();
+	private ArrayList<Edge> path = new ArrayList<>();
 	
     private JPanel cards; //a panel that uses CardLayout
     private JPanel cardPointsOfInterest;
@@ -139,7 +142,8 @@ public class InfoPanel extends JPanel implements ActionListener {// implements A
 			int lastIndex = arr.size() - 1;
 			City now = MainFrame.mapPanel.getClickedCities().get(lastIndex);
 			if (now != null && this.tripWeight != 0) {
-				ArrayList<Trip> trips = TripPlanner.planTrip(now, this.tripWeight, this.tripSelect);
+				TripPlanner tripPlanner = new TripPlanner();
+				ArrayList<Trip> trips = tripPlanner.planTrip(now, this.tripWeight, this.tripSelect);
 				JTabbedPane tabbedPane = new JTabbedPane();
 				for (int i = 0; i < trips.size(); i++) {
 					String[] columnNames = { now.getName() };
@@ -342,7 +346,7 @@ public class InfoPanel extends JPanel implements ActionListener {// implements A
 
 			}
 		}
-		booValue.setBoo(true);
+		this.booValue.setBoo(true);
 		panel.repaint();
 		MainFrame.mapPanel.repaint();
 	}
@@ -449,7 +453,7 @@ public class InfoPanel extends JPanel implements ActionListener {// implements A
 	//Getters and Setters and Actions and Mouse Listeners---------------------------------------------
 	
 	public ArrayList getPath(){
-		return path;
+		return this.path;
 	}
 	
 	@Override

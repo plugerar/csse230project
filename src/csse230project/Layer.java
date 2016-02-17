@@ -8,7 +8,6 @@ import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
@@ -28,8 +27,7 @@ public class Layer extends JPanel{
 	    try {
 			this.map(g2);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// we don't care if it breaks
 		}
 	}
 	

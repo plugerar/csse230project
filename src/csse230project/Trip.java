@@ -2,6 +2,10 @@ package csse230project;
 
 import java.util.ArrayList;
 
+/**
+ * Describes values that relate to trips including total distance, total
+ * time, and a list of trip cities
+ */
 public class Trip {
 	private int totalDistance;
 	private double totalTime;

@@ -16,13 +16,20 @@ import javax.swing.JTextArea;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Makes a popout frame for the city descriptions
+ */
 public class PopoutFrame extends JFrame {
 	private static Color BACKGROUND_COLOR = Color.DARK_GRAY;
 
+	/**
+	 * Creates the popout frame for the specified city
+	 *
+	 * @param cityID - name of city to access
+	 */
 	public PopoutFrame(String cityID) {
 		setTitle(cityID);
 		getContentPane().setBackground(BACKGROUND_COLOR);
-		String content = "";
 		JTextArea text = null;
 
 		// the image

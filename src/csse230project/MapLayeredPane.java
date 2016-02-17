@@ -1,28 +1,19 @@
 package csse230project;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 
+/**
+ * Layers the map and the cities/edges on top of each other
+ */
 public class MapLayeredPane extends JLayeredPane{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
 	MapPanel mapPanel;
 
 	public MapLayeredPane() throws Exception{
@@ -36,7 +27,6 @@ public class MapLayeredPane extends JLayeredPane{
 	    label.setBounds(0, 0, 1700, 1000);
 	    this.mapPanel.setBounds(195, 95, 1700, 1000);
 	    this.setVisible(true);
-	    System.out.println("entered funk");
 	}
 	
 	private JLabel mappng() throws IOException{

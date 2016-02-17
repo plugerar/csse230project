@@ -15,6 +15,9 @@ import java.util.Map.Entry;
 
 import javax.swing.JComponent;
 
+/**
+ * Describes the cities/edges drawn on top of the map picture
+ */
 public class MapPanel extends JComponent implements MouseListener{
 	CityStructure map;
 	City currentCity = null;
@@ -75,7 +78,6 @@ public class MapPanel extends JComponent implements MouseListener{
 	public City getCurrentCity(){
 		return this.currentCity;
 	}
-
 
 	public CityStructure getMap(){
 		return this.map;

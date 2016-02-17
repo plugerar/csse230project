@@ -166,9 +166,21 @@ public class City {
 		this.isSorted = false;
 	}
 
+	/**
+	 * Returns true if point is contained within city bounds
+	 */
+	public boolean contains(int x, int y) {
+		if ((x > this.xCoord - 10) && (x < this.xCoord + 10)
+				&& (y > this.yCoord - 10) && (y < this.yCoord + 10)) {
+			return true;
+		}
+		return false;
+	}
+	
 	public EdgeIterator getEdgeIterator() {
 		return new EdgeIterator(this);
 	}
+	
 	public TimeIterator getTimeIterator() {
 		return new TimeIterator(this);
 	}
@@ -257,18 +269,6 @@ public class City {
 
 	}
 
-
-	/**
-	 * Returns true if point is contained within city bounds
-	 */
-	public boolean contains(int x, int y) {
-		if ((x > this.xCoord - 10) && (x < this.xCoord + 10)
-				&& (y > this.yCoord - 10) && (y < this.yCoord + 10)) {
-			return true;
-		}
-		return false;
-	}
-
 	@Override
 	public String toString() {
 		String s = "";
@@ -302,7 +302,6 @@ public class City {
 
 	public void setPredecessor(Edge e) {
 		this.predecessor = e;
-
 	}
 
 	public Edge getPredecessor() {
@@ -312,6 +311,7 @@ public class City {
 	public int getTotalDistance() {
 		return this.totalDistance;
 	}
+	
 	@SuppressWarnings("null")
 	public void clearPredecessors()
 	{

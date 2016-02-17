@@ -28,7 +28,6 @@ public class CityStructure {
 		this.cityInterestList = new PriorityQueue<>(this.comparator);
 
 		this.cityNames = new ArrayList<>();
-
 	}
 
 	/**
@@ -62,7 +61,6 @@ public class CityStructure {
 	/**
 	 * Form an array list of the interest list
 	 */
-
 	public ArrayList<City> cityInterestToArrayList() {
 		ArrayList<City> iterableCityInterestList = new ArrayList<>();
 		PriorityQueue<City> temp = new PriorityQueue<>(this.comparator);
@@ -77,9 +75,11 @@ public class CityStructure {
 		return iterableCityInterestList;		
 	}
 
-	
+	/**
+	 * Returns a list of city names
+	 */
 	public ArrayList<String> getCityNames(){
-		return cityNames;
+		return this.cityNames;
 	}
 	
 	/**

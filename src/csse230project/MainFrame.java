@@ -5,6 +5,9 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+/**
+ * Main frame to place the map panel and info panel on
+ */
 public class MainFrame extends JFrame{
 	public static MapLayeredPane mapLayeredPane;
 	public static MapPanel mapPanel;
@@ -18,7 +21,7 @@ public class MainFrame extends JFrame{
 		this.setSize(size);
 		mapLayeredPane = new MapLayeredPane();
 		mapPanel = mapLayeredPane.getMapPanel();
-		this.infoPanel = new InfoPanel(mapPanel);
+		infoPanel = new InfoPanel(mapPanel);
 		this.add(infoPanel, BorderLayout.EAST);
 	    this.add(mapLayeredPane, BorderLayout.CENTER);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -4,18 +4,28 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * TripPlanner class plans a series of trips for a given time or distance 
+ */
 public class TripPlanner {
-	public static void main(String[] args) throws Exception {
-		CityStructure map = WriteDomain.read("usdomain.xml");
-		ArrayList<Trip> trip = planTrip(map.getCity("Terre Haute"), 500, true);
-		System.out.println(trip.toString());
-		trip = planTrip(map.getCity("Seattle"), 12, false);
-		System.out.println(trip.toString());
-		trip = planTrip(map.getCity("Washington D.C."), 12, false);
-		System.out.println(trip.toString());
+	
+	/**
+	 * Default constructor doesn't do anything special
+	 */
+	TripPlanner() {
+		
 	}
 	
-	public static ArrayList<Trip> planTrip(City initialCity, int costFunction, boolean distance) {
+	/**
+	 * Plans some trips for a given city that is about the length of the cost function
+	 * 
+	 * @param initialCity - city to center the trip around
+	 * @param costFunction - length of time/distance to plan trip for
+	 * @param distance - true means use distance measure and false means use time measure
+	 * 
+	 * @return ArrayList<Trip> - a list of trips you could take
+	 */
+	public ArrayList<Trip> planTrip(City initialCity, int costFunction, boolean distance) {
 		ArrayList<Trip> trips = new ArrayList<>();
 		Queue<City> queueCities = new LinkedList<>();
 		int wiggleRoom = 1;
@@ -70,15 +80,20 @@ public class TripPlanner {
 		}
 		return trips;
 	}
-	
-	private static City neighborCity(City currentCity, Edge edge) {
+	/**
+	 * Finds the appropriate neighbor city by the edge
+	 */
+	private City neighborCity(City currentCity, Edge edge) {
 		if (edge.getCity1().equals(currentCity)) {
 			return edge.getCity2();
 		}
 		return edge.getCity1();
 	}
 	
-	private static void finalizeTrip(Queue<City> queueCities, Trip tripI, int tempDistance, double tempTime) {
+	/**
+	 * Sets the appropriate cities to the trip
+	 */
+	private void finalizeTrip(Queue<City> queueCities, Trip tripI, int tempDistance, double tempTime) {
 		tripI.setTotalDistance(tempDistance);
 		tripI.setTotalTime(tempTime);
 		ArrayList<City> tripCities = new ArrayList<>();
