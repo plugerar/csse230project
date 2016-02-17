@@ -2,6 +2,7 @@ package csse230project;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -13,15 +14,14 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 
@@ -107,7 +107,7 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 	public void createHome() throws Exception{
         //JTabbedPane tabbedPane = new JTabbedPane();
 
-		cardCalulcateRoute = new JPanel() ;//{
+		this.cardCalulcateRoute = new JPanel() ;//{
 //            //Make the panel wider than it really needs, so
 //            //the window's wide enough for the tabs to stay
 //            //in one row.
@@ -117,18 +117,18 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 //                return size;
 //            }
 //        };
-		cardPointsOfInterest = new JPanel() ;
+		this.cardPointsOfInterest = new JPanel() ;
 		JPanel cardCityRating = new JPanel();
-		cardTripPlanner = new JPanel();
-		cardCityDescriptions = new JPanel();
+		this.cardTripPlanner = new JPanel();
+		this.cardCityDescriptions = new JPanel();
 
 		cardCityRating.setLayout(new BoxLayout(cardCityRating, BoxLayout.Y_AXIS));
 		
-		createCalculateRoute(cardCalulcateRoute);
+		createCalculateRoute(this.cardCalulcateRoute);
 		createPointsOfInterest(this.cardPointsOfInterest);
 		createCityRatings(cardCityRating);
-		createTripPlanner(cardTripPlanner);
-		createCityDescriptions(cardCityDescriptions);
+		createTripPlanner(this.cardTripPlanner);
+		createCityDescriptions(this.cardCityDescriptions);
 
 		
         this.calculateRoute = new JButton(cr);
@@ -149,41 +149,59 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 		this.pointsOfInterest.setActionCommand(poi);
 		this.cityRating.setActionCommand(cRate);
 		this.tripPlanner.setActionCommand(tp);
+		this.cityDescriptions.setActionCommand(cd);
 				
-		this.cards.add(cardCalulcateRoute, cr);
-		this.cards.add(cardPointsOfInterest, poi);
+		this.cards.add(this.cardCalulcateRoute, cr);
+		this.cards.add(this.cardPointsOfInterest, poi);
 		this.cards.add(cardCityRating, cRate); 
-		this.cards.add(cardTripPlanner, tp);
-		this.cards.add(cardCityDescriptions, cd);
+		this.cards.add(this.cardTripPlanner, tp);
+		this.cards.add(this.cardCityDescriptions, cd);
+
+		this.cards.getComponent(0).setName(cr);
+		this.cards.getComponent(1).setName(poi);
+		this.cards.getComponent(2).setName(cRate);
+		this.cards.getComponent(3).setName(tp);
+		this.cards.getComponent(4).setName(cd);
 //		tabbedPane.addTab(cr, cardCalulcateRoute);
 //		tabbedPane.addTab(poi, cardPointsOfInterest);
 //		tabbedPane.addTab(cRate, cardCityRating);
 		
-		this.add(calculateRoute);//, BorderLayout.NORTH);
-		this.add(pointsOfInterest);//, BorderLayout.WEST);
-		this.add(cityRating);//, BorderLayout.EAST);
-		this.add(tripPlanner);
-		this.add(cityDescriptions);
-		this.add(cards);//, BorderLayout.SOUTH);
+		this.add(this.calculateRoute);//, BorderLayout.NORTH);
+		this.add(this.pointsOfInterest);//, BorderLayout.WEST);
+		this.add(this.cityRating);//, BorderLayout.EAST);
+		this.add(this.tripPlanner);
+		this.add(this.cityDescriptions);
+		this.add(this.cards);//, BorderLayout.SOUTH);
 		//this.add(tabbedPane, BorderLayout.CENTER);
 	}
 	
-	private void createCityDescriptions(JPanel cardCityDescriptions2) {
+	private void createTripPlanner(JPanel panel) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	private void createTripPlanner(JPanel panel) {
-		String cityName = "Harrisburg";
-		
-		// creates a frame
-		PopoutFrame frame = new PopoutFrame(cityName);
-		frame.setResizable(false);
-		
-		// normal frame operations
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
-		
+	public void createCityDescriptions(JPanel panel) {
+		System.out.println("create city descriptions");
+		panel.removeAll();
+		panel.revalidate();
+		ArrayList<City> arr = MainFrame.mapPanel.getClickedCities();
+		if(!arr.isEmpty()){
+			int lastIndex = arr.size() - 1;
+			City now = MainFrame.mapPanel.getClickedCities().get(lastIndex);
+			
+			if(now != null) {
+				String cityName = now.getName();
+				
+				// creates a frame
+				PopoutFrame frame = new PopoutFrame(cityName);
+				frame.setResizable(false);
+				
+				// normal frame operations
+				frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+				frame.setVisible(true);
+				
+			}
+		}
 	}
 
 	public void createCityRatings(JPanel panel) throws Exception{
@@ -307,17 +325,23 @@ public class InfoPanel extends JPanel implements ActionListener{// implements Ac
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		CardLayout cl = (CardLayout) cards.getLayout();
-		currentCard = arg0.getActionCommand();
-        cl.show(cards, currentCard);
+		CardLayout cl = (CardLayout) this.cards.getLayout();
+		this.currentCard = arg0.getActionCommand();
+        cl.show(this.cards, this.currentCard);
 	}
 	
 	public String getCurrentCard(){
-		return currentCard;
+		JPanel card = null;
+		for (Component comp : this.cards.getComponents()) {
+		    if (comp.isVisible() == true) {
+		        card = (JPanel) comp;
+		    }
+		}
+		return card.getName();
 	}
 	
 	public JPanel getCardCalulcateRoute(){
-		return cardCalulcateRoute;
+		return this.cardCalulcateRoute;
 	}
 	
 	public JPanel getCardPointsOfInterest(){
