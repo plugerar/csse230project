@@ -254,7 +254,6 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 			Iterator<Edge> i = path.iterator();
 			for(int index = 0; index < path.size(); index++){
 				System.out.println("enterd calcRoute for loop");
-				MainFrame.mapPanel.a
 				Edge edge = i.next();
 				JLabel cityName = new JLabel(edge.getCity1().getName());
 				JLabel distance = new JLabel(((Integer)edge.getDistance()).toString());

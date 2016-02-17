@@ -149,7 +149,6 @@ public class CityStructure {
 			while(e.hasNext()&&!currentCity.equals(end))
 			{
 				Edge nextChild = e.next();
-				nextChild.setColor(Color.RED);
 				if(!closedList.contains(nextChild.getCity2())) //make sure that it is not already traversed and add.
 				{
 					if(currentCity.getPredecessor()!=null)
