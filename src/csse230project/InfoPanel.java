@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -14,13 +16,16 @@ import java.util.Iterator;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
@@ -56,6 +61,12 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
     private final static String cd = "City Descriptions";
 
     private String currentCard;
+    
+    private boolean tripSelect = true;
+    private int tripWeight;
+    protected JTextField tripTextField;
+    protected JRadioButton tripDistanceBox;
+    protected JRadioButton tripTimeBox;
 
     //final static String BUTTONPANEL = "Card with JButtons";
     //final static String TEXTPANEL = "Card with JTextField";
@@ -69,13 +80,13 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		//this.setLayout(new CardLayout());
 		//this.setBorder(BorderFactory.createLineBorder(Color.black));
 		
-		panelStart = new JPanel();
-		panelStart.setPreferredSize(new Dimension(250, 1000));
-		panelStart.setAlignmentX(LEFT_ALIGNMENT);
-		panelStart.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		panelStart.setLayout(new FlowLayout());
+		this.panelStart = new JPanel();
+		this.panelStart.setPreferredSize(new Dimension(250, 1000));
+		this.panelStart.setAlignmentX(LEFT_ALIGNMENT);
+		this.panelStart.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		this.panelStart.setLayout(new FlowLayout());
 		//this.setLayout(new CardLayout());
-		panelStart.setBorder(BorderFactory.createLineBorder(Color.black));
+		this.panelStart.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		startWindow();
 		createCards();
@@ -174,20 +185,85 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 //		tabbedPane.addTab(cr, cardCalulcateRoute);
 //		tabbedPane.addTab(poi, cardPointsOfInterest);
 //		tabbedPane.addTab(cRate, cardCityRating);
-		start.addMouseListener(this);
-		this.add(start);
-		panelStart.add(calculateRoute);//, BorderLayout.NORTH);
-		panelStart.add(pointsOfInterest);//, BorderLayout.WEST);
-		panelStart.add(cityRating);//, BorderLayout.EAST);
-		panelStart.add(tripPlanner);
-		panelStart.add(cityDescriptions);
-		panelStart.add(cards);//, BorderLayout.SOUTH);
+		this.start.addMouseListener(this);
+		this.add(this.start);
+		this.panelStart.add(this.calculateRoute);//, BorderLayout.NORTH);
+		this.panelStart.add(this.pointsOfInterest);//, BorderLayout.WEST);
+		this.panelStart.add(this.cityRating);//, BorderLayout.EAST);
+		this.panelStart.add(this.tripPlanner);
+		this.panelStart.add(this.cityDescriptions);
+		this.panelStart.add(this.cards);//, BorderLayout.SOUTH);
 		//this.add(tabbedPane, BorderLayout.CENTER);
 	}
+	public void setupTripPlanner(JPanel panel) {
+        this.tripDistanceBox = new JRadioButton("Distance");
+        this.tripDistanceBox.setActionCommand("Distance");
+        this.tripTimeBox = new JRadioButton("Time");
+        this.tripTimeBox.setActionCommand("Time");
+        ButtonGroup group = new ButtonGroup();
+        group.add(this.tripDistanceBox);
+        group.add(this.tripTimeBox);
+        this.tripDistanceBox.addActionListener(this);
+        this.tripTimeBox.addActionListener(this);        
+        JPanel radioPanel = new JPanel(new GridLayout(0, 1));
+        radioPanel.add(this.tripDistanceBox);
+        radioPanel.add(this.tripTimeBox);
+        
+        this.tripTextField = new JTextField(10);
+        this.tripTextField.addActionListener(this);        
+        JPanel tempPanel = new JPanel(new GridLayout(1,0));
+    	tempPanel.add(radioPanel);
+    	tempPanel.add(this.tripTextField);
+    	
+        panel.add(tempPanel,BorderLayout.NORTH);
+	}
 	
-	private void createTripPlanner(JPanel panel) {
-		// TODO Auto-generated method stub
-		
+	public void createTripPlanner(JPanel panel) {
+		System.out.println("create trip planner");
+		panel.removeAll();
+		panel.revalidate();
+		panel.setLayout(new BorderLayout());
+		setupTripPlanner(panel);
+
+		ArrayList<City> arr = MainFrame.mapPanel.getClickedCities();
+		if (!arr.isEmpty()) {
+			int lastIndex = arr.size() - 1;
+			City now = MainFrame.mapPanel.getClickedCities().get(lastIndex);
+			if (now != null && this.tripWeight != 0) {
+				ArrayList<Trip> trips = TripPlanner.planTrip(now, this.tripWeight, this.tripSelect);
+				JTabbedPane tabbedPane = new JTabbedPane();
+				for (int i = 0; i < trips.size(); i++) {
+					String[] columnNames = { now.getName() };
+					Object[][] data = new Object[trips.get(i).getTripCities().size() + 2][1];
+					String time = String.format("%.1f", trips.get(i).getTotalTime());
+					data[0][0] = "Total Distance: " + trips.get(i).getTotalDistance() + " miles";
+					data[1][0] = "Total Time: " + time + " hours";
+
+					Iterator<City> it = trips.get(i).getTripCities().iterator();
+					for (int j = 0; j < trips.get(i).getTripCities().size(); j++) {
+						City city = it.next();
+						data[2 + j][0] = city.getName();
+					}
+
+					JTable table = new JTable(data, columnNames);
+					((DefaultTableCellRenderer) table.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.LEFT);
+					table.setEnabled(false);
+					TableColumn column = null;
+					column = table.getColumnModel().getColumn(0);
+					column.setPreferredWidth(200);
+					table.getTableHeader().setFont(new Font("Arial", Font.PLAIN, 18));	
+					table.setFont(new Font("Arial", Font.PLAIN, 16));					
+					table.setRowHeight(table.getRowHeight()+5);
+					JScrollPane scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+					scroll.setPreferredSize(new Dimension(200, 700));
+					scroll.setEnabled(false);
+					tabbedPane.add(scroll, ((Integer) i).toString());
+				}
+				panel.add(tabbedPane, BorderLayout.SOUTH);
+
+			}
+		}
+		panel.repaint();
 	}
 
 	public void createCityDescriptions(JPanel panel) {
@@ -233,6 +309,9 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		column.setPreferredWidth(100);
 		column = table.getColumnModel().getColumn(1);
 		column.setPreferredWidth(50);
+		table.getTableHeader().setFont(new Font("Arial", Font.PLAIN, 18));	
+		table.setFont(new Font("Arial", Font.PLAIN, 16));					
+		table.setRowHeight(table.getRowHeight()+5);
 		JScrollPane scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scroll.setPreferredSize(new Dimension(200,800));
 		scroll.setEnabled(false);
@@ -241,8 +320,8 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 	}
 
 	private void startWindow(){
-		JOptionPane prnt = new JOptionPane();
-		prnt.showMessageDialog(null, "The features of the software");
+//		JOptionPane prnt = new JOptionPane();
+//		prnt.showMessageDialog(null, "The features of the software");
 	}
 	
 	public void createCalculateRoute(JPanel panel) throws Exception{
@@ -297,6 +376,9 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 			column.setPreferredWidth(60);
 			column = table.getColumnModel().getColumn(1);
 			column.setPreferredWidth(250);
+			table.getTableHeader().setFont(new Font("Arial", Font.PLAIN, 18));	
+			table.setFont(new Font("Arial", Font.PLAIN, 16));					
+			table.setRowHeight(table.getRowHeight()+5);
 			JScrollPane scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 			scroll.setPreferredSize(new Dimension(200,200));
 			scroll.setEnabled(false);
@@ -316,6 +398,16 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		CardLayout cl = (CardLayout) this.cards.getLayout();
 		this.currentCard = arg0.getActionCommand();
         cl.show(this.cards, this.currentCard);
+        
+        if (getCurrentCard().equals(tp)) {
+        	if (this.tripDistanceBox.isSelected()) this.tripSelect = true;
+        	if (this.tripTimeBox.isSelected()) this.tripSelect = false;
+        	try {
+        		this.tripWeight = Integer.parseInt(this.tripTextField.getText());
+        	} catch (NumberFormatException e) {
+        		System.out.println("you suck at strings");
+        	}
+        }
 	}
 	
 	public MyBoolean getBooValue(){
@@ -333,6 +425,7 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		        card = (JPanel) comp;
 		    }
 		}
+		this.currentCard = card.getName();
 		return card.getName();
 	}
 	
@@ -344,13 +437,20 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		return this.cardPointsOfInterest;
 	}
 
+	public JPanel getCardTripPlanner(){
+		return this.cardTripPlanner;
+	}
+	
+	public JPanel getCardCityDescriptions(){
+		return this.cardCityDescriptions;
+	}
+	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		this.removeAll();
 		this.revalidate();
-		this.add(panelStart);
+		this.add(this.panelStart);
 		this.repaint();
-		
 	}
 	
 	private void calculateRoute() throws Exception{

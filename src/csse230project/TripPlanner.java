@@ -58,7 +58,15 @@ public class TripPlanner {
 					tripFound = true;
 				}
 			}
-			trips.add(tripI);
+			if (distance) {
+				if (Math.abs(costFunction - tripI.getTotalDistance()) < wiggleRoom) {
+					trips.add(tripI);					
+				}
+			} else {
+				if (Math.abs(costFunction - tripI.getTotalTime()) < wiggleRoom) {
+					trips.add(tripI);					
+				}
+			}			
 		}
 		return trips;
 	}

@@ -100,7 +100,6 @@ public class MapPanel extends JComponent implements MouseListener{
             		MainFrame.infoPanel.setBooValue(false);
             	}
             	if(MainFrame.infoPanel.getCurrentCard() != null) {
-            		System.out.println("here");
 	            	if(MainFrame.infoPanel.getCurrentCard().equals("Points Of Interest")){
 		            	try {
 							MainFrame.infoPanel.createPointsOfInterest(MainFrame.infoPanel.getCardPointsOfInterest());
@@ -119,19 +118,25 @@ public class MapPanel extends JComponent implements MouseListener{
 	            	} else if(MainFrame.infoPanel.getCurrentCard().equals("City Descriptions")){
 						try {
 							System.out.println(MainFrame.infoPanel.getCurrentCard());
-							MainFrame.infoPanel.createCityDescriptions(MainFrame.infoPanel.getCardCalulcateRoute());
+							MainFrame.infoPanel.createCityDescriptions(MainFrame.infoPanel.getCardCityDescriptions());
 						} catch (Exception e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 
 	                   System.out.println("mouse clicked on " + c.getName());
-	            	}
-	            	
-            	}
-            }
-     }
-
+	            	} else if(MainFrame.infoPanel.getCurrentCard().equals("Trip Planner")){
+						try {
+							System.out.println(MainFrame.infoPanel.getCurrentCard());
+							MainFrame.infoPanel.createTripPlanner(MainFrame.infoPanel.getCardTripPlanner());
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+				}
+			}
+		}
 	}
 	
 	public ArrayList<City> getClickedCities(){
