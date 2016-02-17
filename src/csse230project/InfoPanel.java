@@ -38,6 +38,7 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 	MapPanel map;
 	
 	private MyBoolean booValue = new MyBoolean();
+	private ArrayList<Edge> path = new ArrayList<Edge>();
 	
 	private JPanel panelStart;
     private JPanel cards; //a panel that uses CardLayout
@@ -348,7 +349,9 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 
 			}
 		}
+		booValue.setBoo(true);
 		panel.repaint();
+		MainFrame.mapPanel.repaint();
 	}
 
 	
@@ -463,9 +466,13 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 	
 	//Getters and Setters and Actions and Mouse Listeners---------------------------------------------
 	
+	public ArrayList getPath(){
+		return path;
+	}
+	
 	@Override
+
 	public void actionPerformed(ActionEvent ae) {
-		this.booValue.setBoo(true);
 		CardLayout cl = (CardLayout) this.cards.getLayout();
 		this.currentCard = ae.getActionCommand();
         cl.show(this.cards, this.currentCard);
