@@ -1,5 +1,7 @@
 package csse230project;
 
+import java.awt.Color;
+
 /**
  * Defines an edge (a connection between cities)
  * Has two cities, time and distance information between them
@@ -9,7 +11,7 @@ public class Edge {
 	private City city2;
 	private double time;
 	private int distance;
-	public Edge parent;
+	private Edge parent;
 	public int pathDistance;
 	
 	/**
@@ -25,6 +27,7 @@ public class Edge {
 	{
 		this.parent=e;
 	}
+	
 
 	/**
 	 * Constructor with both cities, time, and distance

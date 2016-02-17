@@ -32,6 +32,8 @@ import javax.swing.table.TableColumn;
 public class InfoPanel extends JPanel implements ActionListener, MouseListener{// implements ActionListener{
 	MapPanel map;
 	
+	private MyBoolean booValue = new MyBoolean();
+	
 	private JPanel panelStart;
     private JPanel cards; //a panel that uses CardLayout
     private JPanel cardPointsOfInterest;
@@ -213,14 +215,13 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 	}
 
 	public void createCityRatings(JPanel panel) throws Exception{
-		CityStructure struct = WriteDomain.read("usdomain.xml");
-		ArrayList<City> cities = struct.cityInterestToArrayList();
+		ArrayList<City> cities = MainFrame.struct.cityInterestToArrayList();
 		Iterator<City> iCity = cities.iterator();
-		Iterator<String> i = struct.getCityNames().iterator();
+		Iterator<String> i = MainFrame.struct.getCityNames().iterator();
 		String[] columnNames = { "City Name", "Rating" };
-		Object[][] data = new Object[struct.getCityMap().size()][2];
+		Object[][] data = new Object[MainFrame.struct.getCityMap().size()][2];
 
-		for (int index = 0; index < struct.getCityNames().size(); index++) {
+		for (int index = 0; index < MainFrame.struct.getCityNames().size(); index++) {
 			data[index][0] = i.next();
 			data[index][1] = iCity.next().getInterestLevel();
 		}
@@ -248,12 +249,12 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		panel.removeAll();
 		panel.revalidate();
 		System.out.println("enterd calcRoute");
-		CityStructure struct = WriteDomain.read("usdomain.xml");
-		ArrayList<Edge> path = struct.calculateRoute(MainFrame.mapPanel.getClickedCities());
+		ArrayList<Edge> path = MainFrame.struct.calculateRoute(MainFrame.mapPanel.getClickedCities());
 		if(!path.isEmpty()){
 			Iterator<Edge> i = path.iterator();
 			for(int index = 0; index < path.size(); index++){
 				System.out.println("enterd calcRoute for loop");
+				MainFrame.mapPanel.a
 				Edge edge = i.next();
 				JLabel cityName = new JLabel(edge.getCity1().getName());
 				JLabel distance = new JLabel(((Integer)edge.getDistance()).toString());
@@ -262,15 +263,13 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 				panel.add(distance);
 				panel.add(time);
 			}
-			panel.repaint();
-			MainFrame.mapPanel.setClickedCities(new ArrayList<City>());
 		}
+		panel.repaint();
 	}
 	public void createPointsOfInterest(JPanel panel) throws Exception{// throws Exception{
 		System.out.println("cresatePonitsofInterest");
 		panel.removeAll();
 		panel.revalidate();
-		CityStructure struct = WriteDomain.read("usdomain.xml");
 		ArrayList<City> arr = MainFrame.mapPanel.getClickedCities();
 		if(!arr.isEmpty()){
 			int lastIndex = arr.size() - 1;
@@ -280,7 +279,7 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 			String name = now.getName();
 			System.out.println(name);
 			
-			City pointer = struct.getCity(name);
+			City pointer = MainFrame.struct.getCity(name);
 			String[] columnNames = {"Rating","POI"};
 			Object[][] data = new Object[pointer.getPointsOfInterest().size()][2];
 			Iterator<Attraction> i = pointer.getPointsOfInterest().iterator();
@@ -310,32 +309,22 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		panel.repaint();
 	}
 	
-	private void calculateRoute() throws Exception{
-        CityStructure struct = WriteDomain.read("usdomain.xml");
-		int numberOfCities = struct.getCityInterestList().size();
-		Object[] cityNames = new String[numberOfCities];
-		Iterator iter = struct.getCityInterestList().iterator();
-		for(int i = 0; i < numberOfCities; i++){
-			City c = (City) iter.next();
-			cityNames[i] = c.getName();
-		}
-		JComboBox cityStart = new JComboBox(cityNames);
-		cityStart.setSelectedIndex(numberOfCities - 1);
-		cityStart.addActionListener((ActionListener) cityStart);
-		JComboBox cityEnd = new JComboBox(cityNames);
-		cityEnd.setSelectedIndex(numberOfCities - 1);
-		cityEnd.addActionListener((ActionListener) cityEnd);
-		JButton calcRoute = new JButton("calculateRoute");
-		this.add(cityStart);
-		this.add(cityEnd);
-		this.add(calcRoute);
-	}
+	//Getters and Setters and Actions and Mouse Listeners---------------------------------------------
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		booValue.setBoo(true);
 		CardLayout cl = (CardLayout) this.cards.getLayout();
 		this.currentCard = arg0.getActionCommand();
         cl.show(this.cards, this.currentCard);
+	}
+	
+	public MyBoolean getBooValue(){
+		return booValue;
+	}
+	
+	public void setBooValue(boolean bo){
+		booValue.setBoo(bo);
 	}
 	
 	public String getCurrentCard(){
@@ -363,6 +352,26 @@ public class InfoPanel extends JPanel implements ActionListener, MouseListener{/
 		this.add(panelStart);
 		this.repaint();
 		
+	}
+	
+	private void calculateRoute() throws Exception{
+		int numberOfCities = MainFrame.struct.getCityInterestList().size();
+		Object[] cityNames = new String[numberOfCities];
+		Iterator iter = MainFrame.struct.getCityInterestList().iterator();
+		for(int i = 0; i < numberOfCities; i++){
+			City c = (City) iter.next();
+			cityNames[i] = c.getName();
+		}
+		JComboBox cityStart = new JComboBox(cityNames);
+		cityStart.setSelectedIndex(numberOfCities - 1);
+		cityStart.addActionListener((ActionListener) cityStart);
+		JComboBox cityEnd = new JComboBox(cityNames);
+		cityEnd.setSelectedIndex(numberOfCities - 1);
+		cityEnd.addActionListener((ActionListener) cityEnd);
+		JButton calcRoute = new JButton("calculateRoute");
+		this.add(cityStart);
+		this.add(cityEnd);
+		this.add(calcRoute);
 	}
 
 	@Override

@@ -40,7 +40,7 @@ public class MapPanel extends JComponent implements MouseListener{
 	}
 	
 	public void map(Graphics2D g2) throws Exception{
-		this.map = WriteDomain.read("usdomain.xml");
+		this.map = MainFrame.struct;
 		Iterator<Entry<String, City>> cityPlace = this.map.getCityMap().entrySet().iterator();
 		while(cityPlace.hasNext()){
 			double citySize = 10;
@@ -49,6 +49,7 @@ public class MapPanel extends JComponent implements MouseListener{
 			City city = cityPlace.next().getValue();
 			Ellipse2D.Double cityShape = new Ellipse2D.Double(city.getXCoord(), city.getYCoord(), citySize, citySize);
 			Iterator<Edge> cityNeighbours = city.getNeighbors().iterator();
+			drawEdges();
 			while(cityNeighbours.hasNext()){
 				Edge edge = cityNeighbours.next();
 //				double xsquare = Math.abs((Math.pow((edge.getCity1().getXCoord())- edge.getCity2().getXCoord(), 2)));
@@ -65,6 +66,10 @@ public class MapPanel extends JComponent implements MouseListener{
 			g2.draw(cityShape);
 			g2.fill(cityShape);
 		}
+	}
+	
+	public void drawEdges(){
+		
 	}
 	
 	public City getCurrentCity(){
@@ -90,6 +95,10 @@ public class MapPanel extends JComponent implements MouseListener{
             if (c.contains(e.getX(),e.getY())) {
             	this.clickedCities.add(c);
             	//this.setCurrentCity(c);
+            	if(MainFrame.infoPanel.getBooValue().isBoo()){
+            		clickedCities = new ArrayList<City>();
+            		MainFrame.infoPanel.setBooValue(false);
+            	}
             	if(MainFrame.infoPanel.getCurrentCard() != null) {
             		System.out.println("here");
 	            	if(MainFrame.infoPanel.getCurrentCard().equals("Points Of Interest")){
@@ -115,8 +124,10 @@ public class MapPanel extends JComponent implements MouseListener{
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
+
 	                   System.out.println("mouse clicked on " + c.getName());
 	            	}
+	            	
             	}
             }
      }

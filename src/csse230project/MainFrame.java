@@ -10,8 +10,12 @@ import javax.swing.JFrame;
 public class MainFrame extends JFrame{
 	public static MapPanel mapPanel;
 	public static InfoPanel infoPanel;
+	public static CityStructure struct; 
+	
+
 	
 	public MainFrame() throws Exception{
+		struct = WriteDomain.read("usdomain.xml");
 		Dimension size = new Dimension(1800, 1000);
 		this.setTitle("Map");
 		this.setSize(size);

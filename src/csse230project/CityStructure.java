@@ -1,5 +1,6 @@
 package csse230project;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -148,6 +149,7 @@ public class CityStructure {
 			while(e.hasNext()&&!currentCity.equals(end))
 			{
 				Edge nextChild = e.next();
+				nextChild.setColor(Color.RED);
 				if(!closedList.contains(nextChild.getCity2())) //make sure that it is not already traversed and add.
 				{
 					if(currentCity.getPredecessor()!=null)
