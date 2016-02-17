@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.PriorityQueue;
 
 import csse230project.City.EdgeIterator;
+import csse230project.City.TimeIterator;
 
 /**
  * Class for all data (hashmap of cities, priority queue of
@@ -116,47 +117,73 @@ public class CityStructure {
 		return true;
 	}
 
-	public ArrayList<Edge> calculateRoute(ArrayList<City> cities)
+	public ArrayList<Edge> calculateRoute(ArrayList<City> cities, boolean distanceFlag)
 	{
 
 		ArrayList<Edge> tempArray=new ArrayList<>();
 		for(int i=0;i<cities.size()-1;i++)
 		{
-			ArrayList<Edge> temp = calculateRouteHelper(cities.get(i),cities.get(i+1));
+			ArrayList<Edge> temp = calculateRouteHelper(cities.get(i),cities.get(i+1),distanceFlag);
 			tempArray.addAll(tempArray.size(), temp);
 			temp.get(temp.size()-1).getCity2().clearPredecessors();
 		}
 		
 		return tempArray;
 	}
-	public ArrayList<Edge> calculateRouteHelper(City start,City end)
+	public ArrayList<Edge> calculateRouteHelper(City start,City end,boolean distanceFlag)
 	{
 		//int totalDistance=calculateLineDistance(start,end);
-		PriorityQueue<Edge> openList=new PriorityQueue<>(start.new edgeComparator());
+		PriorityQueue<Edge> openList=null;
+		if(distanceFlag)
+		openList=new PriorityQueue<>(start.new edgeComparator());
+		else
+			openList=new PriorityQueue<>(start.new timeComparator());
 		
 		ArrayList<City> closedList=new ArrayList<>();
 		 //creates an iterator
 		City currentCity = start; //this is the starting city
 		EdgeIterator e = currentCity.getEdgeIterator();
+		TimeIterator t = currentCity.getTimeIterator();
+		//if(distanceFlag)
+		
 		Edge lowest=null;
 		Edge Previous=null;
-		int pathDistance=0;
 		while(openList!=null && currentCity!=end)
 		{
 			
 			//loop and push other nodes onto open list
-			while(e.hasNext()&&!currentCity.equals(end))
+			boolean hasnext;
+		///////////////
+			if(distanceFlag)
+				hasnext=e.hasNext();
+			else
+				hasnext=t.hasNext();
+		///////////////
+			while(hasnext&&!currentCity.equals(end))
 			{
-				Edge nextChild = e.next();
+				Edge nextChild = null;
+				if(distanceFlag)
+					nextChild = e.next();
+				else
+					nextChild = t.next();
 				if(!closedList.contains(nextChild.getCity2())) //make sure that it is not already traversed and add.
 				{
 					if(currentCity.getPredecessor()!=null)
 					{
+						if(distanceFlag)
 						nextChild.setPathDistance(currentCity.getPredecessor().getPathDistance()+nextChild.getDistance());
+						else
+						nextChild.setPathTime(currentCity.getPredecessor().getPathTime()+nextChild.getTime());
+						nextChild.setGoalDistance(this.calculateLineDistance(nextChild.getCity2(), end, distanceFlag));
 					}
 					openList.offer(nextChild);
 				}
-			//
+			///////////////
+				if(distanceFlag)
+					hasnext=e.hasNext();
+				else
+					hasnext=t.hasNext();
+			///////////////
 			}
 			//grab the lowest cost edge
 			Previous=lowest;
@@ -173,6 +200,7 @@ public class CityStructure {
 			//move on to the lowest cost city
 			currentCity=lowest.getCity2();
 			e=currentCity.getEdgeIterator();
+			t=currentCity.getTimeIterator();
 			//set pre edge
 			currentCity.setPredecessor(lowest); //set predecessor edge we are traveling from
 		}
@@ -186,6 +214,7 @@ public class CityStructure {
 		return nodeList;
 		
 	}
+	
 	/**
 	 * Link two cities together with time and distance
 	 */		
@@ -196,27 +225,29 @@ public class CityStructure {
 		this.cityMap.get(city2).addNeighbor(edge2);
 	}
 	
-	public int calculateLineDistance(City c1,City c2)
+	public int calculateLineDistance(City c1,City c2,boolean distanceFlag)
 	{
 		int xDist=Math.abs(c1.getXCoord()-c2.getXCoord());
 		int yDist=Math.abs(c1.getYCoord()-c2.getYCoord());
 		int total= (int) Math.sqrt(Math.pow(xDist,2)+Math.pow(yDist, 2));
+		if(distanceFlag)
 		return (int) (total*2.3);
+		return (int) (total*62.8);
 	}
 	//62.8
-	public City getLowestCostNeighbor(City c)
-	{
-		int low=c.getNeighbors().get(0).getDistance();
-		City lowcity=c.getNeighbors().get(0).getCity2();
-		for(int i=0;i<c.getNeighbors().size();i++)
-		{
-			int newdistance=c.getNeighbors().get(i).getDistance();
-			if(newdistance<low)
-			{
-				lowcity=c.getNeighbors().get(i).getCity2();
-				low=newdistance;
-			}
-		}
-		return lowcity;
-	}
+//	public City getLowestCostNeighbor(City c)
+//	{
+//		int low=c.getNeighbors().get(0).getDistance();
+//		City lowcity=c.getNeighbors().get(0).getCity2();
+//		for(int i=0;i<c.getNeighbors().size();i++)
+//		{
+//			int newdistance=c.getNeighbors().get(i).getDistance();
+//			if(newdistance<low)
+//			{
+//				lowcity=c.getNeighbors().get(i).getCity2();
+//				low=newdistance;
+//			}
+//		}
+//		return lowcity;
+//	}
 }

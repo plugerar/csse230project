@@ -11,6 +11,8 @@ public class Edge {
 	private int distance;
 	public Edge parent;
 	public int pathDistance;
+	private double pathTime;
+	private int goalDistance;
 	
 	/**
 	 * Default constructor for file i/o
@@ -35,6 +37,7 @@ public class Edge {
 		this.distance = distance;
 		this.time = time;
 		this.pathDistance = distance;
+		this.pathTime=time;
 	}
 
 	/**
@@ -64,6 +67,14 @@ public class Edge {
 	public int getPathDistance()
 	{
 		return this.pathDistance;
+	}
+	public double getPathTime()
+	{
+		return this.pathTime;
+	}
+	public void setPathTime(double d)
+	{
+		this.pathTime=d;
 	}
 		
 	/**
@@ -110,6 +121,18 @@ public class Edge {
 		s += "Time: " + this.time + "\n";
 		s += "Distance: " + this.distance + "\n";
 		return s;
+	}
+	public void setGoal(City end) {
+		// TODO Auto-generated method stub.
+		
+	}
+	public void setGoalDistance(int d) {
+		this.goalDistance=d;
+		
+	}
+	public int getGoalDistance()
+	{
+		return this.goalDistance;
 	}
 
 }

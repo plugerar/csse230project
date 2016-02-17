@@ -66,18 +66,21 @@ public class City {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	public ArrayList<Edge> getNeighbors()
+	{
+		return this.neighbors;
+	}
 	/**
 	 * Getter for neighbors
 	 */
-	public ArrayList<Edge> getNeighbors() {
+	public ArrayList<Edge> getNeighbors(Comparator<Edge> c) {
 		if (!isSorted)
-			this.SortNeighbors();
+			this.SortNeighbors(c);
 		return this.neighbors;
 	}
 
-	public void SortNeighbors() {
-		this.neighbors.sort(new edgeComparator());
+	public void SortNeighbors(Comparator<Edge> c) {
+		this.neighbors.sort(c);
 		isSorted = true;
 	}
 
@@ -166,14 +169,17 @@ public class City {
 	public EdgeIterator getEdgeIterator() {
 		return new EdgeIterator(this);
 	}
+	public TimeIterator getTimeIterator() {
+		return new TimeIterator(this);
+	}
 
 	public class edgeComparator implements Comparator<Edge> {
 
 		@Override
 		public int compare(Edge o1, Edge o2) {
-			if (o1.getPathDistance() > o2.getPathDistance()) {
+			if ((o1.getPathDistance()+o1.getGoalDistance()) > (o2.getPathDistance()+o2.getGoalDistance())) {
 				return 1;
-			} else if (o1.getPathDistance() < o2.getPathDistance()) {
+			} else if ((o1.getPathDistance()+o1.getGoalDistance()) < (o2.getPathDistance()+o2.getGoalDistance())) {
 				return -1;
 			} else {
 				return 0;
@@ -181,11 +187,24 @@ public class City {
 		}
 
 	}
+	public class timeComparator implements Comparator<Edge>
+	{
+		@Override
+		public int compare(Edge o1, Edge o2) {
+			if ((o1.getPathTime()+o1.getGoalDistance()) > (o2.getPathTime()+o2.getGoalDistance())) {
+				return 1;
+			} else if ((o1.getPathTime()+o1.getGoalDistance()) < (o2.getPathTime()+o2.getGoalDistance())) {
+				return -1;
+			} else {
+				return 0;
+			}
+		}
+	}
 
 
 	public class EdgeIterator implements Iterator<Edge> {
 		City currentCity;
-
+		edgeComparator e= new edgeComparator();
 		public EdgeIterator(City c) {
 			currentCity = c;
 		}
@@ -203,13 +222,41 @@ public class City {
 		@Override
 		public Edge next() {
 			if (!isSorted)
-				currentCity.SortNeighbors();
+				currentCity.SortNeighbors(e);
 			Edge e = currentCity.neighbors.get(currentIndex);
 			currentIndex++;
 			return e;
 		}
 
 	}
+	public class TimeIterator implements Iterator<Edge> {
+		City currentCity;
+		timeComparator c = new timeComparator();
+		public TimeIterator(City c) {
+			currentCity = c;
+		}
+
+		int currentIndex = 0;
+
+		@Override
+		public boolean hasNext() {
+			if (currentCity.neighbors.size() > currentIndex) {
+				return true;
+			}
+			return false;
+		}
+
+		@Override
+		public Edge next() {
+			if (!isSorted)
+				currentCity.SortNeighbors(c);
+			Edge e = currentCity.neighbors.get(currentIndex);
+			currentIndex++;
+			return e;
+		}
+
+	}
+
 
 	/**
 	 * Returns true if point is contained within city bounds
@@ -274,6 +321,7 @@ public class City {
 		{
 			previous=next;
 			next.getCity2().predecessor=null;
+			next.setGoalDistance(0);
 			next=previous.getCity1().predecessor;
 			
 			

@@ -48,14 +48,14 @@ public class Test {
 		
         //write(map, "foo.xml");
         CityStructure test = read("usdomain.xml");
-		System.out.println(test.getCityMap().toString());        
-		System.out.println(test.getCityInterestList().toString());
+		//System.out.println(test.getCityMap().toString());        
+		//System.out.println(test.getCityInterestList().toString());
 		ArrayList<City> CityRoute=new ArrayList<>();
 		CityRoute.add(test.getCity("Boise"));
 		CityRoute.add(test.getCity("Topeka"));
 		CityRoute.add(test.getCity("Tallahassee"));
 //        Iterator<Entry<String, City>> iterator = test.getCityMap().entrySet().iterator();
-		System.out.println(test.calculateRoute(CityRoute).toString());
+		System.out.println(test.calculateRoute(CityRoute, false).toString());
 //		while (iterator.hasNext()) {
 //			System.out.println(iterator.next());			
 //		}
