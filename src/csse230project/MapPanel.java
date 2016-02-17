@@ -24,7 +24,7 @@ public class MapPanel extends JComponent implements MouseListener{
 	public MapPanel(){
 		this.setPreferredSize(new Dimension(750, 1000));
 		this.addMouseListener(this);
-		clickedCities = new ArrayList<City>();
+		this.clickedCities = new ArrayList<City>();
 	}
 	
 	@Override
@@ -40,8 +40,8 @@ public class MapPanel extends JComponent implements MouseListener{
 	}
 	
 	public void map(Graphics2D g2) throws Exception{
-		map = WriteDomain.read("usdomain.xml");
-		Iterator<Entry<String, City>> cityPlace = map.getCityMap().entrySet().iterator();
+		this.map = WriteDomain.read("usdomain.xml");
+		Iterator<Entry<String, City>> cityPlace = this.map.getCityMap().entrySet().iterator();
 		while(cityPlace.hasNext()){
 			double citySize = 10;
 			g2.setStroke(new BasicStroke(1.0f)); 
@@ -68,12 +68,12 @@ public class MapPanel extends JComponent implements MouseListener{
 	}
 	
 	public City getCurrentCity(){
-		return currentCity;
+		return this.currentCity;
 	}
 
 
 	public CityStructure getMap(){
-		return map;
+		return this.map;
 	}
 	
 	public void setCurrentCity(City c){
@@ -81,40 +81,50 @@ public class MapPanel extends JComponent implements MouseListener{
 	}
 	
 	public void setClickedCities(ArrayList<City> cities){
-		clickedCities = cities;
+		this.clickedCities = cities;
 	}
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
         for (City c : this.getMap().getCityInterestList()) {
             if (c.contains(e.getX(),e.getY())) {
-            	clickedCities.add(c);
+            	this.clickedCities.add(c);
             	//this.setCurrentCity(c);
-            	//if(MainFrame.infoPanel.getCurrentCard().equals("pointsOfInterest")){
-	            	try {
-						MainFrame.infoPanel.createPointsOfInterest(MainFrame.infoPanel.getCardPointsOfInterest());
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-            	//}
-            	//else if(MainFrame.infoPanel.getCurrentCard().equals("calculateRoute")){
-            		CityStructure struct;
-					try {
-						MainFrame.infoPanel.createCalculateRoute(MainFrame.infoPanel.getCardCalulcateRoute());
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-            	//}
-                   System.out.println("mouse clicked on " + c.getName());
+            	if(MainFrame.infoPanel.getCurrentCard() != null) {
+            		System.out.println("here");
+	            	if(MainFrame.infoPanel.getCurrentCard().equals("Points Of Interest")){
+		            	try {
+							MainFrame.infoPanel.createPointsOfInterest(MainFrame.infoPanel.getCardPointsOfInterest());
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+	            	} else if(MainFrame.infoPanel.getCurrentCard().equals("Calculate Route")){
+	            		CityStructure struct;
+						try {
+							MainFrame.infoPanel.createCalculateRoute(MainFrame.infoPanel.getCardCalulcateRoute());
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+	            	} else if(MainFrame.infoPanel.getCurrentCard().equals("City Descriptions")){
+						try {
+							System.out.println(MainFrame.infoPanel.getCurrentCard());
+							MainFrame.infoPanel.createCityDescriptions(MainFrame.infoPanel.getCardCalulcateRoute());
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+	                   System.out.println("mouse clicked on " + c.getName());
+	            	}
+            	}
             }
      }
 
 	}
 	
 	public ArrayList<City> getClickedCities(){
-		return clickedCities;
+		return this.clickedCities;
 	}
 
 	@Override
