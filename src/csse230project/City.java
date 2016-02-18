@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 
 /**
- * Defines a city object Has a name, a list of neighbors, a list of attractions,
+ * Defines a city object - has a name, a list of neighbors, a list of attractions,
  * x and y coordinates, and an interest level
  */
 public class City {
@@ -24,7 +24,7 @@ public class City {
 	public City() {
 		this.neighbors = new ArrayList<>();
 		this.pointsOfInterest = new ArrayList<>();
-		isSorted = true;
+		this.isSorted = true;
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class City {
 		this.neighbors = new ArrayList<>();
 		this.pointsOfInterest = new ArrayList<>();
 		this.interestLevel = new Integer(0);
-		isSorted = true;
+		this.isSorted = true;
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class City {
 		this.neighbors = new ArrayList<>();
 		this.pointsOfInterest = new ArrayList<>();
 		this.interestLevel = new Integer(0);
-		isSorted = true;
+		this.isSorted = true;
 	}
 
 	/**
@@ -66,22 +66,26 @@ public class City {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public ArrayList<Edge> getNeighbors()
-	{
+
+	public ArrayList<Edge> getNeighbors() {
 		return this.neighbors;
 	}
+
 	/**
 	 * Getter for neighbors
 	 */
 	public ArrayList<Edge> getNeighbors(Comparator<Edge> c) {
-		if (!isSorted)
+		if (!this.isSorted)
 			this.SortNeighbors(c);
 		return this.neighbors;
 	}
 
+	/**
+	 * Sorts neighbors using the comparator for edges
+	 */
 	public void SortNeighbors(Comparator<Edge> c) {
 		this.neighbors.sort(c);
-		isSorted = true;
+		this.isSorted = true;
 	}
 
 	/**
@@ -170,28 +174,37 @@ public class City {
 	 * Returns true if point is contained within city bounds
 	 */
 	public boolean contains(int x, int y) {
-		if ((x > this.xCoord - 10) && (x < this.xCoord + 10)
-				&& (y > this.yCoord - 10) && (y < this.yCoord + 10)) {
+		if ((x > this.xCoord - 10) && (x < this.xCoord + 10) && (y > this.yCoord - 10) && (y < this.yCoord + 10)) {
 			return true;
 		}
 		return false;
 	}
-	
+
+	/**
+	 * Getter for edge iterator
+	 */
 	public EdgeIterator getEdgeIterator() {
 		return new EdgeIterator(this);
 	}
-	
+
+	/**
+	 * Getter for time iterator
+	 */
 	public TimeIterator getTimeIterator() {
 		return new TimeIterator(this);
 	}
 
+	/**
+	 * Edge comparator implements a comparator to compare edges by the closeness
+	 * to the goal in terms of distance
+	 */
 	public class edgeComparator implements Comparator<Edge> {
 
 		@Override
 		public int compare(Edge o1, Edge o2) {
-			if ((o1.getPathDistance()+o1.getGoalDistance()) > (o2.getPathDistance()+o2.getGoalDistance())) {
+			if ((o1.getPathDistance() + o1.getGoalDistance()) > (o2.getPathDistance() + o2.getGoalDistance())) {
 				return 1;
-			} else if ((o1.getPathDistance()+o1.getGoalDistance()) < (o2.getPathDistance()+o2.getGoalDistance())) {
+			} else if ((o1.getPathDistance() + o1.getGoalDistance()) < (o2.getPathDistance() + o2.getGoalDistance())) {
 				return -1;
 			} else {
 				return 0;
@@ -199,13 +212,17 @@ public class City {
 		}
 
 	}
-	public class timeComparator implements Comparator<Edge>
-	{
+
+	/**
+	 * Time comparator implements a comparator to compare edges by the closeness
+	 * to the goal in terms of time
+	 */
+	public class timeComparator implements Comparator<Edge> {
 		@Override
 		public int compare(Edge o1, Edge o2) {
-			if ((o1.getPathTime()+o1.getGoalDistance()) > (o2.getPathTime()+o2.getGoalDistance())) {
+			if ((o1.getPathTime() + o1.getGoalDistance()) > (o2.getPathTime() + o2.getGoalDistance())) {
 				return 1;
-			} else if ((o1.getPathTime()+o1.getGoalDistance()) < (o2.getPathTime()+o2.getGoalDistance())) {
+			} else if ((o1.getPathTime() + o1.getGoalDistance()) < (o2.getPathTime() + o2.getGoalDistance())) {
 				return -1;
 			} else {
 				return 0;
@@ -213,19 +230,22 @@ public class City {
 		}
 	}
 
-
+	/**
+	 * Edge iterator iterates over edges as long as the city continues to have
+	 * neighbors with the constraint of distance
+	 */
 	public class EdgeIterator implements Iterator<Edge> {
-		City currentCity;
-		edgeComparator e= new edgeComparator();
-		public EdgeIterator(City c) {
-			currentCity = c;
-		}
+		private City currentCity;
+		private edgeComparator e = new edgeComparator();
+		private int currentIndex = 0;
 
-		int currentIndex = 0;
+		public EdgeIterator(City c) {
+			this.currentCity = c;
+		}
 
 		@Override
 		public boolean hasNext() {
-			if (currentCity.neighbors.size() > currentIndex) {
+			if (this.currentCity.neighbors.size() > this.currentIndex) {
 				return true;
 			}
 			return false;
@@ -233,26 +253,31 @@ public class City {
 
 		@Override
 		public Edge next() {
-			if (!isSorted)
-				currentCity.SortNeighbors(e);
-			Edge e = currentCity.neighbors.get(currentIndex);
-			currentIndex++;
+			if (!City.this.isSorted)
+				this.currentCity.SortNeighbors(this.e);
+			Edge e = this.currentCity.neighbors.get(this.currentIndex);
+			this.currentIndex++;
 			return e;
 		}
 
 	}
-	public class TimeIterator implements Iterator<Edge> {
-		City currentCity;
-		timeComparator c = new timeComparator();
-		public TimeIterator(City c) {
-			currentCity = c;
-		}
 
-		int currentIndex = 0;
+	/**
+	 * Edge iterator iterates over edges as long as the city continues to have
+	 * neighbors with the constraint of time
+	 */
+	public class TimeIterator implements Iterator<Edge> {
+		private City currentCity;
+		private timeComparator c = new timeComparator();
+		private int currentIndex = 0;
+
+		public TimeIterator(City c) {
+			this.currentCity = c;
+		}
 
 		@Override
 		public boolean hasNext() {
-			if (currentCity.neighbors.size() > currentIndex) {
+			if (this.currentCity.neighbors.size() > this.currentIndex) {
 				return true;
 			}
 			return false;
@@ -260,10 +285,10 @@ public class City {
 
 		@Override
 		public Edge next() {
-			if (!isSorted)
-				currentCity.SortNeighbors(c);
-			Edge e = currentCity.neighbors.get(currentIndex);
-			currentIndex++;
+			if (!City.this.isSorted)
+				this.currentCity.SortNeighbors(this.c);
+			Edge e = this.currentCity.neighbors.get(this.currentIndex);
+			this.currentIndex++;
 			return e;
 		}
 
@@ -300,38 +325,45 @@ public class City {
 		return s;
 	}
 
+	/**
+	 * Setter for predecessor edge
+	 */
 	public void setPredecessor(Edge e) {
 		this.predecessor = e;
 	}
 
+	/**
+	 * Getter for predecessor edge
+	 */
 	public Edge getPredecessor() {
 		return this.predecessor;
 	}
 
+	/**
+	 * Getter for total distance
+	 */
 	public int getTotalDistance() {
 		return this.totalDistance;
 	}
 	
-	@SuppressWarnings("null")
-	public void clearPredecessors()
-	{
-		Edge previous=this.predecessor;
-		Edge next=previous;
-		while(next!=null)
-		{
-			previous=next;
-			next.getCity2().predecessor=null;
-			next.setGoalDistance(0);
-			next=previous.getCity1().predecessor;
-			
-			
-			
-		}
-	}
-
+	/**
+	 * Setter for total distance
+	 */
 	public void setTotalDistance(int totalDistance) {
 		this.totalDistance = totalDistance;
 	}
-
+	
+	/**
+	 * Clears all of the predecessor edges
+	 */
+	public void clearPredecessors() {
+		Edge previous = this.predecessor;
+		Edge next = previous;
+		while (next != null) {
+			previous = next;
+			next.getCity2().predecessor = null;
+			next.setGoalDistance(0);
+			next = previous.getCity1().predecessor;
+		}
+	}
 }
-
