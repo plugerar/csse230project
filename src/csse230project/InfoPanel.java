@@ -321,6 +321,8 @@ public class InfoPanel extends JPanel implements ActionListener {
 				data[path.size() + 2][0] = "Total";
 				data[path.size() + 2][1] = totalTime;
 				data[path.size() + 2][2] = totalDistance;
+				data[path.size() + 3][1] = "hours";
+				data[path.size() + 3][2] = "miles";
 
 				JTable table = new JTable(data, columnNames);
 				table.setEnabled(false);
