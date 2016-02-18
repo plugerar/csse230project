@@ -14,6 +14,9 @@ public class MainFrame extends JFrame{
 	public static InfoPanel infoPanel;
 	public static CityStructure struct; 
 	
+	/**
+	 * Constructs a main frame to put the map panel and info panel onto
+	 */
 	public MainFrame() throws Exception{
 		struct = WriteDomain.read("usdomain.xml");
 		Dimension size = new Dimension(1800, 1000);

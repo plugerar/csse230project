@@ -62,18 +62,30 @@ public class Edge {
 		return this.city2;
 	}
 
+	/**
+	 * Setter for path distance
+	 */
 	public void setPathDistance(int n) {
 		this.pathDistance = n;
 	}
 
+	/**
+	 * Getter for path distance
+	 */
 	public int getPathDistance() {
 		return this.pathDistance;
 	}
 
+	/**
+	 * Getter for path time
+	 */
 	public double getPathTime() {
 		return this.pathTime;
 	}
 
+	/**
+	 * Getter for path time
+	 */
 	public void setPathTime(double d) {
 		this.pathTime = d;
 	}
@@ -124,10 +136,16 @@ public class Edge {
 		return s;
 	}
 
+	/**
+	 * Setter for goal distance
+	 */
 	public void setGoalDistance(int d) {
 		this.goalDistance = d;
 	}
 
+	/**
+	 * Getter goal distance
+	 */
 	public int getGoalDistance() {
 		return this.goalDistance;
 	}

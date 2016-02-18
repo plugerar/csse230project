@@ -41,7 +41,10 @@ public class MapPanel extends JComponent implements MouseListener{
 			// we don't care if it breaks	
 		}
 	}
-	
+
+	/**
+	 * Paints the map with all of the city circles and edges
+	 */
 	public void map(Graphics2D g2) throws Exception{
 		this.map = MainFrame.struct;
 		Iterator<Entry<String, City>> cityPlace = this.map.getCityMap().entrySet().iterator();
@@ -57,7 +60,10 @@ public class MapPanel extends JComponent implements MouseListener{
 			g2.fill(cityShape);
 		}
 	}
-	
+
+	/**
+	 * Draws edges onto the map
+	 */
 	public void drawEdges(Graphics2D g2, Iterator<Edge> cityNeighbours, double citySize){
 		while(cityNeighbours.hasNext()){
 			Edge edge = cityNeighbours.next();
@@ -69,19 +75,31 @@ public class MapPanel extends JComponent implements MouseListener{
 			g2.draw(connecter);
 		}
 	}
-	
+
+	/**
+	 * Getter for current city
+	 */
 	public City getCurrentCity(){
 		return this.currentCity;
 	}
 
+	/**
+	 * Getter for map
+	 */
 	public CityStructure getMap(){
 		return this.map;
 	}
-	
+
+	/**
+	 * Setter for the current city
+	 */
 	public void setCurrentCity(City c){
 		this.currentCity = c;
 	}
-	
+
+	/**
+	 * Setter for clicked cities
+	 */
 	public void setClickedCities(ArrayList<City> cities){
 		this.clickedCities = cities;
 	}
@@ -134,7 +152,10 @@ public class MapPanel extends JComponent implements MouseListener{
 			}
 		}
 	}
-	
+
+	/**
+	 * Getter for clicked cities
+	 */
 	public ArrayList<City> getClickedCities(){
 		return this.clickedCities;
 	}

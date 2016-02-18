@@ -16,6 +16,9 @@ import javax.swing.JLayeredPane;
 public class MapLayeredPane extends JLayeredPane{
 	MapPanel mapPanel;
 
+	/**
+	 * Constructs the map layered pane for holding the map panel
+	 */
 	public MapLayeredPane() throws Exception{
 		this.setSize(new Dimension(1700, 1000));
 		JLabel label = mappng();
@@ -29,6 +32,9 @@ public class MapLayeredPane extends JLayeredPane{
 	    this.setVisible(true);
 	}
 	
+	/**
+	 * Background US picture
+	 */
 	private JLabel mappng() throws IOException{
 		String path = "USbackground800.png";
 	    File file = new File(path);
@@ -38,6 +44,9 @@ public class MapLayeredPane extends JLayeredPane{
 		return label;
 	}
 	
+	/**
+	 * Getter for the map panel
+	 */
 	public MapPanel getMapPanel(){
 		return this.mapPanel;
 	}

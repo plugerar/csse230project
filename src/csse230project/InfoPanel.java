@@ -35,9 +35,7 @@ import javax.swing.table.TableColumn;
  * the user to interact with the map
  */
 public class InfoPanel extends JPanel implements ActionListener {
-	MapPanel map;
-	
-	private MyBoolean booValue = new MyBoolean();
+	private MapPanel map;
 	private ArrayList<Edge> path = new ArrayList<>();
 	
     private JPanel cards; //a panel that uses CardLayout
@@ -62,27 +60,32 @@ public class InfoPanel extends JPanel implements ActionListener {
     private String currentCard;
     private boolean tripSelect = true;
     private int tripWeight;
-    protected JTextField tripTextField;
-    protected JRadioButton tripDistanceBox;
-    protected JRadioButton tripTimeBox;
+    private JTextField tripTextField;
+    private JRadioButton tripDistanceBox;
+    private JRadioButton tripTimeBox;
 
     private boolean calcSelect = true;
-    protected JTextField calcStartTextField;
-    protected JTextField calcGoalTextField;
-    protected JList calcAdditionalTextField;
-    protected JRadioButton calcDistanceBox;
-    protected JRadioButton calcTimeBox;
-	
+    private JTextField calcStartTextField;
+    private JTextField calcGoalTextField;
+    private JList<String> calcAdditionalTextField;
+    private JRadioButton calcDistanceBox;
+    private JRadioButton calcTimeBox;
+    
+    /**
+     * Constructor for the info panel given a map panel
+     */
 	public InfoPanel(MapPanel map) throws Exception {
 		this.map = map;
 		this.setPreferredSize(new Dimension(250, 1000));
 
-		startWindow();
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		this.cards = new JPanel(new CardLayout());
 		create();
 	}
 	
+	/**
+	 * Creates the structure of the info panel
+	 */
 	public void create() throws Exception{
 		makeJPanels();
 		this.cardCityRating.setLayout(new BoxLayout(this.cardCityRating, BoxLayout.Y_AXIS));
@@ -99,14 +102,11 @@ public class InfoPanel extends JPanel implements ActionListener {
 
 		addButtonsToPanels();
 	}
-
-	private void startWindow(){
-//		JOptionPane prnt = new JOptionPane();
-//		prnt.showMessageDialog(null, "The features of the software");
-	}
 	
 	// Describing the cards-----------------------------------------------------------------
-	
+	/**
+	 * Setup code for the trip planner panel
+	 */
 	public void setupTripPlanner(JPanel panel) {
         this.tripDistanceBox = new JRadioButton("Distance");
         this.tripDistanceBox.setActionCommand("Distance");
@@ -130,6 +130,9 @@ public class InfoPanel extends JPanel implements ActionListener {
         panel.add(tempPanel,BorderLayout.NORTH);
 	}
 	
+	/**
+	 * Performs the actions of the trip planner
+	 */
 	public void createTripPlanner(JPanel panel) {
 		panel.removeAll();
 		panel.revalidate();
@@ -179,7 +182,10 @@ public class InfoPanel extends JPanel implements ActionListener {
 		}
 		panel.repaint();
 	}
-
+	
+	/**
+	 * Performs the actions for city descriptions and sets up the panel
+	 */
 	public void createCityDescriptions(JPanel panel) {
 		panel.removeAll();
 		panel.revalidate();
@@ -202,7 +208,10 @@ public class InfoPanel extends JPanel implements ActionListener {
 			}
 		}
 	}
-
+	
+	/**
+	 * Performs the actions for city ratings and sets up the panel
+	 */
 	public void createCityRatings(JPanel panel) throws Exception{
 		ArrayList<City> cities = MainFrame.struct.cityInterestToArrayList();
 		Iterator<City> iCity = cities.iterator();
@@ -232,6 +241,9 @@ public class InfoPanel extends JPanel implements ActionListener {
 		panel.add(scroll, BorderLayout.CENTER);
 	}
 
+	/**
+	 * Sets up the panel for calculate route
+	 */
 	public void setupCalculateRoute(JPanel panel) {
         this.calcDistanceBox = new JRadioButton("Distance");
         this.calcDistanceBox.setActionCommand("Distance");
@@ -262,7 +274,7 @@ public class InfoPanel extends JPanel implements ActionListener {
         this.calcGoalTextField.setFont(field);
         this.calcGoalTextField.setEditable(false);
         this.calcGoalTextField.setBackground(Color.WHITE);
-        this.calcAdditionalTextField = new JList();
+        this.calcAdditionalTextField = new JList<>();
         JScrollPane scrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setViewportView(this.calcAdditionalTextField);
         scrollPane.setPreferredSize(new Dimension(10,50));
@@ -274,13 +286,15 @@ public class InfoPanel extends JPanel implements ActionListener {
     	panel.add(radioPanel,BorderLayout.NORTH);
         panel.add(tempPanel,BorderLayout.NORTH);
 	}
-	
+
+	/**
+	 * Performs the actions for calculate route
+	 */
 	public void createCalculateRoute(JPanel panel) throws Exception {
 		panel.removeAll();
 		panel.revalidate();
 		setupCalculateRoute(panel);
-		CityStructure struct = WriteDomain.read("usdomain.xml");
-		DefaultListModel listModel = new DefaultListModel();
+		DefaultListModel<String> listModel = new DefaultListModel<>();
 		ArrayList<City> arr = MainFrame.mapPanel.getClickedCities();
 		if (!arr.isEmpty()) {
 			int lastIndex = arr.size() - 1;
@@ -292,7 +306,7 @@ public class InfoPanel extends JPanel implements ActionListener {
 			}
 			this.calcAdditionalTextField.setModel(listModel);
 
-			ArrayList<Edge> path = struct.calculateRoute(arr, this.calcSelect);
+			ArrayList<Edge> path = MainFrame.struct.calculateRoute(arr, this.calcSelect);
 			String[] columnNames = { "City Name", "Time", "Distance" };
 			Object[][] data = new Object[path.size() + 4][3];
 			if (!path.isEmpty()) {
@@ -343,12 +357,13 @@ public class InfoPanel extends JPanel implements ActionListener {
 
 			}
 		}
-		this.booValue.setBoo(true);
 		panel.repaint();
 		MainFrame.mapPanel.repaint();
 	}
 
-	
+	/**
+	 * Performs the actions for points of interest and sets up the panel
+	 */
 	public void createPointsOfInterest(JPanel panel) throws Exception{
 		panel.removeAll();
 		panel.revalidate();
@@ -394,13 +409,20 @@ public class InfoPanel extends JPanel implements ActionListener {
 	}
 
 	//Making the panel-----------------------------------------------------------------
-		private void makeJPanels(){
+	/**
+	 * Makes the JPanels for each card
+	 */
+	private void makeJPanels(){
 		this.cardCalulcateRoute = new JPanel() ;
 		this.cardPointsOfInterest = new JPanel() ;
 		this.cardCityRating = new JPanel();
 		this.cardTripPlanner = new JPanel();
 		this.cardCityDescriptions = new JPanel();
 	}
+
+	/**
+	 * Creates each card
+	 */
 	private void createCards() throws Exception{		
 		createCalculateRoute(this.cardCalulcateRoute);
 		createPointsOfInterest(this.cardPointsOfInterest);
@@ -408,13 +430,21 @@ public class InfoPanel extends JPanel implements ActionListener {
 		createTripPlanner(this.cardTripPlanner);
 		createCityDescriptions(this.cardCityDescriptions);
 	}
+
+	/**
+	 * Creates each button for each card
+	 */
 	private void makeJButtons(){
         this.calculateRoute = new JButton(cr);
 		this.pointsOfInterest = new JButton(poi);
 		this.cityRating  = new JButton(cRate);
 		this.tripPlanner = new JButton(tp);
 		this.cityDescriptions = new JButton(cd);
-	}
+	}	
+
+	/**
+	 * Adds action listeners for each button
+	 */
 	private void addActionListeners(){
 		this.calculateRoute.addActionListener(this);
 		this.pointsOfInterest.addActionListener(this);
@@ -422,6 +452,10 @@ public class InfoPanel extends JPanel implements ActionListener {
 		this.tripPlanner.addActionListener(this);
 		this.cityDescriptions.addActionListener(this);
 	}
+	
+	/**
+	 * Sets the action commands for each button
+	 */
 	private void setActionCommands(){
 		this.calculateRoute.setActionCommand(cr);
 		this.pointsOfInterest.setActionCommand(poi);
@@ -429,6 +463,10 @@ public class InfoPanel extends JPanel implements ActionListener {
 		this.tripPlanner.setActionCommand(tp);
 		this.cityDescriptions.setActionCommand(cd);		
 	}
+
+	/**
+	 * Adds all the panels to the card
+	 */
 	private void addPanelsToCard(){
 		this.cards.add(this.cardCalulcateRoute, cr);
 		this.cards.add(this.cardPointsOfInterest, poi);
@@ -436,6 +474,10 @@ public class InfoPanel extends JPanel implements ActionListener {
 		this.cards.add(this.cardTripPlanner, tp);
 		this.cards.add(this.cardCityDescriptions, cd);
 	}
+	
+	/**
+	 * Adds all the buttons to the panels
+	 */
 	private void addButtonsToPanels(){
 		this.add(this.calculateRoute);
 		this.add(this.pointsOfInterest);
@@ -446,13 +488,15 @@ public class InfoPanel extends JPanel implements ActionListener {
 	}
 	
 	//Getters and Setters and Actions and Mouse Listeners---------------------------------------------
-	
-	public ArrayList getPath(){
+
+	/**
+	 * Getter for the path
+	 */
+	public ArrayList<Edge> getPath(){
 		return this.path;
 	}
 	
 	@Override
-
 	public void actionPerformed(ActionEvent ae) {
 		CardLayout cl = (CardLayout) this.cards.getLayout();
 		this.currentCard = ae.getActionCommand();
@@ -482,15 +526,10 @@ public class InfoPanel extends JPanel implements ActionListener {
         	if (this.calcTimeBox.isSelected()) this.calcSelect = false;
         }
 	}
-	
-	public MyBoolean getBooValue(){
-		return this.booValue;
-	}
-	
-	public void setBooValue(boolean bo){
-		this.booValue.setBoo(bo);
-	}
-	
+
+	/**
+	 * Getter for the current card
+	 */
 	public String getCurrentCard(){
 		JPanel card = null;
 		for (Component comp : this.cards.getComponents()) {
@@ -501,19 +540,31 @@ public class InfoPanel extends JPanel implements ActionListener {
 		this.currentCard = card.getName();
 		return card.getName();
 	}
-	
+
+	/**
+	 * Getter for the calculate route card
+	 */
 	public JPanel getCardCalulcateRoute(){
 		return this.cardCalulcateRoute;
 	}
-	
+
+	/**
+	 * Getter for the POI card
+	 */
 	public JPanel getCardPointsOfInterest(){
 		return this.cardPointsOfInterest;
 	}
 
+	/**
+	 * Getter for the trip planner card
+	 */
 	public JPanel getCardTripPlanner(){
 		return this.cardTripPlanner;
 	}
-	
+
+	/**
+	 * Getter for the city descriptions card
+	 */
 	public JPanel getCardCityDescriptions(){
 		return this.cardCityDescriptions;
 	}

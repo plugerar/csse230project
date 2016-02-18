@@ -10,20 +10,29 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Run this file to generate the XML file
+ */
 public class WriteDomain {
 	private static CityStructure map = new CityStructure();
-	
+
+	/**
+	 * Run this to generate the usdomain.xml file
+	 */
     public static void main(String [] args) throws Exception {
-//    	loadCities();
-//    	loadPOI();
-//    	loadLinks();
-//		
-//        write(map, "usdomain.xml");
+    	loadCities();
+    	loadPOI();
+    	loadLinks();
+		
+        write(map, "usdomain.xml");
         CityStructure test = read("usdomain.xml");
 		System.out.println(test.getCityMap().toString());        
         System.out.println(test.cityInterestToArrayList().toString());
      }
-    
+
+	/**
+	 * Loads the cities from the given text file
+	 */
     public static void loadCities() {
         String line = null;
         String fileName = "states.txt";
@@ -46,7 +55,10 @@ public class WriteDomain {
             System.out.println("Error reading file '" + fileName + "'");
         }
     }
-    
+
+	/**
+	 * Loads the POIs from the given text file
+	 */
     public static void loadPOI() {
         String line = null;
         String fileName = "poi.txt";
@@ -72,7 +84,10 @@ public class WriteDomain {
             System.out.println("Error reading file '" + fileName + "'");
         }
     }
-        
+
+	/**
+	 * Loads the links from the given text file
+	 */
     public static void loadLinks() {
         String line = null;
         String fileName = "links.txt";
@@ -96,7 +111,10 @@ public class WriteDomain {
             System.out.println("Error reading file '" + fileName + "'");
         }
     }
-    
+
+	/**
+	 * Writer for the XML document
+	 */
     public static void write(CityStructure map, String filename) throws Exception{
         XMLEncoder encoder =
            new XMLEncoder(
@@ -106,6 +124,9 @@ public class WriteDomain {
         encoder.close();
     }
 
+	/**
+	 * Reader for the XML document
+	 */
     public static CityStructure read(String filename) throws Exception {
         XMLDecoder decoder = 
         	new XMLDecoder(
