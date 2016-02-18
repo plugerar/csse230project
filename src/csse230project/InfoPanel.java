@@ -361,7 +361,7 @@ public class InfoPanel extends JPanel implements ActionListener {
 			String name = now.getName();
 			
 			City pointer = MainFrame.struct.getCity(name);
-			String[] columnNames = {"Rating","POI"};
+			String[] columnNames = {"Rating","POI in " + now.getName()};
 			Object[][] data = new Object[pointer.getPointsOfInterest().size()][2];
 			Iterator<Attraction> i = pointer.getPointsOfInterest().iterator();
 
