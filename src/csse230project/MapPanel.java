@@ -66,11 +66,6 @@ public class MapPanel extends JComponent implements MouseListener{
 			Point2D.Double city2point = new Point2D.Double(edge.getCity2().getXCoord() + citySize/2, 
 					edge.getCity2().getYCoord() + citySize/2);
 			Line2D.Double connecter = new Line2D.Double(city1point, city2point);
-				if(clickedCities.contains(edge.getCity1())){
-					if(clickedCities.contains(edge.getCity2())){
-						g2.setColor(Color.RED);
-					}
-				}
 			g2.draw(connecter);
 		}
 	}
